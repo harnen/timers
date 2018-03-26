@@ -1,8 +1,0 @@
-*.pyc
-.waf3-*
-.waf-1*
-*~
-.DS_Store
-docs/doxygen.warnings.log
-docs/introspected-doxygen.hpp
-docs/ndnSIM.tag

@@ -1,0 +1,311 @@
+# project ns (3-dev) configured on Mon Mar 26 15:14:24 2018 by
+# waf 1.8.12 (abi 98, python 2070ef0 on linux2)
+# using ./waf configure
+#
+----------------------------------------
+Setting top to
+/home/harnen/work/ucl/timers/ns-3
+----------------------------------------
+Setting out to
+/home/harnen/work/ucl/timers/ns-3/build
+----------------------------------------
+Checking for 'gcc' (C compiler)
+find program=['gcc', 'cc'] paths=['/home/harnen/.yarn/bin', '/usr/local/sbin', '/usr/local/bin', '/usr/sbin', '/usr/bin', '/sbin', '/bin', '/usr/games', '/usr/local/games', '/snap/bin', '/home/harnen/Downloads/eclipse', '/home/harnen/go/bin', '/usr/local/go/bin', '/home/harnen/work/ucl/blockchain/node-v6.11.0-linux-x64/bin', '/home/harnen/Desktop/SGX/sgxsdk/bin', '/home/harnen/Desktop/SGX/sgxsdk/bin/x64'] var='CC' -> ['/usr/bin/gcc']
+find program=['ar'] paths=['/home/harnen/.yarn/bin', '/usr/local/sbin', '/usr/local/bin', '/usr/sbin', '/usr/bin', '/sbin', '/bin', '/usr/games', '/usr/local/games', '/snap/bin', '/home/harnen/Downloads/eclipse', '/home/harnen/go/bin', '/usr/local/go/bin', '/home/harnen/work/ucl/blockchain/node-v6.11.0-linux-x64/bin', '/home/harnen/Desktop/SGX/sgxsdk/bin', '/home/harnen/Desktop/SGX/sgxsdk/bin/x64'] var='AR' -> ['/usr/bin/ar']
+/usr/bin/gcc
+----------------------------------------
+Checking for cc version
+7.2.0
+----------------------------------------
+Checking for 'g++' (C++ compiler)
+find program=['g++', 'c++'] paths=['/home/harnen/.yarn/bin', '/usr/local/sbin', '/usr/local/bin', '/usr/sbin', '/usr/bin', '/sbin', '/bin', '/usr/games', '/usr/local/games', '/snap/bin', '/home/harnen/Downloads/eclipse', '/home/harnen/go/bin', '/usr/local/go/bin', '/home/harnen/work/ucl/blockchain/node-v6.11.0-linux-x64/bin', '/home/harnen/Desktop/SGX/sgxsdk/bin', '/home/harnen/Desktop/SGX/sgxsdk/bin/x64'] var='CXX' -> ['/usr/bin/g++']
+(tool ar is already loaded, skipping)
+/usr/bin/g++
+----------------------------------------
+Checking supported compiler CXXFLAGS
+==>
+
+int main(int argc, char **argv) {
+	(void)argc; (void)argv;
+	return 0;
+}
+
+<==
+[1/2] Compiling [32mbuild/.conf_check_33e70ad1f3ebd6d67f5a63fdfc749c89/test.cpp[0m
+
+['/usr/bin/g++', '-Werror', '-std=c++0x', '../test.cpp', '-c', '-o', '/home/harnen/work/ucl/timers/ns-3/build/.conf_check_33e70ad1f3ebd6d67f5a63fdfc749c89/testbuild/test.cpp.1.o']
+[2/2] Linking [33mbuild/.conf_check_33e70ad1f3ebd6d67f5a63fdfc749c89/testbuild/testprog[0m
+
+['/usr/bin/g++', 'test.cpp.1.o', '-o', '/home/harnen/work/ucl/timers/ns-3/build/.conf_check_33e70ad1f3ebd6d67f5a63fdfc749c89/testbuild/testprog', '-Wl,-Bstatic', '-Wl,-Bdynamic']
+==>
+
+int main(int argc, char **argv) {
+	(void)argc; (void)argv;
+	return 0;
+}
+
+<==
+[1/2] Compiling [32mbuild/.conf_check_b7c358532ebb786307fdafcf65e13406/test.cpp[0m
+
+['/usr/bin/g++', '-Werror', '-std=c++11', '../test.cpp', '-c', '-o', '/home/harnen/work/ucl/timers/ns-3/build/.conf_check_b7c358532ebb786307fdafcf65e13406/testbuild/test.cpp.1.o']
+[2/2] Linking [33mbuild/.conf_check_b7c358532ebb786307fdafcf65e13406/testbuild/testprog[0m
+
+['/usr/bin/g++', 'test.cpp.1.o', '-o', '/home/harnen/work/ucl/timers/ns-3/build/.conf_check_b7c358532ebb786307fdafcf65e13406/testbuild/testprog', '-Wl,-Bstatic', '-Wl,-Bdynamic']
+-std=c++0x -std=c++11
+-----------------------------------------
+Checking supported optimizations CXXFLAGS
+==>
+
+int main(int argc, char **argv) {
+	(void)argc; (void)argv;
+	return 0;
+}
+
+<==
+[1/2] Compiling [32mbuild/.conf_check_795bc296adb5e8395c79e8cf67145772/test.cpp[0m
+
+['/usr/bin/g++', '-Werror', '-O0', '../test.cpp', '-c', '-o', '/home/harnen/work/ucl/timers/ns-3/build/.conf_check_795bc296adb5e8395c79e8cf67145772/testbuild/test.cpp.1.o']
+[2/2] Linking [33mbuild/.conf_check_795bc296adb5e8395c79e8cf67145772/testbuild/testprog[0m
+
+['/usr/bin/g++', 'test.cpp.1.o', '-o', '/home/harnen/work/ucl/timers/ns-3/build/.conf_check_795bc296adb5e8395c79e8cf67145772/testbuild/testprog', '-Wl,-Bstatic', '-Wl,-Bdynamic']
+-O0
+-----------------------------------------
+Checking supported debug CXXFLAGS
+==>
+
+int main(int argc, char **argv) {
+	(void)argc; (void)argv;
+	return 0;
+}
+
+<==
+[1/2] Compiling [32mbuild/.conf_check_fed23559b0afa35403364c0f24ad565f/test.cpp[0m
+
+['/usr/bin/g++', '-Werror', '-ggdb', '../test.cpp', '-c', '-o', '/home/harnen/work/ucl/timers/ns-3/build/.conf_check_fed23559b0afa35403364c0f24ad565f/testbuild/test.cpp.1.o']
+[2/2] Linking [33mbuild/.conf_check_fed23559b0afa35403364c0f24ad565f/testbuild/testprog[0m
+
+['/usr/bin/g++', 'test.cpp.1.o', '-o', '/home/harnen/work/ucl/timers/ns-3/build/.conf_check_fed23559b0afa35403364c0f24ad565f/testbuild/testprog', '-Wl,-Bstatic', '-Wl,-Bdynamic']
+==>
+
+int main(int argc, char **argv) {
+	(void)argc; (void)argv;
+	return 0;
+}
+
+<==
+[1/2] Compiling [32mbuild/.conf_check_6b13bbd4d6d76ab47c5e60267d4e176b/test.cpp[0m
+
+['/usr/bin/g++', '-Werror', '-g3', '../test.cpp', '-c', '-o', '/home/harnen/work/ucl/timers/ns-3/build/.conf_check_6b13bbd4d6d76ab47c5e60267d4e176b/testbuild/test.cpp.1.o']
+[2/2] Linking [33mbuild/.conf_check_6b13bbd4d6d76ab47c5e60267d4e176b/testbuild/testprog[0m
+
+['/usr/bin/g++', 'test.cpp.1.o', '-o', '/home/harnen/work/ucl/timers/ns-3/build/.conf_check_6b13bbd4d6d76ab47c5e60267d4e176b/testbuild/testprog', '-Wl,-Bstatic', '-Wl,-Bdynamic']
+-ggdb -g3
+-----------------------------------------
+Checking supported warnings CXXFLAGS
+==>
+
+int main(int argc, char **argv) {
+	(void)argc; (void)argv;
+	return 0;
+}
+
+<==
+[1/2] Compiling [32mbuild/.conf_check_7febd4a3da2add69f26e04ea881e65af/test.cpp[0m
+
+['/usr/bin/g++', '-Werror', '-Wall', '../test.cpp', '-c', '-o', '/home/harnen/work/ucl/timers/ns-3/build/.conf_check_7febd4a3da2add69f26e04ea881e65af/testbuild/test.cpp.1.o']
+[2/2] Linking [33mbuild/.conf_check_7febd4a3da2add69f26e04ea881e65af/testbuild/testprog[0m
+
+['/usr/bin/g++', 'test.cpp.1.o', '-o', '/home/harnen/work/ucl/timers/ns-3/build/.conf_check_7febd4a3da2add69f26e04ea881e65af/testbuild/testprog', '-Wl,-Bstatic', '-Wl,-Bdynamic']
+==>
+
+int main(int argc, char **argv) {
+	(void)argc; (void)argv;
+	return 0;
+}
+
+<==
+[1/2] Compiling [32mbuild/.conf_check_53cd582c50e86385326a0cff40763173/test.cpp[0m
+
+['/usr/bin/g++', '-Werror', '-Wno-error=deprecated-declarations', '../test.cpp', '-c', '-o', '/home/harnen/work/ucl/timers/ns-3/build/.conf_check_53cd582c50e86385326a0cff40763173/testbuild/test.cpp.1.o']
+[2/2] Linking [33mbuild/.conf_check_53cd582c50e86385326a0cff40763173/testbuild/testprog[0m
+
+['/usr/bin/g++', 'test.cpp.1.o', '-o', '/home/harnen/work/ucl/timers/ns-3/build/.conf_check_53cd582c50e86385326a0cff40763173/testbuild/testprog', '-Wl,-Bstatic', '-Wl,-Bdynamic']
+==>
+
+int main(int argc, char **argv) {
+	(void)argc; (void)argv;
+	return 0;
+}
+
+<==
+[1/2] Compiling [32mbuild/.conf_check_fdf72837dc4465ffa29bd71c88d8c217/test.cpp[0m
+
+['/usr/bin/g++', '-Werror', '-fstrict-aliasing', '../test.cpp', '-c', '-o', '/home/harnen/work/ucl/timers/ns-3/build/.conf_check_fdf72837dc4465ffa29bd71c88d8c217/testbuild/test.cpp.1.o']
+[2/2] Linking [33mbuild/.conf_check_fdf72837dc4465ffa29bd71c88d8c217/testbuild/testprog[0m
+
+['/usr/bin/g++', 'test.cpp.1.o', '-o', '/home/harnen/work/ucl/timers/ns-3/build/.conf_check_fdf72837dc4465ffa29bd71c88d8c217/testbuild/testprog', '-Wl,-Bstatic', '-Wl,-Bdynamic']
+==>
+
+int main(int argc, char **argv) {
+	(void)argc; (void)argv;
+	return 0;
+}
+
+<==
+[1/2] Compiling [32mbuild/.conf_check_1b2fb8cbc46e5f1e4385a093c5a9beb2/test.cpp[0m
+
+['/usr/bin/g++', '-Werror', '-Wstrict-aliasing', '../test.cpp', '-c', '-o', '/home/harnen/work/ucl/timers/ns-3/build/.conf_check_1b2fb8cbc46e5f1e4385a093c5a9beb2/testbuild/test.cpp.1.o']
+[2/2] Linking [33mbuild/.conf_check_1b2fb8cbc46e5f1e4385a093c5a9beb2/testbuild/testprog[0m
+
+['/usr/bin/g++', 'test.cpp.1.o', '-o', '/home/harnen/work/ucl/timers/ns-3/build/.conf_check_1b2fb8cbc46e5f1e4385a093c5a9beb2/testbuild/testprog', '-Wl,-Bstatic', '-Wl,-Bdynamic']
+-Wall -Wno-error=deprecated-declarations -fstrict-aliasing -Wstrict-aliasing
+---------------------------------------------------------
+Checking for compilation flag -Wl,--soname=foo... support
+==>
+int main() { return 0; }
+<==
+[1/1] Compiling [32mbuild/.conf_check_b2e3f7ab4caa6e7fef921bc489eb9fd3/test.cpp[0m
+
+['/usr/bin/g++', '-std=c++0x', '-std=c++11', '-O0', '-ggdb', '-g3', '-Wall', '-Wno-error=deprecated-declarations', '-fstrict-aliasing', '-Wstrict-aliasing', '-Wl,--soname=foo', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '../test.cpp', '-c', '-o', '/home/harnen/work/ucl/timers/ns-3/build/.conf_check_b2e3f7ab4caa6e7fef921bc489eb9fd3/testbuild/test.cpp.1.o']
+ok
+---------------------------------------------------------
+Checking for program 'python'
+/usr/bin/python
+find program=['python'] paths=['/home/harnen/.yarn/bin', '/usr/local/sbin', '/usr/local/bin', '/usr/sbin', '/usr/bin', '/sbin', '/bin', '/usr/games', '/usr/local/games', '/snap/bin', '/home/harnen/Downloads/eclipse', '/home/harnen/go/bin', '/usr/local/go/bin', '/home/harnen/work/ucl/blockchain/node-v6.11.0-linux-x64/bin', '/home/harnen/Desktop/SGX/sgxsdk/bin', '/home/harnen/Desktop/SGX/sgxsdk/bin/x64'] var='PYTHON' -> ['/usr/bin/python']
+['/usr/bin/python', '-c', 'import imp;print(imp.get_tag())']
+err: Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+AttributeError: 'module' object has no attribute 'get_tag'
+
+['/usr/bin/python', '-c', 'import sys\nfor x in sys.version_info: print(str(x))']
+out: 2
+7
+14
+final
+0
+
+['/usr/bin/python', '-c', "from distutils.sysconfig import get_config_var, get_python_lib\n\nprint(repr(get_python_lib(standard_lib=0, prefix='/usr/local') or ''))"]
+out: '/usr/local/lib/python2.7/dist-packages'
+
+'/usr/local/lib/python2.7/dist-packages'
+
+['/usr/bin/python', '-c', "from distutils.sysconfig import get_config_var, get_python_lib\n\nprint(repr(get_python_lib(plat_specific=1, standard_lib=0, prefix='/usr/local') or ''))"]
+out: '/usr/local/lib/python2.7/dist-packages'
+
+'/usr/local/lib/python2.7/dist-packages'
+
+---------------------------------------------------------
+Checking for python version
+(2, 7, 14, 'final', 0)
+['/usr/bin/python', '-c', "from distutils.sysconfig import get_config_var, get_python_lib\n\nprint(repr(get_config_var('prefix') or ''))\nprint(repr(get_config_var('SO') or ''))\nprint(repr(get_config_var('LDFLAGS') or ''))\nprint(repr(get_config_var('LIBDIR') or ''))\nprint(repr(get_config_var('LIBPL') or ''))\nprint(repr(get_config_var('INCLUDEPY') or ''))\nprint(repr(get_config_var('Py_ENABLE_SHARED') or ''))\nprint(repr(get_config_var('MACOSX_DEPLOYMENT_TARGET') or ''))\nprint(repr(get_config_var('LDSHARED') or ''))\nprint(repr(get_config_var('CFLAGS') or ''))\nprint(repr(get_config_var('LDVERSION') or ''))"]
+out: '/usr'
+'.so'
+'-Wl,-Bsymbolic-functions -Wl,-z,relro'
+'/usr/lib'
+'/usr/lib/python2.7/config-x86_64-linux-gnu'
+'/usr/include/python2.7'
+1
+''
+'x86_64-linux-gnu-gcc -pthread -shared -Wl,-O1 -Wl,-Bsymbolic-functions -Wl,-Bsymbolic-functions -Wl,-z,relro -fno-strict-aliasing -DNDEBUG -g -fwrapv -O2 -Wall -Wstrict-prototypes -Wdate-time -D_FORTIFY_SOURCE=2 -g -fdebug-prefix-map=/build/python2.7-l1RrwO/python2.7-2.7.14=. -fstack-protector-strong -Wformat -Werror=format-security  '
+'-fno-strict-aliasing -DNDEBUG -g -fwrapv -O2 -Wall -Wstrict-prototypes -Wdate-time -D_FORTIFY_SOURCE=2 -g -fdebug-prefix-map=/build/python2.7-l1RrwO/python2.7-2.7.14=. -fstack-protector-strong -Wformat -Werror=format-security  '
+''
+
+'/usr'
+'.so'
+'-Wl,-Bsymbolic-functions -Wl,-z,relro'
+'/usr/lib'
+'/usr/lib/python2.7/config-x86_64-linux-gnu'
+'/usr/include/python2.7'
+1
+''
+'x86_64-linux-gnu-gcc -pthread -shared -Wl,-O1 -Wl,-Bsymbolic-functions -Wl,-Bsymbolic-functions -Wl,-z,relro -fno-strict-aliasing -DNDEBUG -g -fwrapv -O2 -Wall -Wstrict-prototypes -Wdate-time -D_FORTIFY_SOURCE=2 -g -fdebug-prefix-map=/build/python2.7-l1RrwO/python2.7-2.7.14=. -fstack-protector-strong -Wformat -Werror=format-security  '
+'-fno-strict-aliasing -DNDEBUG -g -fwrapv -O2 -Wall -Wstrict-prototypes -Wdate-time -D_FORTIFY_SOURCE=2 -g -fdebug-prefix-map=/build/python2.7-l1RrwO/python2.7-2.7.14=. -fstack-protector-strong -Wformat -Werror=format-security  '
+''
+
+Configuration returned from ['/usr/bin/python']:
+prefix = '/usr'
+SO = '.so'
+LDFLAGS = '-Wl,-Bsymbolic-functions -Wl,-z,relro'
+LIBDIR = '/usr/lib'
+LIBPL = '/usr/lib/python2.7/config-x86_64-linux-gnu'
+INCLUDEPY = '/usr/include/python2.7'
+Py_ENABLE_SHARED = 1
+MACOSX_DEPLOYMENT_TARGET = ''
+LDSHARED = 'x86_64-linux-gnu-gcc -pthread -shared -Wl,-O1 -Wl,-Bsymbolic-functions -Wl,-Bsymbolic-functions -Wl,-z,relro -fno-strict-aliasing -DNDEBUG -g -fwrapv -O2 -Wall -Wstrict-prototypes -Wdate-time -D_FORTIFY_SOURCE=2 -g -fdebug-prefix-map=/build/python2.7-l1RrwO/python2.7-2.7.14=. -fstack-protector-strong -Wformat -Werror=format-security  '
+CFLAGS = '-fno-strict-aliasing -DNDEBUG -g -fwrapv -O2 -Wall -Wstrict-prototypes -Wdate-time -D_FORTIFY_SOURCE=2 -g -fdebug-prefix-map=/build/python2.7-l1RrwO/python2.7-2.7.14=. -fstack-protector-strong -Wformat -Werror=format-security  '
+LDVERSION = ''
+
+---------------------------------------------------------
+python-config
+/usr/bin/python-config
+find program=['/usr/bin/python-config', 'python2.7-config', 'python-config-2.7', 'python2.7m-config'] paths=['/home/harnen/.yarn/bin', '/usr/local/sbin', '/usr/local/bin', '/usr/sbin', '/usr/bin', '/sbin', '/bin', '/usr/games', '/usr/local/games', '/snap/bin', '/home/harnen/Downloads/eclipse', '/home/harnen/go/bin', '/usr/local/go/bin', '/home/harnen/work/ucl/blockchain/node-v6.11.0-linux-x64/bin', '/home/harnen/Desktop/SGX/sgxsdk/bin', '/home/harnen/Desktop/SGX/sgxsdk/bin/x64'] var='PYTHON_CONFIG' -> ['/usr/bin/python-config']
+------------------------------------------------------------------
+Asking python-config for pyembed '--cflags --libs --ldflags' flags
+['/usr/bin/python-config', '--cflags', '--libs', '--ldflags']
+out: -I/usr/include/python2.7 -I/usr/include/x86_64-linux-gnu/python2.7  -fno-strict-aliasing -Wdate-time -D_FORTIFY_SOURCE=2 -g -fdebug-prefix-map=/build/python2.7-l1RrwO/python2.7-2.7.14=. -fstack-protector-strong -Wformat -Werror=format-security  -DNDEBUG -g -fwrapv -O2 -Wall -Wstrict-prototypes
+-lpython2.7 -lpthread -ldl  -lutil -lm 
+-L/usr/lib/python2.7/config-x86_64-linux-gnu -L/usr/lib -lpython2.7 -lpthread -ldl  -lutil -lm  -Xlinker -export-dynamic -Wl,-O1 -Wl,-Bsymbolic-functions
+
+yes
+------------------------------------------------------------------
+Getting pyembed flags from python-config
+==>
+
+#include <Python.h>
+#ifdef __cplusplus
+extern "C" {
+#endif
+	void Py_Initialize(void);
+	void Py_Finalize(void);
+#ifdef __cplusplus
+}
+#endif
+int main(int argc, char **argv)
+{
+   (void)argc; (void)argv;
+   Py_Initialize();
+   Py_Finalize();
+   return 0;
+}
+
+<==
+[1/2] Compiling [32mbuild/.conf_check_5ff2ba8dc8545e17f049474829c20e0e/test.cpp[0m
+
+['/usr/bin/g++', '-std=c++0x', '-std=c++11', '-O0', '-ggdb', '-g3', '-Wall', '-Wno-error=deprecated-declarations', '-fstrict-aliasing', '-Wstrict-aliasing', '-fno-strict-aliasing', '-fdebug-prefix-map=/build/python2.7-l1RrwO/python2.7-2.7.14=.', '-fstack-protector-strong', '-fwrapv', '-I/usr/include/python2.7', '-I/usr/include/x86_64-linux-gnu/python2.7', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '-DPYTHONDIR="/usr/local/lib/python2.7/dist-packages"', '-DPYTHONARCHDIR="/usr/local/lib/python2.7/dist-packages"', '-DHAVE_PYEMBED=1', '-D_FORTIFY_SOURCE=2', '-DNDEBUG', '../test.cpp', '-c', '-o', '/home/harnen/work/ucl/timers/ns-3/build/.conf_check_5ff2ba8dc8545e17f049474829c20e0e/testbuild/test.cpp.1.o']
+[2/2] Linking [33mbuild/.conf_check_5ff2ba8dc8545e17f049474829c20e0e/testbuild/testprog[0m
+
+['/usr/bin/g++', '-Xlinker', '-export-dynamic', '-Wl,-O1', '-Wl,-Bsymbolic-functions', 'test.cpp.1.o', '-o', '/home/harnen/work/ucl/timers/ns-3/build/.conf_check_5ff2ba8dc8545e17f049474829c20e0e/testbuild/testprog', '-Wl,-Bstatic', '-Wl,-Bdynamic', '-L/usr/lib/python2.7/config-x86_64-linux-gnu', '-L/usr/lib', '-lpython2.7', '-lpthread', '-ldl', '-lutil', '-lm']
+yes
+------------------------------------------------------------------
+Asking python-config for pyext '--cflags --libs --ldflags' flags
+['/usr/bin/python-config', '--cflags', '--libs', '--ldflags']
+out: -I/usr/include/python2.7 -I/usr/include/x86_64-linux-gnu/python2.7  -fno-strict-aliasing -Wdate-time -D_FORTIFY_SOURCE=2 -g -fdebug-prefix-map=/build/python2.7-l1RrwO/python2.7-2.7.14=. -fstack-protector-strong -Wformat -Werror=format-security  -DNDEBUG -g -fwrapv -O2 -Wall -Wstrict-prototypes
+-lpython2.7 -lpthread -ldl  -lutil -lm 
+-L/usr/lib/python2.7/config-x86_64-linux-gnu -L/usr/lib -lpython2.7 -lpthread -ldl  -lutil -lm  -Xlinker -export-dynamic -Wl,-O1 -Wl,-Bsymbolic-functions
+
+yes
+------------------------------------------------------------------
+Getting pyext flags from python-config
+==>
+
+#include <Python.h>
+#ifdef __cplusplus
+extern "C" {
+#endif
+	void Py_Initialize(void);
+	void Py_Finalize(void);
+#ifdef __cplusplus
+}
+#endif
+int main(int argc, char **argv)
+{
+   (void)argc; (void)argv;
+   Py_Initialize();
+   Py_Finalize();
+   return 0;
+}
+
+<==
+[1/2] Compiling [32mbuild/.conf_check_198ba9cdd7ed12ab29c0802191d3884e/test.cpp[0m
+
+['/usr/bin/g++', '-std=c++0x', '-std=c++11', '-O0', '-ggdb', '-g3', '-Wall', '-Wno-error=deprecated-declarations', '-fstrict-aliasing', '-Wstrict-aliasing', '-fPIC', '-fno-strict-aliasing', '-fdebug-prefix-map=/build/python2.7-l1RrwO/python2.7-2.7.14=.', '-fstack-protector-strong', '-fwrapv', '-I/usr/include/python2.7', '-I/usr/include/x86_64-linux-gnu/python2.7', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '-DPYTHONDIR="/usr/local/lib/python2.7/dist-packages"', '-DPYTHONARCHDIR="/usr/local/lib/python2.7/dist-packages"', '-DHAVE_PYEMBED=1', '-DHAVE_PYEXT=1', '-D_FORTIFY_SOURCE=2', '-DNDEBUG', '../test.cpp', '-c', '-o', '/home/harnen/work/ucl/timers/ns-3/build/.conf_check_198ba9cdd7ed12ab29c0802191d3884e/testbuild/test.cpp.1.o']

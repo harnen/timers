@@ -17,7 +17,7 @@
  * ndnSIM, e.g., in COPYING.md file.  If not, see <http://www.gnu.org/licenses/>.
  **/
 
-#include "ndn-producer-timers.hpp"
+#include "ndn-producer-thunks.hpp"
 #include "ns3/log.h"
 #include "ns3/string.h"
 #include "ns3/uinteger.h"
@@ -29,59 +29,59 @@
 
 #include <memory>
 
-NS_LOG_COMPONENT_DEFINE("ndn.ProducerTimers");
+NS_LOG_COMPONENT_DEFINE("ndn.ProducerThunks");
 
 namespace ns3 {
 namespace ndn {
 
-NS_OBJECT_ENSURE_REGISTERED(ProducerTimers);
+NS_OBJECT_ENSURE_REGISTERED(ProducerThunks);
 
-TypeId ProducerTimers::GetTypeId(void) {
+TypeId ProducerThunks::GetTypeId(void) {
 	static TypeId tid =
-			TypeId("ns3::ndn::ProducerTimers").SetGroupName("Ndn").SetParent<App>().AddConstructor<
-					ProducerTimers>().AddAttribute("Prefix",
+			TypeId("ns3::ndn::ProducerThunks").SetGroupName("Ndn").SetParent<App>().AddConstructor<
+					ProducerThunks>().AddAttribute("Prefix",
 					"Prefix, for which producer has the data", StringValue("/"),
-					MakeNameAccessor(&ProducerTimers::m_prefix),
+					MakeNameAccessor(&ProducerThunks::m_prefix),
 					MakeNameChecker()).AddAttribute("Address",
 					"Unique prefix identifying the producer", StringValue("/"),
-					MakeNameAccessor(&ProducerTimers::m_address),
+					MakeNameAccessor(&ProducerThunks::m_address),
 					MakeNameChecker()).AddAttribute("Postfix",
 					"Postfix that is added to the output data (e.g., for adding producer-uniqueness)",
 					StringValue("/"),
-					MakeNameAccessor(&ProducerTimers::m_postfix),
+					MakeNameAccessor(&ProducerThunks::m_postfix),
 					MakeNameChecker()).AddAttribute("PayloadSize",
 					"Virtual payload size for Content packets",
 					UintegerValue(1024),
-					MakeUintegerAccessor(&ProducerTimers::m_virtualPayloadSize),
+					MakeUintegerAccessor(&ProducerThunks::m_virtualPayloadSize),
 					MakeUintegerChecker<uint32_t>()).AddAttribute("Freshness",
 					"Freshness of data packets, if 0, then unlimited freshness",
 					TimeValue(Seconds(0)),
-					MakeTimeAccessor(&ProducerTimers::m_freshness),
+					MakeTimeAccessor(&ProducerThunks::m_freshness),
 					MakeTimeChecker())
 					.AddAttribute("Signature",
 						"Fake signature, 0 valid signature (default), other values application-specific",
 						UintegerValue(0),
-						MakeUintegerAccessor(&ProducerTimers::m_signature),
+						MakeUintegerAccessor(&ProducerThunks::m_signature),
 						MakeUintegerChecker<uint32_t>())
 					.AddAttribute("KeyLocator",
 						"Name to be used for key locator.  If root, then key locator is not used",
 						NameValue(),
-						MakeNameAccessor(&ProducerTimers::m_keyLocator),
+						MakeNameAccessor(&ProducerThunks::m_keyLocator),
 						MakeNameChecker())
 					.AddAttribute("DataDelay",
 							"Delay for Data response (ms)",
 							UintegerValue(1000),
-							MakeUintegerAccessor(&ProducerTimers::m_dataDelay),
+							MakeUintegerAccessor(&ProducerThunks::m_dataDelay),
 							MakeUintegerChecker<uint32_t>());
 	return tid;
 }
 
-ProducerTimers::ProducerTimers() {
+ProducerThunks::ProducerThunks() {
 	NS_LOG_FUNCTION_NOARGS();
 }
 
 // inherited from Application base class.
-void ProducerTimers::StartApplication() {
+void ProducerThunks::StartApplication() {
 	NS_LOG_FUNCTION_NOARGS();
 	App::StartApplication();
 
@@ -89,13 +89,13 @@ void ProducerTimers::StartApplication() {
 	FibHelper::AddRoute(GetNode(), m_address, m_face, 0);
 }
 
-void ProducerTimers::StopApplication() {
+void ProducerThunks::StopApplication() {
 	NS_LOG_FUNCTION_NOARGS();
 
 	App::StopApplication();
 }
 
-void ProducerTimers::OnInterest(shared_ptr<const Interest> interest) {
+void ProducerThunks::OnInterest(shared_ptr<const Interest> interest) {
 	App::OnInterest(interest); // tracing inside
 
 	NS_LOG_FUNCTION(this << *interest);
@@ -112,7 +112,7 @@ void ProducerTimers::OnInterest(shared_ptr<const Interest> interest) {
 	NS_LOG_DEBUG("Name in the interest: " << interest->getName());
 	if (addrPrefix.isPrefixOf(interest->getName())) {
 		NS_LOG_DEBUG("Scheduling sending back data with delay " << m_dataDelay << "ms");
-		Simulator::Schedule (MilliSeconds (m_dataDelay), &ProducerTimers::SendData, this, interest);
+		Simulator::Schedule (MilliSeconds (m_dataDelay), &ProducerThunks::SendData, this, interest);
 		//SendData(interest);
 	} else {
 		NS_LOG_DEBUG("Sending back my address:" << m_address);
@@ -121,7 +121,7 @@ void ProducerTimers::OnInterest(shared_ptr<const Interest> interest) {
 
 }
 
-void ProducerTimers::SendAddress(shared_ptr<const Interest> interest) {
+void ProducerThunks::SendAddress(shared_ptr<const Interest> interest) {
 	Name dataName(interest->getName());
 	auto data = make_shared<Data>();
 	data->setName(dataName);
@@ -165,7 +165,7 @@ void ProducerTimers::SendAddress(shared_ptr<const Interest> interest) {
 
 }
 
-void ProducerTimers::SendData(shared_ptr<const Interest> interest) {
+void ProducerThunks::SendData(shared_ptr<const Interest> interest) {
 	Name dataName(interest->getName());
 	// dataName.append(m_postfix);
 	// dataName.appendVersion();

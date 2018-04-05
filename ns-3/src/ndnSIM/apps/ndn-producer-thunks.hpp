@@ -40,12 +40,12 @@ namespace ndn {
  * size and name same as in Interest.cation, which replying every incoming Interest
  * with Data packet with a specified size and name same as in Interest.
  */
-class ProducerTimers : public App {
+class ProducerThunks : public App {
 public:
   static TypeId
   GetTypeId(void);
 
-  ProducerTimers();
+  ProducerThunks();
 
   // inherited from NdnApp
   virtual void

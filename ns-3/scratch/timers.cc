@@ -23,36 +23,36 @@ int main(int argc, char* argv[]) {
 
 	//Default command line args values
 	std::string format("Inet");
-	std::string input("src/topology-read/examples/small_topo.txt");
 	double time = 5;
 	string dataDelay = "0";
-	string deadline = "0";
+	string errRate = "0";
 
 	CommandLine cmd;
 	cmd.AddValue("time", "Time of the simulation.", time);
 	cmd.AddValue("dataDelay", "Delay of of data responses.", dataDelay);
-	cmd.AddValue("deadline", "Delay to be added to PIT entries", deadline);
+	cmd.AddValue("errRate", "Error Rate.", errRate);
 	cmd.Parse(argc, argv);
 
-
-	NS_LOG_INFO("Reading file: " << input << " format: " << format);
-
-	TopologyReaderHelper topoHelp;
-	topoHelp.SetFileName(input);
-	topoHelp.SetFileType(format);
-	Ptr<TopologyReader> inFile = topoHelp.GetTopologyReader();
 
 
 	//Creating nodes
 	NodeContainer nodes;
 	PointToPointHelper p2p;
 
-	nodes.Create(3);
+	nodes.Create(4);
 
 	// Connecting nodes using two links
-	p2p.Install(nodes.Get(0), nodes.Get(1));
-	p2p.Install(nodes.Get(1), nodes.Get(2));
-	/*p2p.Install(nodes.Get(2), nodes.Get(3));*/
+	NetDeviceContainer d0d2 = p2p.Install(nodes.Get(0), nodes.Get(2));
+	NetDeviceContainer d1d2 = p2p.Install(nodes.Get(1), nodes.Get(2));
+	NetDeviceContainer d2d3 = p2p.Install(nodes.Get(2), nodes.Get(3));
+
+	// Set loss model
+	Ptr<RateErrorModel> rem = CreateObject<RateErrorModel> ();
+	rem->SetAttribute("ErrorRate", StringValue(errRate));
+	rem->SetAttribute("ErrorUnit", StringValue ("ERROR_UNIT_PACKET"));
+
+	p2p.SetDeviceAttribute("ReceiveErrorModel", PointerValue (rem));
+
 
 
 	// Install NDN stack on all nodes
@@ -73,24 +73,23 @@ int main(int argc, char* argv[]) {
 	consumerHelper.SetPrefix(prefix);
 	consumerHelper.SetAttribute("Frequency", StringValue("0.1"));
 	consumerHelper.SetAttribute("StartTime", StringValue("1s"));
-	consumerHelper.SetAttribute("Deadline", StringValue(deadline));
 	consumerHelper.Install(nodes.Get(0));
 
 	// Producer
-	ndn::AppHelper producerHelper("ns3::ndn::ProducerTimers");
+	ndn::AppHelper producerHelper("ns3::ndn::ProducerThunks");
 	// Producer will reply to all requests starting with /prefix
 	producerHelper.SetPrefix(prefix);
 	producerHelper.SetAttribute("Address", StringValue("/node/3"));
 	producerHelper.SetAttribute("PayloadSize", StringValue("1024"));
 	producerHelper.SetAttribute("DataDelay", StringValue(dataDelay));
-	producerHelper.Install(nodes.Get(2)); // last node
+	producerHelper.Install(nodes.Get(3)); // last node
 
 	// Add /prefix origins to ndn::GlobalRouter
 	ndn::GlobalRoutingHelper ndnGlobalRoutingHelper;
 	ndnGlobalRoutingHelper.InstallAll();
 	//for (ns3::Ptr<ns3::Node> node : nodes) {
-	ndnGlobalRoutingHelper.AddOrigins(prefix, nodes.Get(2));
-	ndnGlobalRoutingHelper.AddOrigins("/node/3", nodes.Get(2));
+	ndnGlobalRoutingHelper.AddOrigins(prefix, nodes.Get(3));
+	ndnGlobalRoutingHelper.AddOrigins("/node/3", nodes.Get(3));
 	//}
 
 	// Calculate and install FIBs

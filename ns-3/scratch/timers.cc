@@ -23,7 +23,7 @@ int main(int argc, char* argv[]) {
 
 	//Default command line args values
 	std::string format("Inet");
-	double time = 5;
+	double time = 2;
 	string dataDelay = "0";
 	string errRate = "0";
 
@@ -71,7 +71,7 @@ int main(int argc, char* argv[]) {
 	//Consumer
 	ndn::AppHelper consumerHelper("ns3::ndn::ConsumerTimers");
 	consumerHelper.SetPrefix(prefix);
-	consumerHelper.SetAttribute("Frequency", StringValue("0.1"));
+	consumerHelper.SetAttribute("Frequency", StringValue("1"));
 	consumerHelper.SetAttribute("StartTime", StringValue("1s"));
 	consumerHelper.Install(nodes.Get(0));
 

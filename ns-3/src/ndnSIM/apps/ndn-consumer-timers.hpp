@@ -22,7 +22,7 @@
 
 #include "ns3/ndnSIM/model/ndn-common.hpp"
 
-#include "ndn-consumer.hpp"
+#include "ndn-consumer-thunks.hpp"
 
 namespace ns3 {
 namespace ndn {
@@ -31,7 +31,7 @@ namespace ndn {
  * @ingroup ndn-apps
  * @brief Ndn application for sending out Interest packets at a "constant" rate (Poisson process)
  */
-class ConsumerTimers : public Consumer {
+class ConsumerTimers : public ConsumerThunks {
 public:
   static TypeId
   GetTypeId();

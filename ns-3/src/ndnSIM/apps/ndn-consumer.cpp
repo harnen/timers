@@ -56,20 +56,14 @@ Consumer::GetTypeId(void)
 
       .AddAttribute("Prefix", "Name of the Interest", StringValue("/"),
                     MakeNameAccessor(&Consumer::m_interestName), MakeNameChecker())
-      .AddAttribute("LifeTime", "LifeTime for interest packet", StringValue("4s"),
+      .AddAttribute("LifeTime", "LifeTime for interest packet", StringValue("2s"),
                     MakeTimeAccessor(&Consumer::m_interestLifeTime), MakeTimeChecker())
 
       .AddAttribute("RetxTimer",
                     "Timeout defining how frequent retransmission timeouts should be checked",
-                    StringValue("4000ms"),
+                    StringValue("50ms"),
                     MakeTimeAccessor(&Consumer::GetRetxTimer, &Consumer::SetRetxTimer),
                     MakeTimeChecker())
-
-	  .AddAttribute("Deadline",
-					"Deadline added to the PIT entries (ms)",
-					UintegerValue(0),
-					MakeUintegerAccessor(&Consumer::m_deadline),
-					MakeUintegerChecker<uint32_t>())
 
       .AddTraceSource("LastRetransmittedInterestDataDelay",
                       "Delay between last retransmitted Interest and received Data",
@@ -161,16 +155,9 @@ Consumer::StopApplication() // Called at time specified by Stop
   App::StopApplication();
 }
 
-
-
 void
 Consumer::SendPacket()
 {
-	SendPacketPath(0, false);
-}
-
-void
-Consumer::SendPacketPath(int deadline, bool repeated, shared_ptr<const Data> data, Name dest){
   if (!m_active)
     return;
 
@@ -195,40 +182,27 @@ Consumer::SendPacketPath(int deadline, bool repeated, shared_ptr<const Data> dat
   }
 
   //
+  shared_ptr<Name> nameWithSequence = make_shared<Name>(m_interestName);
+  nameWithSequence->appendSequenceNumber(seq);
   //
 
   // shared_ptr<Interest> interest = make_shared<Interest> ();
-  shared_ptr<Name> nameWithSequence;
   shared_ptr<Interest> interest = make_shared<Interest>();
   interest->setNonce(m_rand->GetValue(0, std::numeric_limits<uint32_t>::max()));
-
+  interest->setName(*nameWithSequence);
   time::milliseconds interestLifeTime(m_interestLifeTime.GetMilliSeconds());
   interest->setInterestLifetime(interestLifeTime);
-  interest->setDeadline(deadline);
-  if(data != NULL){
-	  interest->setPath(data->getPath());
-	  interest->setRepeated(1);
-	  nameWithSequence = make_shared<Name>(dest);
-  }else{
-	  nameWithSequence = make_shared<Name>(m_interestName);
-  }
-  nameWithSequence->appendSequenceNumber(seq);
-  interest->setName(*nameWithSequence);
-  //for(int i = 0; i < 10; i++) interest->setPath(i, (uint8_t) i);
-
 
   // NS_LOG_INFO ("Requesting Interest: \n" << *interest);
   NS_LOG_INFO("> Interest for " << seq);
 
   WillSendOutInterest(seq);
-  NS_LOG_INFO(*interest);
 
   m_transmittedInterests(interest, this, m_face);
   m_appLink->onReceiveInterest(*interest);
 
   ScheduleNextPacket();
 }
-
 
 ///////////////////////////////////////////////////
 //          Process incoming packets             //
@@ -242,16 +216,7 @@ Consumer::OnData(shared_ptr<const Data> data)
 
   App::OnData(data); // tracing inside
 
-  NS_LOG_FUNCTION(this << *data);
-  //NS_LOG_FUNCTION("Content: " << data->getContent());
-  //Name address(data->getContent().value());
-  std::string content = ::ndn::encoding::readString(data->getContent());
-  NS_LOG_DEBUG("Content: " << content);
-
-
-
-  //NS_LOG_FUNCTION("Content: " << data->getContent().value());
-
+  NS_LOG_FUNCTION(this << data);
 
   // NS_LOG_INFO ("Received content object: " << boost::cref(*data));
 
@@ -284,17 +249,6 @@ Consumer::OnData(shared_ptr<const Data> data)
   m_retxSeqs.erase(seq);
 
   m_rtt->AckSeq(SequenceNumber32(seq));
-
-  Name addrPrefix("/node/");
-  Name contentPrefix(content);
-  if (addrPrefix.isPrefixOf(contentPrefix)) {
-  	NS_LOG_DEBUG("Got a routable address: " << content);
-  	SendPacketPath(m_deadline, true, data, contentPrefix);
-  }
-  //repeat the packet
-  /*if(!data->getRepeated()){
-	 THIS IS USEFUL ONLY IF WE USE PATH SWITCHING
-  }*/
 }
 
 void

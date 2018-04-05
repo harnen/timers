@@ -79,10 +79,6 @@ public:
   void
   SendPacket();
 
-  void
-  SendPacketPath(int deadline, bool repeated, shared_ptr<const Data> data = NULL, Name dest = "");
-
-
   /**
    * @brief An event that is fired just before an Interest packet is actually send out (send is
    *inevitable)
@@ -139,7 +135,6 @@ protected:
   Ptr<UniformRandomVariable> m_rand; ///< @brief nonce generator
 
   uint32_t m_seq;      ///< @brief currently requested sequence number
-  uint32_t m_repeat;
   uint32_t m_seqMax;   ///< @brief maximum number of sequence number
   EventId m_sendEvent; ///< @brief EventId of pending "send packet" event
   Time m_retxTimer;    ///< @brief Currently estimated retransmission timer
@@ -150,7 +145,6 @@ protected:
   Time m_offTime;          ///< \brief Time interval between packets
   Name m_interestName;     ///< \brief NDN Name of the Interest (use Name)
   Time m_interestLifeTime; ///< \brief LifeTime for interest packet
-  long m_deadline; 		   ///< \brief Deadline that will be added to PIT entries
 
   /// @cond include_hidden
   /**

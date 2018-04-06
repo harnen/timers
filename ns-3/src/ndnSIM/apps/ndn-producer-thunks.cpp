@@ -95,8 +95,8 @@ void ProducerThunks::StopApplication() {
 void ProducerThunks::OnInterest(shared_ptr<const Interest> interest) {
 	App::OnInterest(interest); // tracing inside
 
+
 	NS_LOG_FUNCTION(this << *interest);
-	NS_LOG_DEBUG(interest);
 
 	if (!m_active) {
 		NS_LOG_DEBUG("Producer is not active");
@@ -108,7 +108,7 @@ void ProducerThunks::OnInterest(shared_ptr<const Interest> interest) {
 	Name addrPrefix("/node/");
 	NS_LOG_DEBUG("Name in the interest: " << interest->getName());
 	if (addrPrefix.isPrefixOf(interest->getName())) {
-		NS_LOG_DEBUG("Sending back data with delay");
+		NS_LOG_DEBUG("Sending back generated data");
 		SendData(interest);
 	} else {
 		NS_LOG_DEBUG("Sending back my address:" << m_address);

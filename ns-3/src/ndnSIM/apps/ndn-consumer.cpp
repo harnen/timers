@@ -272,7 +272,8 @@ Consumer::OnTimeout(uint32_t sequenceNumber)
   m_rtt->SentSeq(SequenceNumber32(sequenceNumber),
                  1); // make sure to disable RTT calculation for this sample
   m_retxSeqs.insert(sequenceNumber);
-  ScheduleNextPacket();
+  //ScheduleNextPacket();
+  SendPacket();
 }
 
 void

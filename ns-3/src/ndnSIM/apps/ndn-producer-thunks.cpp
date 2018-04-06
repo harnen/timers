@@ -101,6 +101,7 @@ void ProducerThunks::OnInterest(shared_ptr<const Interest> interest) {
 	NS_LOG_FUNCTION(this << *interest);
 	NS_LOG_DEBUG(interest);
 
+	return;
 	if (!m_active) {
 		NS_LOG_DEBUG("Producer is not active");
 		return;

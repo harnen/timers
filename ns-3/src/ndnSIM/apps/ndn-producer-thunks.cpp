@@ -67,16 +67,13 @@ TypeId ProducerThunks::GetTypeId(void) {
 						"Name to be used for key locator.  If root, then key locator is not used",
 						NameValue(),
 						MakeNameAccessor(&ProducerThunks::m_keyLocator),
-						MakeNameChecker())
-					.AddAttribute("DataDelay",
-							"Delay for Data response (ms)",
-							UintegerValue(1000),
-							MakeUintegerAccessor(&ProducerThunks::m_dataDelay),
-							MakeUintegerChecker<uint32_t>());
+						MakeNameChecker());
 	return tid;
 }
 
-ProducerThunks::ProducerThunks() {
+ProducerThunks::ProducerThunks()
+	: m_sessions(0)
+	{
 	NS_LOG_FUNCTION_NOARGS();
 }
 
@@ -101,7 +98,6 @@ void ProducerThunks::OnInterest(shared_ptr<const Interest> interest) {
 	NS_LOG_FUNCTION(this << *interest);
 	NS_LOG_DEBUG(interest);
 
-	return;
 	if (!m_active) {
 		NS_LOG_DEBUG("Producer is not active");
 		return;
@@ -112,9 +108,8 @@ void ProducerThunks::OnInterest(shared_ptr<const Interest> interest) {
 	Name addrPrefix("/node/");
 	NS_LOG_DEBUG("Name in the interest: " << interest->getName());
 	if (addrPrefix.isPrefixOf(interest->getName())) {
-		NS_LOG_DEBUG("Scheduling sending back data with delay " << m_dataDelay << "ms");
-		Simulator::Schedule (MilliSeconds (m_dataDelay), &ProducerThunks::SendData, this, interest);
-		//SendData(interest);
+		NS_LOG_DEBUG("Sending back data with delay");
+		SendData(interest);
 	} else {
 		NS_LOG_DEBUG("Sending back my address:" << m_address);
 		SendAddress(interest);
@@ -129,8 +124,10 @@ void ProducerThunks::SendAddress(shared_ptr<const Interest> interest) {
 	data->setFreshnessPeriod(
 			::ndn::time::milliseconds(m_freshness.GetMilliSeconds()));
 
+	//create a new "sessions" for each client with a different name
+	std::string addr = m_address.toUri()+"/"+std::to_string(m_sessions++);
 	data->setContent(::ndn::encoding::makeStringBlock(::ndn::tlv::Content,
-	m_address.toUri()));
+	addr));
 
 
 	//data->setContent(m_address.wireEncode());

@@ -73,7 +73,7 @@ private:
   uint32_t m_virtualPayloadSize;
   Time m_freshness;
   //delay before responding with data (ms)
-  long m_dataDelay;
+  long m_sessions;
 
   uint32_t m_signature;
   Name m_keyLocator;

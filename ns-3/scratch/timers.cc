@@ -46,13 +46,16 @@ int main(int argc, char* argv[]) {
 	NetDeviceContainer d1d2 = p2p.Install(nodes.Get(1), nodes.Get(2));
 	NetDeviceContainer d2d3 = p2p.Install(nodes.Get(2), nodes.Get(3));
 
+
+
 	// Set loss model
+	NS_LOG_DEBUG("Setting error rate to " << errRate);
 	Ptr<RateErrorModel> rem = CreateObject<RateErrorModel> ();
 	rem->SetAttribute("ErrorRate", StringValue(errRate));
 	rem->SetAttribute("ErrorUnit", StringValue ("ERROR_UNIT_PACKET"));
 
-	p2p.SetDeviceAttribute("ReceiveErrorModel", PointerValue (rem));
-
+	//p2p.SetDeviceAttribute("ReceiveErrorModel", PointerValue (rem));
+	d2d3.Get(1)->SetAttribute ("ReceiveErrorModel", PointerValue (rem));
 
 
 	// Install NDN stack on all nodes

@@ -167,9 +167,21 @@ void ProducerThunks::SendAddress(shared_ptr<const Interest> interest) {
 
 void ProducerThunks::SendData(shared_ptr<const Interest> interest) {
 	Name dataName(interest->getName());
-	// dataName.append(m_postfix);
-	// dataName.appendVersion();
 
+	/*
+	 * Get the last component before the sequence number indicating the sessionID and cut the "/"
+	 */
+	std::string sessionIDs = interest->getName().getSubName(-2, 1).toUri().erase(0, 1);
+	long sessionID = stol(sessionIDs);
+
+	NS_LOG_DEBUG("Extracted sessionID: " << sessionID);
+
+	if(m_sessions.isDataReady(sessionID)){
+		NS_LOG_DEBUG("Data ready for the session");
+	}else{
+		NS_LOG_DEBUG("Data not ready");
+		return;
+	}
 	auto data = make_shared<Data>();
 	data->setName(dataName);
 	data->setFreshnessPeriod(

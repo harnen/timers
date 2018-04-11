@@ -76,6 +76,7 @@ int main(int argc, char* argv[]) {
 	consumerHelper.SetPrefix(prefix);
 	consumerHelper.SetAttribute("Frequency", StringValue("0.1"));
 	consumerHelper.SetAttribute("StartTime", StringValue("1s"));
+	consumerHelper.SetAttribute("AppDelay", StringValue("1000"));
 	consumerHelper.Install(nodes.Get(0));
 
 	// Producer

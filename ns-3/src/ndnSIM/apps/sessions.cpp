@@ -31,7 +31,7 @@ namespace ndn {
 		Simulator::Schedule(MilliSeconds(generationTime), &Sessions::dataReady, this, sessions);
 
 
-		return 0;
+		return newSession.id;
 	}
 
 	void Sessions::dataReady(long sessionID){

@@ -217,6 +217,8 @@ void ProducerThunks::SendData(shared_ptr<const Interest> interest) {
 
 	m_transmittedDatas(data, this, m_face);
 	m_appLink->onReceiveData(*data);
+
+	m_sessions.stopSession(sessionID);
 }
 
 } // namespace ndn

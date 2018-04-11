@@ -43,7 +43,11 @@ namespace ndn {
 	}
 
 	bool Sessions::stopSession(long sessionID){
+		NS_LOG_DEBUG("Removing session ID: " << sessionID);
 
+		std::set<struct session>::iterator it = findSession(sessionID);
+		NS_ASSERT(it != m_dataReady.end());
+		m_dataReady.erase(it);
 
 		return false;
 	}

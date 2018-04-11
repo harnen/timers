@@ -63,6 +63,11 @@ TypeId ProducerThunks::GetTypeId(void) {
 						UintegerValue(0),
 						MakeUintegerAccessor(&ProducerThunks::m_signature),
 						MakeUintegerChecker<uint32_t>())
+					.AddAttribute("AppDelay",
+						"Data Generation Time",
+						UintegerValue(2000),
+						MakeUintegerAccessor(&ProducerThunks::m_appDelay),
+						MakeUintegerChecker<uint32_t>())
 					.AddAttribute("KeyLocator",
 						"Name to be used for key locator.  If root, then key locator is not used",
 						NameValue(),
@@ -72,9 +77,7 @@ TypeId ProducerThunks::GetTypeId(void) {
 }
 
 ProducerThunks::ProducerThunks()
-	: m_sessions(0)
 	{
-	NS_LOG_FUNCTION_NOARGS();
 }
 
 // inherited from Application base class.
@@ -114,7 +117,6 @@ void ProducerThunks::OnInterest(shared_ptr<const Interest> interest) {
 		NS_LOG_DEBUG("Sending back my address:" << m_address);
 		SendAddress(interest);
 	}
-
 }
 
 void ProducerThunks::SendAddress(shared_ptr<const Interest> interest) {
@@ -124,8 +126,8 @@ void ProducerThunks::SendAddress(shared_ptr<const Interest> interest) {
 	data->setFreshnessPeriod(
 			::ndn::time::milliseconds(m_freshness.GetMilliSeconds()));
 
-	//create a new "sessions" for each client with a different name
-	std::string addr = m_address.toUri()+"/"+std::to_string(m_sessions++);
+	//create a new "session" for each client with a different ID
+	std::string addr = m_address.toUri()+"/"+std::to_string(m_sessions.startSession(m_appDelay));
 	data->setContent(::ndn::encoding::makeStringBlock(::ndn::tlv::Content,
 	addr));
 

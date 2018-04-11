@@ -28,6 +28,8 @@
 #include "ns3/nstime.h"
 #include "ns3/ptr.h"
 
+#include "sessions.hpp"
+
 namespace ns3 {
 namespace ndn {
 
@@ -73,7 +75,8 @@ private:
   uint32_t m_virtualPayloadSize;
   Time m_freshness;
   //delay before responding with data (ms)
-  long m_sessions;
+  Sessions m_sessions;
+  long m_appDelay; 		   ///< \brief Data Generation Time
 
   uint32_t m_signature;
   Name m_keyLocator;

@@ -91,6 +91,7 @@ enum {
   Deadline = 41,
   Path = 42,
   Repeated = 43,
+  isACK = 44,
 
   AppPrivateBlock1 = 128,
   AppPrivateBlock2 = 32767

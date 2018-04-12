@@ -76,6 +76,7 @@ int main(int argc, char* argv[]) {
 	consumerHelper.SetPrefix(prefix);
 	consumerHelper.SetAttribute("Frequency", StringValue("0.1"));
 	consumerHelper.SetAttribute("StartTime", StringValue("1s"));
+	consumerHelper.SetAttribute("AppDelay", StringValue("1000"));
 	consumerHelper.Install(nodes.Get(0));
 
 	// Producer
@@ -84,6 +85,7 @@ int main(int argc, char* argv[]) {
 	producerHelper.SetPrefix(prefix);
 	producerHelper.SetAttribute("Address", StringValue("/node/3"));
 	producerHelper.SetAttribute("PayloadSize", StringValue("1024"));
+	producerHelper.SetAttribute("AppDelay", StringValue("1000"));
 	producerHelper.Install(nodes.Get(3)); // last node
 
 	// Add /prefix origins to ndn::GlobalRouter

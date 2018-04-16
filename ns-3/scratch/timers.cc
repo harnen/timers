@@ -24,12 +24,16 @@ int main(int argc, char* argv[]) {
 	//Default command line args values
 	std::string format("Inet");
 	double time = 2;
-	string dataDelay = "0";
+	string cDataDelay = "1000ms";
+	string pDataDelay = "1000ms";
 	string errRate = "0";
+	string retx = "1000ms";
 
 	CommandLine cmd;
 	cmd.AddValue("time", "Time of the simulation.", time);
-	cmd.AddValue("dataDelay", "Delay of of data responses.", dataDelay);
+	cmd.AddValue("cDataDelay", "Delay of of data responses.", cDataDelay);
+	cmd.AddValue("pDataDelay", "Delay of of data responses.", pDataDelay);
+	cmd.AddValue("retx", "Retransmission timer.", retx);
 	cmd.AddValue("errRate", "Error Rate.", errRate);
 	cmd.Parse(argc, argv);
 
@@ -56,6 +60,7 @@ int main(int argc, char* argv[]) {
 
 	//p2p.SetDeviceAttribute("ReceiveErrorModel", PointerValue (rem));
 	d2d3.Get(1)->SetAttribute ("ReceiveErrorModel", PointerValue (rem));
+	d2d3.Get(0)->SetAttribute ("ReceiveErrorModel", PointerValue (rem));
 
 
 	// Install NDN stack on all nodes
@@ -76,7 +81,8 @@ int main(int argc, char* argv[]) {
 	consumerHelper.SetPrefix(prefix);
 	consumerHelper.SetAttribute("Frequency", StringValue("0.1"));
 	consumerHelper.SetAttribute("StartTime", StringValue("1s"));
-	consumerHelper.SetAttribute("AppDelay", StringValue("1000"));
+	consumerHelper.SetAttribute("AppDelay", StringValue(cDataDelay));
+	consumerHelper.SetAttribute("RetxTimer", StringValue(retx));
 	consumerHelper.Install(nodes.Get(0));
 
 	// Producer
@@ -85,7 +91,7 @@ int main(int argc, char* argv[]) {
 	producerHelper.SetPrefix(prefix);
 	producerHelper.SetAttribute("Address", StringValue("/node/3"));
 	producerHelper.SetAttribute("PayloadSize", StringValue("1024"));
-	producerHelper.SetAttribute("AppDelay", StringValue("1000"));
+	producerHelper.SetAttribute("AppDelay", StringValue(pDataDelay));
 	producerHelper.Install(nodes.Get(3)); // last node
 
 	// Add /prefix origins to ndn::GlobalRouter

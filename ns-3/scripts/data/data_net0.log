@@ -1,0 +1,7 @@
+MAX_SEQ: 2499
+Thunks sent: 1250
+Requests sent: 7499
+Total sent: 8749
+Average thunk waiting time: .0700
+Average data waiting time: 4.9292
+Average completion time: 5.9992

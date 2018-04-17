@@ -35,16 +35,17 @@ class Sessions{
 public:
 	Sessions();
 	bool isDataReady(long sessionID);
-	long startSession(long generationTime);
-	bool stopSession(long sessionID);
+    bool doesExist(long sessionID);
+    long getRemainingTime(long sessionID);
 
+	long startSession(long generationTime);
+	void startSession(long generationTime, long sessionID);
+	bool stopSession(long sessionID);
 
 
 private:
 	void dataReady(long sessionID);
 	std::set<struct session>::iterator findSession(long sessionID);
-
-
 
 private:
 	std::set<struct session> m_dataReady;

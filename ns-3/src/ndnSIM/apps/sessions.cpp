@@ -15,10 +15,26 @@ namespace ndn {
 		sessions = 0;
 	}
 
+	bool Sessions::doesExist(long sessionID){
+		std::set<struct session>::iterator it = findSession(sessionID);
+        if (it != m_dataReady.end()){
+          return true;
+        }
+		return false;
+    }
+
 	bool Sessions::isDataReady(long sessionID){
 		std::set<struct session>::iterator it = findSession(sessionID);
 		NS_ASSERT(it != m_dataReady.end());
 		return it->ready;
+	}
+
+
+
+	long Sessions::getRemainingTime(long sessionID){
+		std::set<struct session>::iterator it = findSession(sessionID);
+		NS_ASSERT(it != m_dataReady.end());
+		return 0;
 	}
 
 	long Sessions::startSession(long generationTime){
@@ -32,6 +48,19 @@ namespace ndn {
 
 
 		return newSession.id;
+	}
+
+
+	void Sessions::startSession(long generationTime, long sessionID){
+		struct session newSession;
+		newSession.id = sessionID;
+		newSession.ready = false;
+		m_dataReady.insert(newSession);
+		NS_LOG_DEBUG("Created session (ID:" << newSession.id << "). Data will be ready in " << generationTime << "ms.");
+
+		Simulator::Schedule(MilliSeconds(generationTime), &Sessions::dataReady, this, sessions);
+
+		sessions = std::max(sessions, sessionID + 1);
 	}
 
 	void Sessions::dataReady(long sessionID){

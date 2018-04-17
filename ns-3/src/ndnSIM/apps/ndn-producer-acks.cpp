@@ -63,6 +63,11 @@ TypeId ProducerACKs::GetTypeId(void) {
 						UintegerValue(0),
 						MakeUintegerAccessor(&ProducerACKs::m_signature),
 						MakeUintegerChecker<uint32_t>())
+					.AddAttribute("AppDelay",
+						"Data Generation Time",
+						UintegerValue(2000),
+						MakeUintegerAccessor(&ProducerACKs::m_appDelay),
+						MakeUintegerChecker<uint32_t>())
 					.AddAttribute("KeyLocator",
 						"Name to be used for key locator.  If root, then key locator is not used",
 						NameValue(),
@@ -71,11 +76,7 @@ TypeId ProducerACKs::GetTypeId(void) {
 	return tid;
 }
 
-ProducerACKs::ProducerACKs()
-	: m_sessions(0)
-	{
-	NS_LOG_FUNCTION_NOARGS();
-}
+ProducerACKs::ProducerACKs(){}
 
 // inherited from Application base class.
 void ProducerACKs::StartApplication() {
@@ -107,26 +108,48 @@ void ProducerACKs::OnInterest(shared_ptr<const Interest> interest) {
 
 	NS_LOG_DEBUG("Name in the interest: " << interest->getName());
 
-    // Check if the data is ready, send it (otherwise send an ack)
-    bool isReady = true; // Needs to be fixed
-	if (isReady) {
-		NS_LOG_DEBUG("Sending back generated data");
-		SendData(interest);
-	} else {
-		NS_LOG_DEBUG("Sending back my address:" << m_address);
-		SendACK(interest);
-	}
+    ProcessInterest(interest);
 
 }
 
-void ProducerACKs::SendACK(shared_ptr<const Interest> interest) {
+void ProducerACKs::ProcessInterest(shared_ptr<const Interest> interest) {
+	Name dataName(interest->getName());
+
+	/*
+	 * Get the last component before the sequence number indicating the sessionID and cut the "/"
+	 */
+	std::string sessionIDs = interest->getName().getSubName(-2, 1).toUri().erase(0, 1);
+	long sessionID = stol(sessionIDs);
+
+	NS_LOG_DEBUG("Extracted sessionID: " << sessionID);
+
+	if(m_sessions.doesExist(sessionID)){
+      if(m_sessions.isDataReady(sessionID)){
+          NS_LOG_DEBUG("Data ready for the session");
+          // Send Data
+          SendData(interest);
+      }else{
+          NS_LOG_DEBUG("Data not ready");
+          // Send ACK
+          SendACK(interest, m_sessions.getRemainingTime(sessionID));
+      }
+
+	}else{
+      // create new session + Send ACK
+      m_sessions.startSession(m_appDelay, sessionID);
+      SendACK(interest, m_appDelay);
+	}
+}
+
+void ProducerACKs::SendACK(shared_ptr<const Interest> interest, long appDelay) {
 	Name dataName(interest->getName());
 	auto data = make_shared<Data>();
 	data->setName(dataName);
 	data->setFreshnessPeriod(
 			::ndn::time::milliseconds(m_freshness.GetMilliSeconds()));
 
-	data->setContent(::ndn::encoding::makeStringBlock(::ndn::tlv::isACK, "True"));
+	data->setContent(::ndn::encoding::makeStringBlock(::ndn::tlv::isACK,
+          "True"));
 
 	Signature signature;
 	SignatureInfo signatureInfo(
@@ -157,8 +180,13 @@ void ProducerACKs::SendACK(shared_ptr<const Interest> interest) {
 
 void ProducerACKs::SendData(shared_ptr<const Interest> interest) {
 	Name dataName(interest->getName());
-	// dataName.append(m_postfix);
-	// dataName.appendVersion();
+	/*
+	 * Get the last component before the sequence number indicating the sessionID and cut the "/"
+	 */
+	std::string sessionIDs = interest->getName().getSubName(-2, 1).toUri().erase(0, 1);
+	long sessionID = stol(sessionIDs);
+
+	NS_LOG_DEBUG("Extracted sessionID: " << sessionID);
 
 	auto data = make_shared<Data>();
 	data->setName(dataName);

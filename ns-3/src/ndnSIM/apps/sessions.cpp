@@ -34,9 +34,6 @@ namespace ndn {
 	long Sessions::getRemainingTime(long sessionID){
 		std::set<struct session>::iterator it = findSession(sessionID);
 		NS_ASSERT(it != m_dataReady.end());
-		NS_LOG_DEBUG("Now " << Simulator::Now().GetMilliSeconds());
-		NS_LOG_DEBUG("when " << it->when.GetMilliSeconds());
-		NS_LOG_DEBUG("Diff: " << (it->when - Simulator::Now()).GetMilliSeconds());
 		return (it->when - Simulator::Now()).GetMilliSeconds();
 	}
 

@@ -188,8 +188,6 @@ ConsumerThunks::SendPacket(){
         return; // we are totally done
       }
     }
-
-
     seq = m_seq++;
   }
   shared_ptr<Name> nameWithSequence;
@@ -273,7 +271,7 @@ ConsumerThunks::OnData(shared_ptr<const Data> data)
   	NS_LOG_DEBUG("Got a routable address: " << content << " seq:" << seq);
   	m_thunk = contentPrefix;
   	m_thunkEstablished = true;
-  	Simulator::Schedule(MilliSeconds(m_appDelay), &ConsumerThunks::SendPacket, this);
+  	m_sendEvent = Simulator::Schedule(MilliSeconds(m_appDelay), &ConsumerThunks::SendPacket, this);
   }else{
 	  NS_LOG_DEBUG("Got a data chunk" << " seq:" << seq);
 	  m_thunk="";
@@ -303,6 +301,7 @@ ConsumerThunks::OnTimeout(uint32_t sequenceNumber)
   m_rtt->SentSeq(SequenceNumber32(sequenceNumber),
                  1); // make sure to disable RTT calculation for this sample
   m_retxSeqs.insert(sequenceNumber);
+  Simulator::Cancel(m_sendEvent);
   SendPacket();
 }
 

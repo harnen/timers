@@ -67,10 +67,17 @@ done
 
 THUNKS_SENT=`grep -ac "Sending thunk request." $1`
 REQUESTS_SENT=`grep -ac "Sending data request." $1`
+DATA_REP_SENT=`grep -ac "responding with Data" $1`
+ADDR_REP_SENT=`grep -ac "responding with Address" $1`
+DATA_RECEIVED=`grep -ac "Got a data chunk" $1`
 echo "Thunks sent: $THUNKS_SENT"
 echo "Requests sent: $REQUESTS_SENT"
+echo "Data replies sent: $DATA_REP_SENT"
+echo "Data received: $DATA_RECEIVED"
+echo "Address replies sent: $ADDR_REP_SENT"
 let TOTAL=$THUNKS_SENT+$REQUESTS_SENT
 echo "Total sent: $TOTAL"
+echo "Average interests sent: `echo "scale=4; ${TOTAL}/${DATA_RECEIVED}" | bc`"
 echo "Average thunk waiting time: `echo "scale=4; ${THUNK_DIFF_SUM}/${THUNK_DIFF_COUNTER}" | bc`"
 echo "Average data waiting time: `echo "scale=4; ${DATA_DIFF_SUM}/${DATA_DIFF_COUNTER}" | bc`"
 echo "Average completion time: `echo "scale=4; ${COMPLETION_TIME_SUM}/${COMPLETION_TIME_COUNTER}" | bc`"

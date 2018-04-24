@@ -180,6 +180,14 @@ void ProducerThunks::SendData(shared_ptr<const Interest> interest) {
 		NS_LOG_DEBUG("Data ready for the session");
 	}else{
 		NS_LOG_DEBUG("Data not ready");
+		long delay = m_sessions.getRemainingTime(sessionID);
+		if(delay < 1000){
+			NS_LOG_DEBUG("Data will be ready within 1s - " << delay);
+			/* Without "+1" the code enters an infinite loop */
+			Simulator::Schedule(MilliSeconds(delay+1), &ProducerThunks::SendData, this, interest);
+		}else{
+			NS_LOG_DEBUG("Data will NOT be ready within 1s");
+		}
 		return;
 	}
 	auto data = make_shared<Data>();

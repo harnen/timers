@@ -34,13 +34,17 @@ namespace ndn {
 	long Sessions::getRemainingTime(long sessionID){
 		std::set<struct session>::iterator it = findSession(sessionID);
 		NS_ASSERT(it != m_dataReady.end());
-		return 0;
+		NS_LOG_DEBUG("Now " << Simulator::Now().GetMilliSeconds());
+		NS_LOG_DEBUG("when " << it->when.GetMilliSeconds());
+		NS_LOG_DEBUG("Diff: " << (it->when - Simulator::Now()).GetMilliSeconds());
+		return (it->when - Simulator::Now()).GetMilliSeconds();
 	}
 
 	long Sessions::startSession(long generationTime){
 		struct session newSession;
 		newSession.id = ++sessions;
 		newSession.ready = false;
+		newSession.when = Simulator::Now() + MilliSeconds(generationTime);
 		m_dataReady.insert(newSession);
 		NS_LOG_DEBUG("Created session (ID:" << newSession.id << "). Data will be ready in " << generationTime << "ms.");
 
@@ -55,6 +59,7 @@ namespace ndn {
 		struct session newSession;
 		newSession.id = sessionID;
 		newSession.ready = false;
+		newSession.when = Simulator::Now() + MilliSeconds(generationTime);
 		m_dataReady.insert(newSession);
 		NS_LOG_DEBUG("Created session (ID:" << newSession.id << "). Data will be ready in " << generationTime << "ms.");
 

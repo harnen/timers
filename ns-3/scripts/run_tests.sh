@@ -6,13 +6,13 @@ cd ..
 
 
 
-for ERR_RATE in 0 0.01 0.02 0.03 0.04 0.05 0.06 0.07 0.08 0.09 0.1
+for ERR_RATE in 0 0.01 0.02 0.03 0.04 0.05 0.06 0.07 0.08 0.09 0.1 1.1 1.2 1.3 1.4 1.5 1.6 1.7 1.8 1.9 2.0
 do
     break
     echo "Running ERR_RATE=${ERR_RATE}"
     #thunks, manually remove the RTT
-    cDelay=5460
-    pDelay=5500
+    cDelay=4960
+    pDelay=5000
     NS_LOG=ndn.ProducerThunks:ndn.ConsumerThunks ./waf --run="thunks -retx=10ms -cDataDelay=${cDelay} -pDataDelay=${pDelay} -time=${TIME}s -errRate=${ERR_RATE}" &> ./scripts/logs/thunks:${ERR_RATE}:${cDelay}:${pDelay}.log
 
     #net time

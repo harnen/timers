@@ -25,6 +25,7 @@ namespace ndn {
 struct session{
 	long id;
 	mutable bool ready;
+	mutable Time when;
 	bool operator <(const session& s) const{
 		return (id < s.id);
 	}

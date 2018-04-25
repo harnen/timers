@@ -25,7 +25,7 @@ namespace ndn {
 
 	bool Sessions::isDataReady(long sessionID){
 		std::set<struct session>::iterator it = findSession(sessionID);
-		NS_ASSERT(it != m_dataReady.end());
+		if(it == m_dataReady.end()) return false;
 		return it->ready;
 	}
 
@@ -33,7 +33,7 @@ namespace ndn {
 
 	long Sessions::getRemainingTime(long sessionID){
 		std::set<struct session>::iterator it = findSession(sessionID);
-		NS_ASSERT(it != m_dataReady.end());
+		if(it == m_dataReady.end()) return -1;
 		return (it->when - Simulator::Now()).GetMilliSeconds();
 	}
 

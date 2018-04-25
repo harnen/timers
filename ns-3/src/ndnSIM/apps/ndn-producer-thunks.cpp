@@ -181,6 +181,10 @@ void ProducerThunks::SendData(shared_ptr<const Interest> interest) {
 	}else{
 		NS_LOG_DEBUG("Data not ready");
 		long delay = m_sessions.getRemainingTime(sessionID);
+		if(delay == -1){
+			NS_LOG_DEBUG("Session does not exist");
+			return;
+		}
 		if(delay < 1000){
 			NS_LOG_DEBUG("Data will be ready within 1s - " << delay);
 			/* Without "+1" the code enters an infinite loop */
@@ -226,7 +230,7 @@ void ProducerThunks::SendData(shared_ptr<const Interest> interest) {
 	m_transmittedDatas(data, this, m_face);
 	m_appLink->onReceiveData(*data);
 
-	//m_sessions.stopSession(sessionID);
+	m_sessions.stopSession(sessionID);
 }
 
 } // namespace ndn

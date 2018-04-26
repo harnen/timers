@@ -132,11 +132,10 @@ void ProducerThunks::SendAddress(shared_ptr<const Interest> interest) {
 	data->setContent(::ndn::encoding::makeStringBlock(::ndn::tlv::Content,
 	addr));
 
-	if(m_appDelay < 1000){
+	/*if(m_appDelay < 1000){
 		NS_LOG_DEBUG("Data will be ready within 1s - " << m_appDelay);
-				/* Without "+1" the code enters an infinite loop */
 		Simulator::Schedule(MilliSeconds(m_appDelay+1), &ProducerThunks::SendData, this, interest, sessionID);
-	}
+	}*/
 
 
 	//data->setContent(m_address.wireEncode());
@@ -180,13 +179,14 @@ void ProducerThunks::SendData(shared_ptr<const Interest> interest, long sessionI
 	/*
 	 * Get the last component before the sequence number indicating the sessionID and cut the "/"
 	 */
-	long sessionID;
+	std::string sessionIDs = interest->getName().getSubName(-2, 1).toUri().erase(0, 1);
+			sessionID = stol(sessionIDs);
+	/*long sessionID;
 	if(sessionID_ != 0){
 		sessionID =sessionID_;
 	}else{
-		std::string sessionIDs = interest->getName().getSubName(-2, 1).toUri().erase(0, 1);
-		sessionID = stol(sessionIDs);
-	}
+
+	}*/
 
 	NS_LOG_DEBUG("Extracted sessionID: " << sessionID);
 

@@ -173,14 +173,14 @@ void ProducerThunks::SendAddress(shared_ptr<const Interest> interest) {
 
 }
 
-void ProducerThunks::SendData(shared_ptr<const Interest> interest, long sessionID_) {
+void ProducerThunks::SendData(shared_ptr<const Interest> interest, long dontUse) {
 	Name dataName(interest->getName());
 
 	/*
 	 * Get the last component before the sequence number indicating the sessionID and cut the "/"
 	 */
 	std::string sessionIDs = interest->getName().getSubName(-2, 1).toUri().erase(0, 1);
-			sessionID = stol(sessionIDs);
+	long sessionID = stol(sessionIDs);
 	/*long sessionID;
 	if(sessionID_ != 0){
 		sessionID =sessionID_;

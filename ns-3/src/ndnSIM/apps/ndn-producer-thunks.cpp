@@ -131,6 +131,12 @@ void ProducerThunks::SendAddress(shared_ptr<const Interest> interest) {
 	data->setContent(::ndn::encoding::makeStringBlock(::ndn::tlv::Content,
 	addr));
 
+	if(m_appDelay < 1000){
+		NS_LOG_DEBUG("Data will be ready within 1s - " << m_appDelay);
+				/* Without "+1" the code enters an infinite loop */
+		Simulator::Schedule(MilliSeconds(m_appDelay+1), &ProducerThunks::SendData, this, interest);
+	}
+
 
 	//data->setContent(m_address.wireEncode());
 
@@ -162,6 +168,8 @@ void ProducerThunks::SendAddress(shared_ptr<const Interest> interest) {
 
 	m_transmittedDatas(data, this, m_face);
 	m_appLink->onReceiveData(*data);
+
+
 
 }
 

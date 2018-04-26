@@ -112,7 +112,7 @@ void ProducerThunks::OnInterest(shared_ptr<const Interest> interest) {
 	NS_LOG_DEBUG("Name in the interest: " << interest->getName());
 	if (addrPrefix.isPrefixOf(interest->getName())) {
 		NS_LOG_DEBUG("Sending back generated data");
-		SendData(interest);
+		SendData(interest, 0);
 	} else {
 		NS_LOG_DEBUG("Sending back my address:" << m_address);
 		SendAddress(interest);
@@ -127,14 +127,15 @@ void ProducerThunks::SendAddress(shared_ptr<const Interest> interest) {
 			::ndn::time::milliseconds(m_freshness.GetMilliSeconds()));
 
 	//create a new "session" for each client with a different ID
-	std::string addr = m_address.toUri()+"/"+std::to_string(m_sessions.startSession(m_appDelay));
+	long sessionID = m_sessions.startSession(m_appDelay);
+	std::string addr = m_address.toUri()+"/"+std::to_string(sessionID);
 	data->setContent(::ndn::encoding::makeStringBlock(::ndn::tlv::Content,
 	addr));
 
 	if(m_appDelay < 1000){
 		NS_LOG_DEBUG("Data will be ready within 1s - " << m_appDelay);
 				/* Without "+1" the code enters an infinite loop */
-		Simulator::Schedule(MilliSeconds(m_appDelay+1), &ProducerThunks::SendData, this, interest);
+		Simulator::Schedule(MilliSeconds(m_appDelay+1), &ProducerThunks::SendData, this, interest, sessionID);
 	}
 
 
@@ -173,14 +174,19 @@ void ProducerThunks::SendAddress(shared_ptr<const Interest> interest) {
 
 }
 
-void ProducerThunks::SendData(shared_ptr<const Interest> interest) {
+void ProducerThunks::SendData(shared_ptr<const Interest> interest, long sessionID_) {
 	Name dataName(interest->getName());
 
 	/*
 	 * Get the last component before the sequence number indicating the sessionID and cut the "/"
 	 */
-	std::string sessionIDs = interest->getName().getSubName(-2, 1).toUri().erase(0, 1);
-	long sessionID = stol(sessionIDs);
+	long sessionID;
+	if(sessionID_ != 0){
+		sessionID =sessionID_;
+	}else{
+		std::string sessionIDs = interest->getName().getSubName(-2, 1).toUri().erase(0, 1);
+		sessionID = stol(sessionIDs);
+	}
 
 	NS_LOG_DEBUG("Extracted sessionID: " << sessionID);
 
@@ -196,7 +202,7 @@ void ProducerThunks::SendData(shared_ptr<const Interest> interest) {
 		if(delay < 1000){
 			NS_LOG_DEBUG("Data will be ready within 1s - " << delay);
 			/* Without "+1" the code enters an infinite loop */
-			Simulator::Schedule(MilliSeconds(delay+1), &ProducerThunks::SendData, this, interest);
+			Simulator::Schedule(MilliSeconds(delay+1), &ProducerThunks::SendData, this, interest, 0);
 		}else{
 			NS_LOG_DEBUG("Data will NOT be ready within 1s");
 		}

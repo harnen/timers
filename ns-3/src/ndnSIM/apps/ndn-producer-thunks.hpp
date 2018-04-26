@@ -63,7 +63,7 @@ protected:
 
 private:
   void
-  SendData(shared_ptr<const Interest> interest);
+  SendData(shared_ptr<const Interest> interest, long sessionID_);
 
   void
   SendAddress(shared_ptr<const Interest> interest);

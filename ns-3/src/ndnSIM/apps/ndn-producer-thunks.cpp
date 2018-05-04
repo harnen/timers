@@ -121,7 +121,7 @@ void ProducerThunks::OnInterest(shared_ptr<const Interest> interest) {
 
 void ProducerThunks::SendAddress(shared_ptr<const Interest> interest) {
 
-	interest->getForwardingHint();
+
 	Name dataName(interest->getName());
 	auto data = make_shared<Data>();
 	data->setName(dataName);

@@ -14,7 +14,7 @@ namespace ns3 {
 
 NS_LOG_COMPONENT_DEFINE("Simulation");
 
-void printPit(){
+void printPit(const nfd::Pit& pit){
 
 }
 
@@ -111,7 +111,7 @@ int main(int argc, char* argv[]) {
 	const nfd::Pit& pit = nodes.Get(2)->GetObject<ndn::L3Protocol>()->getForwarder()->getPit();
 
 	//Print pit size every 1s
-	Simulator::Schedule(Seconds(1), &printPit);
+	Simulator::Schedule(Seconds(1), &printPit, pit);
 	//Run the simulation
 	Simulator::Stop(Seconds(time));
 

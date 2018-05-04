@@ -14,7 +14,7 @@ namespace ns3 {
 
 NS_LOG_COMPONENT_DEFINE("Simulation");
 
-void printPit(const nfd::Pit& pit){
+void printPit(Node node){
 
 }
 
@@ -108,10 +108,10 @@ int main(int argc, char* argv[]) {
 	// Calculate and install FIBs
 	ndn::GlobalRoutingHelper::CalculateRoutes();
 
-	const nfd::Pit& pit = nodes.Get(2)->GetObject<ndn::L3Protocol>()->getForwarder()->getPit();
+	//const nfd::Pit& pit = nodes.Get(2)->GetObject<ndn::L3Protocol>()->getForwarder()->getPit();
 
 	//Print pit size every 1s
-	Simulator::Schedule(Seconds(1), &printPit, NULL, pit);
+	Simulator::Schedule(Seconds(1), &printPit, NULL, nodes.Get(2));
 	//Run the simulation
 	Simulator::Stop(Seconds(time));
 

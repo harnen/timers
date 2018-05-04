@@ -111,7 +111,7 @@ int main(int argc, char* argv[]) {
 	const nfd::Pit& pit = nodes.Get(2)->GetObject<ndn::L3Protocol>()->getForwarder()->getPit();
 
 	//Print pit size every 1s
-	Simulator::Schedule(Seconds(1), &printPit, pit);
+	Simulator::Schedule(Seconds(1), &printPit, NULL, pit);
 	//Run the simulation
 	Simulator::Stop(Seconds(time));
 

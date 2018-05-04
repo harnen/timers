@@ -25,6 +25,7 @@ public:
 
 	void printPit(){
 		const nfd::Pit& pit = m_n->GetObject<ndn::L3Protocol>()->getForwarder()->getPit();
+		NS_LOG_DEBUG("PIT size: " << pit.size());
 		Simulator::Schedule(Seconds(1), &Printer::printPit, this);
 	}
 };

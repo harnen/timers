@@ -14,6 +14,9 @@ namespace ns3 {
 
 NS_LOG_COMPONENT_DEFINE("Simulation");
 
+void printPit(){
+
+}
 
 int main(int argc, char* argv[]) {
 	Config::SetDefault("ns3::PointToPointNetDevice::DataRate",
@@ -105,6 +108,10 @@ int main(int argc, char* argv[]) {
 	// Calculate and install FIBs
 	ndn::GlobalRoutingHelper::CalculateRoutes();
 
+	const nfd::Pit& pit = nodes.Get(2)->GetObject<ndn::L3Protocol>()->getForwarder()->getPit();
+
+	//Print pit size every 1s
+	Simulator::Schedule(Seconds(1), &printPit);
 	//Run the simulation
 	Simulator::Stop(Seconds(time));
 

@@ -36,6 +36,8 @@ namespace nfd {
 
 NFD_LOG_INIT("Forwarder");
 
+
+
 Forwarder::Forwarder()
   : m_unsolicitedDataPolicy(new fw::DefaultUnsolicitedDataPolicy())
   , m_fib(m_nameTree)
@@ -68,6 +70,8 @@ Forwarder::Forwarder()
 }
 
 Forwarder::~Forwarder() = default;
+
+
 
 void
 Forwarder::startProcessInterest(Face& face, const Interest& interest)

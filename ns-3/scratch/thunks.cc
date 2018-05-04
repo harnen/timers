@@ -15,8 +15,8 @@ namespace ns3 {
 NS_LOG_COMPONENT_DEFINE("Simulation");
 
 class Printer{
-	Node m_n;
-	Printer(Node n){
+	ns3::Ptr<ns3::Node> m_n;
+	Printer(ns3::Ptr<ns3::Node> n){
 		m_n = n;
 	}
 

@@ -15,6 +15,11 @@ namespace ns3 {
 NS_LOG_COMPONENT_DEFINE("Simulation");
 
 class Printer{
+	Node m_n;
+	Printer(Node n){
+		m_n = n;
+	}
+
 	void printPit(){
 
 	}
@@ -111,10 +116,10 @@ int main(int argc, char* argv[]) {
 	ndn::GlobalRoutingHelper::CalculateRoutes();
 
 	//const nfd::Pit& pit = nodes.Get(2)->GetObject<ndn::L3Protocol>()->getForwarder()->getPit();
-	Printer p;
+	Printer p(nodes.Get(2));
 
 	//Print pit size every 1s
-	Simulator::Schedule(Seconds(1), &printPit);
+	//Simulator::Schedule(Seconds(1), &printPit);
 	//Run the simulation
 	Simulator::Stop(Seconds(time));
 

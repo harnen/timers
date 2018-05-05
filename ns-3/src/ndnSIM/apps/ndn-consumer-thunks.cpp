@@ -200,6 +200,7 @@ ConsumerThunks::SendPacket(Name name){
   if(m_interestName.equals(name)){
 	  NS_LOG_DEBUG("Sending thunk request for " << name << " seq:" << seq);
 	  //nameWithSequence = make_shared<Name>(m_thunk);
+	  ScheduleNextPacket();
   }else{
 	  NS_LOG_DEBUG("Sending data request to " << name << " seq:" << seq);
 	  //nameWithSequence = make_shared<Name>(m_interestName);
@@ -216,7 +217,6 @@ ConsumerThunks::SendPacket(Name name){
   m_transmittedInterests(interest, this, m_face);
   m_appLink->onReceiveInterest(*interest);
 
-  ScheduleNextPacket();
 
 }
 

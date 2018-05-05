@@ -304,9 +304,9 @@ ConsumerThunks::OnTimeout(uint32_t sequenceNumber)
   m_rtt->SentSeq(SequenceNumber32(sequenceNumber),
                  1); // make sure to disable RTT calculation for this sample
   m_retxSeqs.insert(sequenceNumber);
-  Simulator::Cancel(m_sendEvent);
+  //Simulator::Cancel(m_sendEvent);
   NS_ASSERT(false);
-  //FIXME SendPacket();
+  //SendPacket();
 }
 
 void

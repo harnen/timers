@@ -166,7 +166,7 @@ ConsumerThunks::StopApplication() // Called at time specified by Stop
 
 
 void
-ConsumerThunks::SendPacket(Name name){
+ConsumerThunks::SendPacket(Name name, uint32_t seq){
   if (!m_active){
 	  NS_LOG_DEBUG("not active");
     return;
@@ -174,22 +174,22 @@ ConsumerThunks::SendPacket(Name name){
 
   //NS_LOG_FUNCTION_NOARGS();
 
-  uint32_t seq = std::numeric_limits<uint32_t>::max(); // invalid
+  //uint32_t seq = std::numeric_limits<uint32_t>::max(); // invalid
 
   while (m_retxSeqs.size()) {
-    seq = *m_retxSeqs.begin();
+    //seq = *m_retxSeqs.begin();
     m_retxSeqs.erase(m_retxSeqs.begin());
     break;
   }
 
-  if (seq == std::numeric_limits<uint32_t>::max()) {
+  /*if (seq == std::numeric_limits<uint32_t>::max()) {
     if (m_seqMax != std::numeric_limits<uint32_t>::max()) {
       if (m_seq >= m_seqMax) {
         return; // we are totally done
       }
     }
     seq = m_seq++;
-  }
+  }*/
 
   shared_ptr<Name> nameWithSequence;
   shared_ptr<Interest> interest = make_shared<Interest>();
@@ -279,7 +279,7 @@ ConsumerThunks::OnData(shared_ptr<const Data> data)
   	m_thunkEstablished = true;*/
   	m_sendEvent = Simulator::Schedule(MilliSeconds(m_appDelay), &ConsumerThunks::SendPacket, this, contentPrefix);
   }else{
-	  NS_LOG_DEBUG("Got a data chunk" << " seq:" << seq);
+	  NS_LOG_DEBUG("Got a data chunk" << " seq:" << seq << " Delay: ");
 	  /*m_thunk="";
 	  m_thunkEstablished = false;*/
 
@@ -310,7 +310,7 @@ ConsumerThunks::OnTimeout(uint32_t sequenceNumber)
   std::map<uint32_t,Name>::iterator it = m_names.find(sequenceNumber);
   //Simulator::Cancel(m_sendEvent);
   NS_ASSERT(it != m_names.end());
-  SendPacket(it->second);
+  SendPacket(it->second, sequenceNumber);
 }
 
 void

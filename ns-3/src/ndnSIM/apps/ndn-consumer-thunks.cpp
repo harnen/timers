@@ -279,7 +279,7 @@ ConsumerThunks::OnData(shared_ptr<const Data> data)
   	m_thunkEstablished = true;*/
   	m_sendEvent = Simulator::Schedule(MilliSeconds(m_appDelay), &ConsumerThunks::SendPacket, this, contentPrefix, seq);
   }else{
-	  NS_LOG_DEBUG("Got a data chunk" << " seq:" << seq << " Delay: ");
+	  NS_LOG_DEBUG("Got a data chunk" << " seq:" << seq);
 	  /*m_thunk="";
 	  m_thunkEstablished = false;*/
 

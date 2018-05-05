@@ -88,7 +88,7 @@ ConsumerThunks::ConsumerThunks()
   : m_rand(CreateObject<UniformRandomVariable>())
   , m_seq(0)
   , m_seqMax(0) // don't request anything
-  , m_thunkEstablished(false)
+  /*, m_thunkEstablished(false)*/
 {
   NS_LOG_FUNCTION_NOARGS();
 
@@ -196,11 +196,12 @@ ConsumerThunks::SendPacket(Name name){
 
   time::milliseconds interestLifeTime(m_interestLifeTime.GetMilliSeconds());
   interest->setInterestLifetime(interestLifeTime);
-  if(m_thunkEstablished){
-	  NS_LOG_DEBUG("Sending data request to " << name << " seq:" << seq);
+  /*if(m_thunkEstablished){*/
+  if(m_interestName.equals(name)){
+	  NS_LOG_DEBUG("Sending thunk request for " << name << " seq:" << seq);
 	  //nameWithSequence = make_shared<Name>(m_thunk);
   }else{
-	  NS_LOG_DEBUG("Sending thunk request for " << name << " seq:" << seq);
+	  NS_LOG_DEBUG("Sending data request to " << name << " seq:" << seq);
 	  //nameWithSequence = make_shared<Name>(m_interestName);
   }
   nameWithSequence = make_shared<Name>(name);

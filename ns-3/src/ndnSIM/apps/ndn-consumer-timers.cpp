@@ -90,7 +90,7 @@ ConsumerTimers::ScheduleNextPacket()
 	  NS_LOG_DEBUG("Scheduling next packet in " << (1.0 / m_frequency) << " seconds");
     m_sendEvent = Simulator::Schedule((m_random == 0) ? Seconds(1.0 / m_frequency)
                                                       : Seconds(m_random->GetValue()),
-                                      &ConsumerThunks::SendPacket, this);
+                                      &ConsumerThunks::SendPacket, this, m_interestName);
   }
 }
 

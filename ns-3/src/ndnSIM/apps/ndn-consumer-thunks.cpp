@@ -166,7 +166,7 @@ ConsumerThunks::StopApplication() // Called at time specified by Stop
 
 
 void
-ConsumerThunks::SendPacket(){
+ConsumerThunks::SendPacket(Name name){
   if (!m_active){
 	  NS_LOG_DEBUG("not active");
     return;
@@ -197,12 +197,13 @@ ConsumerThunks::SendPacket(){
   time::milliseconds interestLifeTime(m_interestLifeTime.GetMilliSeconds());
   interest->setInterestLifetime(interestLifeTime);
   if(m_thunkEstablished){
-	  NS_LOG_DEBUG("Sending data request to " << m_thunk << " seq:" << seq);
-	  nameWithSequence = make_shared<Name>(m_thunk);
+	  NS_LOG_DEBUG("Sending data request to " << name << " seq:" << seq);
+	  //nameWithSequence = make_shared<Name>(m_thunk);
   }else{
-	  NS_LOG_DEBUG("Sending thunk request for " << m_interestName << " seq:" << seq);
-	  nameWithSequence = make_shared<Name>(m_interestName);
+	  NS_LOG_DEBUG("Sending thunk request for " << name << " seq:" << seq);
+	  //nameWithSequence = make_shared<Name>(m_interestName);
   }
+  nameWithSequence = make_shared<Name>(name);
   nameWithSequence->appendSequenceNumber(seq);
   interest->setName(*nameWithSequence);
 
@@ -269,13 +270,13 @@ ConsumerThunks::OnData(shared_ptr<const Data> data)
   Name contentPrefix(content);
   if (addrPrefix.isPrefixOf(contentPrefix)) {
   	NS_LOG_DEBUG("Got a routable address: " << content << " seq:" << seq);
-  	m_thunk = contentPrefix;
-  	m_thunkEstablished = true;
-  	m_sendEvent = Simulator::Schedule(MilliSeconds(m_appDelay), &ConsumerThunks::SendPacket, this);
+  	/*m_thunk = contentPrefix;
+  	m_thunkEstablished = true;*/
+  	m_sendEvent = Simulator::Schedule(MilliSeconds(m_appDelay), &ConsumerThunks::SendPacket, this, contentPrefix);
   }else{
 	  NS_LOG_DEBUG("Got a data chunk" << " seq:" << seq);
-	  m_thunk="";
-	  m_thunkEstablished = false;
+	  /*m_thunk="";
+	  m_thunkEstablished = false;*/
 	  ScheduleNextPacket();
   }
 }
@@ -302,7 +303,8 @@ ConsumerThunks::OnTimeout(uint32_t sequenceNumber)
                  1); // make sure to disable RTT calculation for this sample
   m_retxSeqs.insert(sequenceNumber);
   Simulator::Cancel(m_sendEvent);
-  SendPacket();
+  NS_ASSERT(false);
+  //FIXME SendPacket();
 }
 
 void

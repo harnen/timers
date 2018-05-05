@@ -77,7 +77,7 @@ public:
    * @brief Actually send packet
    */
   void
-  SendPacket();
+  SendPacket(Name name);
 
 
 
@@ -149,8 +149,8 @@ protected:
   Name m_interestName;     ///< \brief NDN Name of the Interest (use Name)
   Time m_interestLifeTime; ///< \brief LifeTime for interest packet
   long m_appDelay; 		   ///< \brief Data Generation Time
-  bool m_thunkEstablished;
-  Name m_thunk;
+  /*bool m_thunkEstablished;
+  Name m_thunk;*/
 
   /// @cond include_hidden
   /**

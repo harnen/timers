@@ -162,8 +162,8 @@ void ProducerThunks::SendAddress(shared_ptr<const Interest> interest) {
 
 	data->setRepeated(interest->getRepeated());
 
-	NS_LOG_INFO(
-			"node(" << GetNode()->GetId() << ") responding with Address: " << data->getContent());
+	/*NS_LOG_INFO(
+			"node(" << GetNode()->GetId() << ") responding with Address: " << *data);*/
 
 	// to create real wire encoding
 	data->wireEncode();

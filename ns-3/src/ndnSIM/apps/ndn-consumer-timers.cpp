@@ -83,7 +83,7 @@ ConsumerTimers::ScheduleNextPacket()
   NS_LOG_DEBUG("Schedule next packet");
   if (m_firstTime) {
 	  NS_LOG_DEBUG("Scheduling next packet in 0 seconds");
-    m_sendEvent = Simulator::Schedule(Seconds(0.0), &ConsumerThunks::SendPacket, this);
+    m_sendEvent = Simulator::Schedule(Seconds(0.0), &ConsumerThunks::SendPacket, this, m_interestName);
     m_firstTime = false;
   }
   else if (!m_sendEvent.IsRunning()){

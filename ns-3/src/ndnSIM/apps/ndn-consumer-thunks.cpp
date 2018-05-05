@@ -245,6 +245,8 @@ ConsumerThunks::OnData(shared_ptr<const Data> data)
   uint32_t seq = data->getName().at(-1).toSequenceNumber();
   NS_LOG_INFO("< DATA for " << seq);
 
+  m_names.erase(seq);
+
   int hopCount = 0;
   auto hopCountTag = data->getTag<lp::HopCountTag>();
   if (hopCountTag != nullptr) { // e.g., packet came from local node's cache

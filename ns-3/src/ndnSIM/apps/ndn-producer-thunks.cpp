@@ -190,15 +190,15 @@ void ProducerThunks::SendData(shared_ptr<const Interest> interest, long dontUse)
 
 	}*/
 
-	NS_LOG_DEBUG("Extracted sessionID: " << sessionID);
+	//NS_LOG_DEBUG("Extracted sessionID: " << sessionID);
 
 	if(m_sessions.isDataReady(sessionID)){
-		NS_LOG_DEBUG("Data ready for the session");
+		NS_LOG_DEBUG("Data ready for session " << sessionID);
 	}else{
-		NS_LOG_DEBUG("Data not ready");
+		NS_LOG_DEBUG("Data not ready for session " << sessionID);
 		long delay = m_sessions.getRemainingTime(sessionID);
 		if(delay == -1){
-			NS_LOG_DEBUG("Session does not exist");
+			NS_LOG_DEBUG("Session does not exist " << sessionID);
 			return;
 		}
 		if(delay < 1000){

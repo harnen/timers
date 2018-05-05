@@ -1,12 +1,12 @@
 #!/bin/bash
 
-TIME=100
+TIME=1000
 
 cd ..
 
 
 
-for ERR_RATE in 0 0.01 0.02 0.03 0.04 0.05 0.06 0.07 0.08 0.09 0.1 0.11 0.12 0.13 0.14 0.15 0.16 0.17 0.18 0.19 0.2
+for ERR_RATE in `seq 0 0.01 0.3`
 do
     echo "Running ERR_RATE=${ERR_RATE}"
     #thunks, manually remove the RTT
@@ -21,7 +21,7 @@ do
 done
 
 ERR_RATE=0
-for delay in 1000 1500 2000 2500 3000 3500 4000 4500 5000 5500 6000 6500 7000 7500 8000 8500 9000 9500 10000
+for delay in `seq 1000 250 10000`
 do
     pDelay=$delay
     cDelay=$delay

@@ -20,13 +20,13 @@ private:
 public:
 	Printer(ns3::Ptr<ns3::Node> n){
 		m_n = n;
-		Simulator::Schedule(Seconds(1), &Printer::printPit, this);
+		Simulator::Schedule(Seconds(0.99), &Printer::printPit, this);
 	}
 
 	void printPit(){
 		const nfd::Pit& pit = m_n->GetObject<ndn::L3Protocol>()->getForwarder()->getPit();
 		NS_LOG_DEBUG("PIT size: " << pit.size());
-		Simulator::Schedule(Seconds(1), &Printer::printPit, this);
+		Simulator::Schedule(Seconds(0.5), &Printer::printPit, this);
 	}
 };
 

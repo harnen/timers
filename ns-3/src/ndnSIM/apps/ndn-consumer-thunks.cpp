@@ -304,9 +304,10 @@ ConsumerThunks::OnTimeout(uint32_t sequenceNumber)
   m_rtt->SentSeq(SequenceNumber32(sequenceNumber),
                  1); // make sure to disable RTT calculation for this sample
   m_retxSeqs.insert(sequenceNumber);
+  std::map<uint32_t,Name>::iterator it = m_names.find(sequenceNumber);
   //Simulator::Cancel(m_sendEvent);
-  NS_ASSERT(false);
-  //SendPacket();
+  NS_ASSERT(it != m_names.end());
+  SendPacket(it->second);
 }
 
 void

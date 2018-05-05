@@ -216,6 +216,7 @@ ConsumerThunks::SendPacket(Name name){
   m_transmittedInterests(interest, this, m_face);
   m_appLink->onReceiveInterest(*interest);
 
+  ScheduleNextPacket();
 
 }
 
@@ -278,7 +279,7 @@ ConsumerThunks::OnData(shared_ptr<const Data> data)
 	  NS_LOG_DEBUG("Got a data chunk" << " seq:" << seq);
 	  /*m_thunk="";
 	  m_thunkEstablished = false;*/
-	  ScheduleNextPacket();
+
   }
 }
 

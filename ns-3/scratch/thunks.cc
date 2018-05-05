@@ -43,6 +43,7 @@ int main(int argc, char* argv[]) {
 	string pDataDelay = "1000ms";
 	string errRate = "0";
 	string retx = "1000ms";
+	string frequency = "0.1";
 
 	CommandLine cmd;
 	cmd.AddValue("time", "Time of the simulation.", time);
@@ -50,6 +51,7 @@ int main(int argc, char* argv[]) {
 	cmd.AddValue("pDataDelay", "Delay of of data responses.", pDataDelay);
 	cmd.AddValue("retx", "Retransmission timer.", retx);
 	cmd.AddValue("errRate", "Error Rate.", errRate);
+	cmd.AddValue("frequency", "Frequency.", frequency);
 	cmd.Parse(argc, argv);
 
 
@@ -94,7 +96,7 @@ int main(int argc, char* argv[]) {
 	//Consumer
 	ndn::AppHelper consumerHelper("ns3::ndn::ConsumerTimers");
 	consumerHelper.SetPrefix(prefix);
-	consumerHelper.SetAttribute("Frequency", StringValue("0.1"));
+	consumerHelper.SetAttribute("Frequency", StringValue(frequency));
 	consumerHelper.SetAttribute("StartTime", StringValue("1s"));
 	consumerHelper.SetAttribute("AppDelay", StringValue(cDataDelay));
 	consumerHelper.SetAttribute("RetxTimer", StringValue(retx));

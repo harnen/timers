@@ -250,7 +250,7 @@ ConsumerThunks::OnData(shared_ptr<const Data> data)
   if (hopCountTag != nullptr) { // e.g., packet came from local node's cache
     hopCount = *hopCountTag;
   }
-  NS_LOG_DEBUG("Hop count: " << hopCount);
+  //NS_LOG_DEBUG("Hop count: " << hopCount);
 
   SeqTimeoutsContainer::iterator entry = m_seqLastDelay.find(seq);
   if (entry != m_seqLastDelay.end()) {

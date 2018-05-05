@@ -277,7 +277,7 @@ ConsumerThunks::OnData(shared_ptr<const Data> data)
   	NS_LOG_DEBUG("Got a routable address: " << content << " seq:" << seq);
   	/*m_thunk = contentPrefix;
   	m_thunkEstablished = true;*/
-  	m_sendEvent = Simulator::Schedule(MilliSeconds(m_appDelay), &ConsumerThunks::SendPacket, this, contentPrefix);
+  	m_sendEvent = Simulator::Schedule(MilliSeconds(m_appDelay), &ConsumerThunks::SendPacket, this, contentPrefix, seq);
   }else{
 	  NS_LOG_DEBUG("Got a data chunk" << " seq:" << seq << " Delay: ");
 	  /*m_thunk="";

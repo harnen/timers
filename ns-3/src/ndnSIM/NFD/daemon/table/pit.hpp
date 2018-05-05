@@ -135,6 +135,7 @@ private:
 private:
   NameTree& m_nameTree;
   size_t m_nItems;
+  size_t m_maxSize = 0;
 };
 
 } // namespace pit

@@ -81,6 +81,8 @@ Pit::findOrInsert(const Interest& interest, bool allowInsert)
   auto entry = make_shared<Entry>(interest);
   nte->insertPitEntry(entry);
   ++m_nItems;
+  //get the max PIT size for statistics
+  if(this->size > m_maxSize) m_maxSize = this->size;
   return {entry, true};
 }
 

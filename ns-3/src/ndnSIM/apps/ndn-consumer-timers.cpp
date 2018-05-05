@@ -86,6 +86,7 @@ ConsumerTimers::ScheduleNextPacket()
     m_sendEvent = Simulator::Schedule(Seconds(0.0), &ConsumerThunks::SendPacket, this, m_interestName);
     m_firstTime = false;
   }
+  //we want to keep sending packet no matter what
   else if (true /*!m_sendEvent.IsRunning()*/){
 	  NS_LOG_DEBUG("Scheduling next packet in " << (1.0 / m_frequency) << " seconds");
     m_sendEvent = Simulator::Schedule((m_random == 0) ? Seconds(1.0 / m_frequency)

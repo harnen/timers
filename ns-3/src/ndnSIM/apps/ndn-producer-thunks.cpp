@@ -99,14 +99,14 @@ void ProducerThunks::OnInterest(shared_ptr<const Interest> interest) {
 	App::OnInterest(interest); // tracing inside
 
 
-	NS_LOG_FUNCTION(this << *interest);
+	//NS_LOG_FUNCTION(this << *interest);
 
 	if (!m_active) {
 		NS_LOG_DEBUG("Producer is not active");
 		return;
 	}
 
-	NS_LOG_DEBUG("My address:" << m_address);
+	//NS_LOG_DEBUG("My address:" << m_address);
 
 	Name addrPrefix("/node/");
 	NS_LOG_DEBUG("Name in the interest: " << interest->getName());
@@ -163,7 +163,7 @@ void ProducerThunks::SendAddress(shared_ptr<const Interest> interest) {
 	data->setRepeated(interest->getRepeated());
 
 	NS_LOG_INFO(
-			"node(" << GetNode()->GetId() << ") responding with Address: " << *data);
+			"node(" << GetNode()->GetId() << ") responding with Address: " << data->getContent());
 
 	// to create real wire encoding
 	data->wireEncode();

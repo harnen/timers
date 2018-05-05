@@ -149,6 +149,7 @@ protected:
   Name m_interestName;     ///< \brief NDN Name of the Interest (use Name)
   Time m_interestLifeTime; ///< \brief LifeTime for interest packet
   long m_appDelay; 		   ///< \brief Data Generation Time
+  std::map<uint32_t,Name> mymap;
   /*bool m_thunkEstablished;
   Name m_thunk;*/
 

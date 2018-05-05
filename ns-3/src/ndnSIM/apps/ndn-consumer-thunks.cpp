@@ -190,6 +190,7 @@ ConsumerThunks::SendPacket(Name name){
     }
     seq = m_seq++;
   }
+
   shared_ptr<Name> nameWithSequence;
   shared_ptr<Interest> interest = make_shared<Interest>();
   interest->setNonce(m_rand->GetValue(0, std::numeric_limits<uint32_t>::max()));
@@ -208,6 +209,8 @@ ConsumerThunks::SendPacket(Name name){
   nameWithSequence = make_shared<Name>(name);
   nameWithSequence->appendSequenceNumber(seq);
   interest->setName(*nameWithSequence);
+  m_names.insert(std::pair<uint32_t,Name>(seq,name));
+
 
   //NS_LOG_INFO("> Interest for " << seq);
 

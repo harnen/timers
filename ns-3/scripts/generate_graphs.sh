@@ -30,8 +30,8 @@ echo -e > graphs/satisfaction_time.dat
 echo -e > graphs/packets.dat
 for VAL in "${SORTED[@]}"
 do 
-    echo  $VAL ${THUNKS_TIME[$VAL]} ${NET_TIME[$VAL]} >> graphs/satisfaction_time.dat
-    echo  $VAL ${THUNKS_PACKETS[$VAL]} ${NET_PACKETS[$VAL]} >> graphs/packets.dat
+    echo  $VAL ${THUNKS_TIME[$VAL]} ${NET_TIME[$VAL]} >> graphs/satisfaction_generation.dat
+    echo  $VAL ${THUNKS_PACKETS[$VAL]} ${NET_PACKETS[$VAL]} >> graphs/packets_loss.dat
 done
 
 
@@ -61,10 +61,10 @@ done
 
 
 IFS=$'\n' SORTED=( $( printf "%s\n" "${!PTHUNKS_TIME[@]}" | sort -n ) )
-echo -e > graphs/psatisfaction_time.dat
-echo -e > graphs/ppackets.dat
+echo -e > graphs/satisfaction_generation.dat
+echo -e > graphs/packets_generation.dat
 for VAL in "${SORTED[@]}"
 do 
-    echo  $VAL ${PTHUNKS_TIME[$VAL]} ${PNET_TIME[$VAL]} >> graphs/psatisfaction_time.dat
-    echo  $VAL ${PTHUNKS_PACKETS[$VAL]} ${PNET_PACKETS[$VAL]} >> graphs/ppackets.dat
+    echo  $VAL ${PTHUNKS_TIME[$VAL]} ${PNET_TIME[$VAL]} >> graphs/satisfaction_generation.dat
+    echo  $VAL ${PTHUNKS_PACKETS[$VAL]} ${PNET_PACKETS[$VAL]} >> graphs/packets_generation.dat
 done

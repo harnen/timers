@@ -1,12 +1,12 @@
 #!/bin/bash
 
-TIME=1000
+TIME=100
 
 cd ..
 
 
 
-for ERR_RATE in `seq 0 0.01 0.3`
+for ERR_RATE in `seq 0 0.005 0.5`
 do
     echo "Running ERR_RATE=${ERR_RATE}"
     #thunks, manually remove the RTT
@@ -17,13 +17,12 @@ do
 
     #net time
     cDelay=1000
-    pDelay=5500
-    LD_LIBRARY_PATH=/usr/local/lib NS_LOG=ndn.ProducerThunks:ndn.ConsumerThunks ./waf --run="thunks -retx=1000ms -cDataDelay=${cDelay} -pDataDelay=${pDelay} -time=${TIME}s -errRate=${ERR_RATE}" &> ./scripts/logs/net:${ERR_RATE}:${cDelay}:${pDelay}.log
+    pDelay=5000
+    LD_LIBRARY_PATH=/usr/local/lib NS_LOG=ndn.ConsumerTimers:ndn.ProducerThunks:ndn.ConsumerThunks ./waf --run="thunks -retx=1000ms -cDataDelay=${cDelay} -pDataDelay=${pDelay} -time=${TIME}s -errRate=${ERR_RATE}" &> ./scripts/logs/net:${ERR_RATE}:${cDelay}:${pDelay}.log
 done
 
-
 ERR_RATE=0
-for delay in `seq 1000 250 10000`
+for delay in `seq 1000 100 10000`
 do
     pDelay=$delay
     cDelay=$delay

@@ -201,7 +201,9 @@ ConsumerThunks::SendPacket(Name name, uint32_t seq){
   if(m_interestName.equals(name)){
 	  NS_LOG_DEBUG("Sending thunk request for " << name << " seq:" << seq);
 	  //nameWithSequence = make_shared<Name>(m_thunk);
-	  ScheduleNextPacket();
+	  //schedule a new packet only if it's not a retransmission
+	  if(m_names.find(seq) == m_names.end())
+		  ScheduleNextPacket();
   }else{
 	  NS_LOG_DEBUG("Sending data request to " << name << " seq:" << seq);
 	  //nameWithSequence = make_shared<Name>(m_interestName);

@@ -241,9 +241,9 @@ size_t Interest::wireEncode(EncodingImpl<TAG>& encoder) const {
 	}
 
 	//Path
-	unsigned int myVal = encoder.prependByteArrayBlock(tlv::Path, m_path, PATH_SIZE);
+	//unsigned int myVal = encoder.prependByteArrayBlock(tlv::Path, m_path, PATH_SIZE);
 
-	totalLength += myVal;
+	//totalLength += myVal;
 
 	//Repeated
 	totalLength += prependNonNegativeIntegerBlock(encoder, tlv::Repeated,
@@ -303,27 +303,12 @@ void Interest::wireDecode(const Block& wire) {
 
 
 	//Repeated
-	val = m_wire.find(tlv::Repeated);
+	Block::element_const_iterator val = m_wire.find(tlv::Repeated);
 	if (val != m_wire.elements_end()) {
 		m_repeated = readNonNegativeInteger(*val);
 	} else {
 		m_repeated = 0;
 	}
-
-	// Path
-	val = m_wire.find(tlv::Path);
-	if (val != m_wire.elements_end()) {
-		//std::cerr << "Read: " << *this << "\n";
-		//memcpy(m_path, val->value(), PATH_SIZE);
-		if(m_deadline == 13){
-			//std::cerr << "Read path:";
-			for(int i = 0; i < PATH_SIZE; i++)
-				if(val->value()[i] != 0) m_path[i] = val->value()[i];
-				;//std::cerr << (int)m_path[i] << ", ";
-			//std::cerr << "\n";
-		}
-	}
-
 
 
 	// Selectors

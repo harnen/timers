@@ -4,7 +4,21 @@ TIME=100
 
 cd ..
 
+for ERR_RATE in `seq 0 0.1 0.5`
+do
+    echo "Running state measurements ERR_RATE=${ERR_RATE}"
+    cDelay=4960
+    pDelay=5000
+    frequency=10	
+    LD_LIBRARY_PATH=/usr/local/lib NS_LOG=nfd.PIT ./waf --run="thunks -retx=10ms -cDataDelay=${cDelay} -pDataDelay=${pDelay} -time=${TIME}s -errRate=${ERR_RATE} -frequency=${frequency}" &> ./scripts/logs/state_loss_thunks:${ERR_RATE}:${cDelay}:${pDelay}.log
 
+    cDelay=1000
+    pDelay=5000
+    frequency=10	
+    LD_LIBRARY_PATH=/usr/local/lib NS_LOG=nfd.PIT ./waf --run="thunks -retx=1000ms -cDataDelay=${cDelay} -pDataDelay=${pDelay} -time=${TIME}s -errRate=${ERR_RATE} -frequency=${frequency}" &> ./scripts/logs/state_loss_net:${ERR_RATE}:${cDelay}:${pDelay}.log
+done
+
+exit
 
 for ERR_RATE in `seq 0 0.005 0.5`
 do

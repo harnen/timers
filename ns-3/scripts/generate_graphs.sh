@@ -68,3 +68,31 @@ do
     echo  $VAL ${PTHUNKS_TIME[$VAL]} ${PNET_TIME[$VAL]} >> graphs/satisfaction_generation.dat
     echo  $VAL ${PTHUNKS_PACKETS[$VAL]} ${PNET_PACKETS[$VAL]} >> graphs/packets_generation.dat
 done
+
+
+# STATE
+declare -A THUNKS_STATE
+for file in data/data_state_loss_thunks*
+do
+    ERR_RATE=$(basename -s ".log" $file  | cut -d ':' -f 2 )
+    STATE=$(grep "Max state:" $file | cut -d ':' -f 2)
+    echo "$file -> $ERR_RATE -> $STATE"
+    THUNKS_STATE[$ERR_RATE]=$STATE
+done
+
+declare -A NET_STATE
+for file in data/data_state_loss_net*
+do
+    ERR_RATE=$(basename -s ".log" $file | cut -d ':' -f 2 )
+    STATE=$(grep "Max state:" $file | cut -d ':' -f 2)
+    echo "$file -> $ERR_RATE -> $STATE"
+    NET_STATE[$ERR_RATE]=$STATE
+done
+
+IFS=$'\n' SORTED=( $( printf "%s\n" "${!THUNKS_STATE[@]}" | sort -n ) )
+
+echo -e > graphs/state_loss.dat
+for VAL in "${SORTED[@]}"
+do 
+    echo  $VAL ${THUNKS_STATE[$VAL]} ${NET_STATE[$VAL]} >> graphs/state_loss.dat
+done

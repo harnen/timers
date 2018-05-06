@@ -76,7 +76,7 @@ int main(int argc, char* argv[]) {
 	rem->SetAttribute("ErrorUnit", StringValue ("ERROR_UNIT_PACKET"));
 
 	//p2p.SetDeviceAttribute("ReceiveErrorModel", PointerValue (rem));
-	d2d3.Get(1)->SetAttribute ("ReceiveErrorModel", PointerValue (rem));
+	//d2d3.Get(1)->SetAttribute ("ReceiveErrorModel", PointerValue (rem));
 	d2d3.Get(0)->SetAttribute ("ReceiveErrorModel", PointerValue (rem));
 
 

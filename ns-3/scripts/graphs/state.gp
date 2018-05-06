@@ -1,7 +1,7 @@
 #!/usr/bin/gnuplot
 reset
 load 'style.gp'
-
+exit
 set output "state.pdf"
 
 set xlabel "Time"

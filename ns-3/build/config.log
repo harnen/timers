@@ -1,24 +1,24 @@
-# project ns (3-dev) configured on Thu Apr 12 15:21:03 2018 by
-# waf 1.8.12 (abi 98, python 2070ef0 on linux2)
-# using ./waf configure
+# project ns (3-dev) configured on Sun Apr 29 17:50:37 2018 by
+# waf 1.8.12 (abi 98, python 2070cf0 on linux2)
+# using ./waf configure --enable-examples
 #
 ----------------------------------------
 Setting top to
-/home/harnen/work/ucl/timers/ns-3
+/home/khabak3/MyResources/Timers-Cisco3/timers/ns-3
 ----------------------------------------
 Setting out to
-/home/harnen/work/ucl/timers/ns-3/build
+/home/khabak3/MyResources/Timers-Cisco3/timers/ns-3/build
 ----------------------------------------
 Checking for 'gcc' (C compiler)
-find program=['gcc', 'cc'] paths=['/home/harnen/.yarn/bin', '/usr/local/sbin', '/usr/local/bin', '/usr/sbin', '/usr/bin', '/sbin', '/bin', '/usr/games', '/usr/local/games', '/snap/bin', '/home/harnen/Downloads/eclipse', '/home/harnen/go/bin', '/usr/local/go/bin', '/home/harnen/work/ucl/blockchain/node-v6.11.0-linux-x64/bin', '/home/harnen/Desktop/SGX/sgxsdk/bin', '/home/harnen/Desktop/SGX/sgxsdk/bin/x64'] var='CC' -> ['/usr/bin/gcc']
-find program=['ar'] paths=['/home/harnen/.yarn/bin', '/usr/local/sbin', '/usr/local/bin', '/usr/sbin', '/usr/bin', '/sbin', '/bin', '/usr/games', '/usr/local/games', '/snap/bin', '/home/harnen/Downloads/eclipse', '/home/harnen/go/bin', '/usr/local/go/bin', '/home/harnen/work/ucl/blockchain/node-v6.11.0-linux-x64/bin', '/home/harnen/Desktop/SGX/sgxsdk/bin', '/home/harnen/Desktop/SGX/sgxsdk/bin/x64'] var='AR' -> ['/usr/bin/ar']
+find program=['gcc', 'cc'] paths=['/usr/local/sbin', '/usr/local/bin', '/usr/sbin', '/usr/bin', '/sbin', '/bin', '/usr/games', '/usr/local/games', '/snap/bin'] var='CC' -> ['/usr/bin/gcc']
+find program=['ar'] paths=['/usr/local/sbin', '/usr/local/bin', '/usr/sbin', '/usr/bin', '/sbin', '/bin', '/usr/games', '/usr/local/games', '/snap/bin'] var='AR' -> ['/usr/bin/ar']
 /usr/bin/gcc
 ----------------------------------------
 Checking for cc version
-7.2.0
+5.4.0
 ----------------------------------------
 Checking for 'g++' (C++ compiler)
-find program=['g++', 'c++'] paths=['/home/harnen/.yarn/bin', '/usr/local/sbin', '/usr/local/bin', '/usr/sbin', '/usr/bin', '/sbin', '/bin', '/usr/games', '/usr/local/games', '/snap/bin', '/home/harnen/Downloads/eclipse', '/home/harnen/go/bin', '/usr/local/go/bin', '/home/harnen/work/ucl/blockchain/node-v6.11.0-linux-x64/bin', '/home/harnen/Desktop/SGX/sgxsdk/bin', '/home/harnen/Desktop/SGX/sgxsdk/bin/x64'] var='CXX' -> ['/usr/bin/g++']
+find program=['g++', 'c++'] paths=['/usr/local/sbin', '/usr/local/bin', '/usr/sbin', '/usr/bin', '/sbin', '/bin', '/usr/games', '/usr/local/games', '/snap/bin'] var='CXX' -> ['/usr/bin/g++']
 (tool ar is already loaded, skipping)
 /usr/bin/g++
 ----------------------------------------
@@ -31,12 +31,12 @@ int main(int argc, char **argv) {
 }
 
 <==
-[1/2] Compiling [32mbuild/.conf_check_a8ee6463c090b255fe3c9457ba412e74/test.cpp[0m
+[1/2] Compiling [32mbuild/.conf_check_c0f69f038b5d63d153359d034323f8b6/test.cpp[0m
 
-['/usr/bin/g++', '-Werror', '-std=c++0x', '../test.cpp', '-c', '-o', '/home/harnen/work/ucl/timers/ns-3/build/.conf_check_a8ee6463c090b255fe3c9457ba412e74/testbuild/test.cpp.1.o']
-[2/2] Linking [33mbuild/.conf_check_a8ee6463c090b255fe3c9457ba412e74/testbuild/testprog[0m
+['/usr/bin/g++', '-Werror', '-std=c++0x', '../test.cpp', '-c', '-o', '/home/khabak3/MyResources/Timers-Cisco3/timers/ns-3/build/.conf_check_c0f69f038b5d63d153359d034323f8b6/testbuild/test.cpp.1.o']
+[2/2] Linking [33mbuild/.conf_check_c0f69f038b5d63d153359d034323f8b6/testbuild/testprog[0m
 
-['/usr/bin/g++', 'test.cpp.1.o', '-o', '/home/harnen/work/ucl/timers/ns-3/build/.conf_check_a8ee6463c090b255fe3c9457ba412e74/testbuild/testprog', '-Wl,-Bstatic', '-Wl,-Bdynamic']
+['/usr/bin/g++', 'test.cpp.1.o', '-o', '/home/khabak3/MyResources/Timers-Cisco3/timers/ns-3/build/.conf_check_c0f69f038b5d63d153359d034323f8b6/testbuild/testprog', '-Wl,-Bstatic', '-Wl,-Bdynamic']
 ==>
 
 int main(int argc, char **argv) {
@@ -45,12 +45,12 @@ int main(int argc, char **argv) {
 }
 
 <==
-[1/2] Compiling [32mbuild/.conf_check_665bc53a92572fc748bb6a43e8167c3b/test.cpp[0m
+[1/2] Compiling [32mbuild/.conf_check_8b48328cf54e258d4112b1440f107e03/test.cpp[0m
 
-['/usr/bin/g++', '-Werror', '-std=c++11', '../test.cpp', '-c', '-o', '/home/harnen/work/ucl/timers/ns-3/build/.conf_check_665bc53a92572fc748bb6a43e8167c3b/testbuild/test.cpp.1.o']
-[2/2] Linking [33mbuild/.conf_check_665bc53a92572fc748bb6a43e8167c3b/testbuild/testprog[0m
+['/usr/bin/g++', '-Werror', '-std=c++11', '../test.cpp', '-c', '-o', '/home/khabak3/MyResources/Timers-Cisco3/timers/ns-3/build/.conf_check_8b48328cf54e258d4112b1440f107e03/testbuild/test.cpp.1.o']
+[2/2] Linking [33mbuild/.conf_check_8b48328cf54e258d4112b1440f107e03/testbuild/testprog[0m
 
-['/usr/bin/g++', 'test.cpp.1.o', '-o', '/home/harnen/work/ucl/timers/ns-3/build/.conf_check_665bc53a92572fc748bb6a43e8167c3b/testbuild/testprog', '-Wl,-Bstatic', '-Wl,-Bdynamic']
+['/usr/bin/g++', 'test.cpp.1.o', '-o', '/home/khabak3/MyResources/Timers-Cisco3/timers/ns-3/build/.conf_check_8b48328cf54e258d4112b1440f107e03/testbuild/testprog', '-Wl,-Bstatic', '-Wl,-Bdynamic']
 -std=c++0x -std=c++11
 -----------------------------------------
 Checking supported optimizations CXXFLAGS
@@ -62,12 +62,12 @@ int main(int argc, char **argv) {
 }
 
 <==
-[1/2] Compiling [32mbuild/.conf_check_cfb4017272ce57578b4c51a303eb2a49/test.cpp[0m
+[1/2] Compiling [32mbuild/.conf_check_bd1091826f05c908ed5842d81abb1c7a/test.cpp[0m
 
-['/usr/bin/g++', '-Werror', '-O0', '../test.cpp', '-c', '-o', '/home/harnen/work/ucl/timers/ns-3/build/.conf_check_cfb4017272ce57578b4c51a303eb2a49/testbuild/test.cpp.1.o']
-[2/2] Linking [33mbuild/.conf_check_cfb4017272ce57578b4c51a303eb2a49/testbuild/testprog[0m
+['/usr/bin/g++', '-Werror', '-O0', '../test.cpp', '-c', '-o', '/home/khabak3/MyResources/Timers-Cisco3/timers/ns-3/build/.conf_check_bd1091826f05c908ed5842d81abb1c7a/testbuild/test.cpp.1.o']
+[2/2] Linking [33mbuild/.conf_check_bd1091826f05c908ed5842d81abb1c7a/testbuild/testprog[0m
 
-['/usr/bin/g++', 'test.cpp.1.o', '-o', '/home/harnen/work/ucl/timers/ns-3/build/.conf_check_cfb4017272ce57578b4c51a303eb2a49/testbuild/testprog', '-Wl,-Bstatic', '-Wl,-Bdynamic']
+['/usr/bin/g++', 'test.cpp.1.o', '-o', '/home/khabak3/MyResources/Timers-Cisco3/timers/ns-3/build/.conf_check_bd1091826f05c908ed5842d81abb1c7a/testbuild/testprog', '-Wl,-Bstatic', '-Wl,-Bdynamic']
 -O0
 -----------------------------------------
 Checking supported debug CXXFLAGS
@@ -79,12 +79,12 @@ int main(int argc, char **argv) {
 }
 
 <==
-[1/2] Compiling [32mbuild/.conf_check_81ea55b25ba1af819080825c4990a8d8/test.cpp[0m
+[1/2] Compiling [32mbuild/.conf_check_77ad771702da9c7bf9cb91b6137cdabc/test.cpp[0m
 
-['/usr/bin/g++', '-Werror', '-ggdb', '../test.cpp', '-c', '-o', '/home/harnen/work/ucl/timers/ns-3/build/.conf_check_81ea55b25ba1af819080825c4990a8d8/testbuild/test.cpp.1.o']
-[2/2] Linking [33mbuild/.conf_check_81ea55b25ba1af819080825c4990a8d8/testbuild/testprog[0m
+['/usr/bin/g++', '-Werror', '-ggdb', '../test.cpp', '-c', '-o', '/home/khabak3/MyResources/Timers-Cisco3/timers/ns-3/build/.conf_check_77ad771702da9c7bf9cb91b6137cdabc/testbuild/test.cpp.1.o']
+[2/2] Linking [33mbuild/.conf_check_77ad771702da9c7bf9cb91b6137cdabc/testbuild/testprog[0m
 
-['/usr/bin/g++', 'test.cpp.1.o', '-o', '/home/harnen/work/ucl/timers/ns-3/build/.conf_check_81ea55b25ba1af819080825c4990a8d8/testbuild/testprog', '-Wl,-Bstatic', '-Wl,-Bdynamic']
+['/usr/bin/g++', 'test.cpp.1.o', '-o', '/home/khabak3/MyResources/Timers-Cisco3/timers/ns-3/build/.conf_check_77ad771702da9c7bf9cb91b6137cdabc/testbuild/testprog', '-Wl,-Bstatic', '-Wl,-Bdynamic']
 ==>
 
 int main(int argc, char **argv) {
@@ -93,12 +93,12 @@ int main(int argc, char **argv) {
 }
 
 <==
-[1/2] Compiling [32mbuild/.conf_check_cfe9e44b1864ff535565193e8c136993/test.cpp[0m
+[1/2] Compiling [32mbuild/.conf_check_df156c61c5dc884e949e8f252fe9ab41/test.cpp[0m
 
-['/usr/bin/g++', '-Werror', '-g3', '../test.cpp', '-c', '-o', '/home/harnen/work/ucl/timers/ns-3/build/.conf_check_cfe9e44b1864ff535565193e8c136993/testbuild/test.cpp.1.o']
-[2/2] Linking [33mbuild/.conf_check_cfe9e44b1864ff535565193e8c136993/testbuild/testprog[0m
+['/usr/bin/g++', '-Werror', '-g3', '../test.cpp', '-c', '-o', '/home/khabak3/MyResources/Timers-Cisco3/timers/ns-3/build/.conf_check_df156c61c5dc884e949e8f252fe9ab41/testbuild/test.cpp.1.o']
+[2/2] Linking [33mbuild/.conf_check_df156c61c5dc884e949e8f252fe9ab41/testbuild/testprog[0m
 
-['/usr/bin/g++', 'test.cpp.1.o', '-o', '/home/harnen/work/ucl/timers/ns-3/build/.conf_check_cfe9e44b1864ff535565193e8c136993/testbuild/testprog', '-Wl,-Bstatic', '-Wl,-Bdynamic']
+['/usr/bin/g++', 'test.cpp.1.o', '-o', '/home/khabak3/MyResources/Timers-Cisco3/timers/ns-3/build/.conf_check_df156c61c5dc884e949e8f252fe9ab41/testbuild/testprog', '-Wl,-Bstatic', '-Wl,-Bdynamic']
 -ggdb -g3
 -----------------------------------------
 Checking supported warnings CXXFLAGS
@@ -110,12 +110,12 @@ int main(int argc, char **argv) {
 }
 
 <==
-[1/2] Compiling [32mbuild/.conf_check_2aad2303a797e80de9c03c0bf7c26a9c/test.cpp[0m
+[1/2] Compiling [32mbuild/.conf_check_e751dd1165caab4a70c329348d3a02c5/test.cpp[0m
 
-['/usr/bin/g++', '-Werror', '-Wall', '../test.cpp', '-c', '-o', '/home/harnen/work/ucl/timers/ns-3/build/.conf_check_2aad2303a797e80de9c03c0bf7c26a9c/testbuild/test.cpp.1.o']
-[2/2] Linking [33mbuild/.conf_check_2aad2303a797e80de9c03c0bf7c26a9c/testbuild/testprog[0m
+['/usr/bin/g++', '-Werror', '-Wall', '../test.cpp', '-c', '-o', '/home/khabak3/MyResources/Timers-Cisco3/timers/ns-3/build/.conf_check_e751dd1165caab4a70c329348d3a02c5/testbuild/test.cpp.1.o']
+[2/2] Linking [33mbuild/.conf_check_e751dd1165caab4a70c329348d3a02c5/testbuild/testprog[0m
 
-['/usr/bin/g++', 'test.cpp.1.o', '-o', '/home/harnen/work/ucl/timers/ns-3/build/.conf_check_2aad2303a797e80de9c03c0bf7c26a9c/testbuild/testprog', '-Wl,-Bstatic', '-Wl,-Bdynamic']
+['/usr/bin/g++', 'test.cpp.1.o', '-o', '/home/khabak3/MyResources/Timers-Cisco3/timers/ns-3/build/.conf_check_e751dd1165caab4a70c329348d3a02c5/testbuild/testprog', '-Wl,-Bstatic', '-Wl,-Bdynamic']
 ==>
 
 int main(int argc, char **argv) {
@@ -124,12 +124,12 @@ int main(int argc, char **argv) {
 }
 
 <==
-[1/2] Compiling [32mbuild/.conf_check_2e6b4b7effcdd089b82371153a66a385/test.cpp[0m
+[1/2] Compiling [32mbuild/.conf_check_c7c8f8c263d22bb91649588fbcce7f84/test.cpp[0m
 
-['/usr/bin/g++', '-Werror', '-Wno-error=deprecated-declarations', '../test.cpp', '-c', '-o', '/home/harnen/work/ucl/timers/ns-3/build/.conf_check_2e6b4b7effcdd089b82371153a66a385/testbuild/test.cpp.1.o']
-[2/2] Linking [33mbuild/.conf_check_2e6b4b7effcdd089b82371153a66a385/testbuild/testprog[0m
+['/usr/bin/g++', '-Werror', '-Wno-error=deprecated-declarations', '../test.cpp', '-c', '-o', '/home/khabak3/MyResources/Timers-Cisco3/timers/ns-3/build/.conf_check_c7c8f8c263d22bb91649588fbcce7f84/testbuild/test.cpp.1.o']
+[2/2] Linking [33mbuild/.conf_check_c7c8f8c263d22bb91649588fbcce7f84/testbuild/testprog[0m
 
-['/usr/bin/g++', 'test.cpp.1.o', '-o', '/home/harnen/work/ucl/timers/ns-3/build/.conf_check_2e6b4b7effcdd089b82371153a66a385/testbuild/testprog', '-Wl,-Bstatic', '-Wl,-Bdynamic']
+['/usr/bin/g++', 'test.cpp.1.o', '-o', '/home/khabak3/MyResources/Timers-Cisco3/timers/ns-3/build/.conf_check_c7c8f8c263d22bb91649588fbcce7f84/testbuild/testprog', '-Wl,-Bstatic', '-Wl,-Bdynamic']
 ==>
 
 int main(int argc, char **argv) {
@@ -138,12 +138,12 @@ int main(int argc, char **argv) {
 }
 
 <==
-[1/2] Compiling [32mbuild/.conf_check_7b699570e42a74d6927385a4a4714260/test.cpp[0m
+[1/2] Compiling [32mbuild/.conf_check_39389187fde192e4fbf75a5a436a1294/test.cpp[0m
 
-['/usr/bin/g++', '-Werror', '-fstrict-aliasing', '../test.cpp', '-c', '-o', '/home/harnen/work/ucl/timers/ns-3/build/.conf_check_7b699570e42a74d6927385a4a4714260/testbuild/test.cpp.1.o']
-[2/2] Linking [33mbuild/.conf_check_7b699570e42a74d6927385a4a4714260/testbuild/testprog[0m
+['/usr/bin/g++', '-Werror', '-fstrict-aliasing', '../test.cpp', '-c', '-o', '/home/khabak3/MyResources/Timers-Cisco3/timers/ns-3/build/.conf_check_39389187fde192e4fbf75a5a436a1294/testbuild/test.cpp.1.o']
+[2/2] Linking [33mbuild/.conf_check_39389187fde192e4fbf75a5a436a1294/testbuild/testprog[0m
 
-['/usr/bin/g++', 'test.cpp.1.o', '-o', '/home/harnen/work/ucl/timers/ns-3/build/.conf_check_7b699570e42a74d6927385a4a4714260/testbuild/testprog', '-Wl,-Bstatic', '-Wl,-Bdynamic']
+['/usr/bin/g++', 'test.cpp.1.o', '-o', '/home/khabak3/MyResources/Timers-Cisco3/timers/ns-3/build/.conf_check_39389187fde192e4fbf75a5a436a1294/testbuild/testprog', '-Wl,-Bstatic', '-Wl,-Bdynamic']
 ==>
 
 int main(int argc, char **argv) {
@@ -152,26 +152,26 @@ int main(int argc, char **argv) {
 }
 
 <==
-[1/2] Compiling [32mbuild/.conf_check_c0c9bc23cbf200245541e5cd67103407/test.cpp[0m
+[1/2] Compiling [32mbuild/.conf_check_0f24dbb0b9066c1502cbd59444e9b187/test.cpp[0m
 
-['/usr/bin/g++', '-Werror', '-Wstrict-aliasing', '../test.cpp', '-c', '-o', '/home/harnen/work/ucl/timers/ns-3/build/.conf_check_c0c9bc23cbf200245541e5cd67103407/testbuild/test.cpp.1.o']
-[2/2] Linking [33mbuild/.conf_check_c0c9bc23cbf200245541e5cd67103407/testbuild/testprog[0m
+['/usr/bin/g++', '-Werror', '-Wstrict-aliasing', '../test.cpp', '-c', '-o', '/home/khabak3/MyResources/Timers-Cisco3/timers/ns-3/build/.conf_check_0f24dbb0b9066c1502cbd59444e9b187/testbuild/test.cpp.1.o']
+[2/2] Linking [33mbuild/.conf_check_0f24dbb0b9066c1502cbd59444e9b187/testbuild/testprog[0m
 
-['/usr/bin/g++', 'test.cpp.1.o', '-o', '/home/harnen/work/ucl/timers/ns-3/build/.conf_check_c0c9bc23cbf200245541e5cd67103407/testbuild/testprog', '-Wl,-Bstatic', '-Wl,-Bdynamic']
+['/usr/bin/g++', 'test.cpp.1.o', '-o', '/home/khabak3/MyResources/Timers-Cisco3/timers/ns-3/build/.conf_check_0f24dbb0b9066c1502cbd59444e9b187/testbuild/testprog', '-Wl,-Bstatic', '-Wl,-Bdynamic']
 -Wall -Wno-error=deprecated-declarations -fstrict-aliasing -Wstrict-aliasing
 ---------------------------------------------------------
 Checking for compilation flag -Wl,--soname=foo... support
 ==>
 int main() { return 0; }
 <==
-[1/1] Compiling [32mbuild/.conf_check_15efe9a408f56600837aaf8c9de3e6d4/test.cpp[0m
+[1/1] Compiling [32mbuild/.conf_check_427f5a9f5237e41c01c0f895cba2a6a5/test.cpp[0m
 
-['/usr/bin/g++', '-std=c++0x', '-std=c++11', '-O0', '-ggdb', '-g3', '-Wall', '-Wno-error=deprecated-declarations', '-fstrict-aliasing', '-Wstrict-aliasing', '-Wl,--soname=foo', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '../test.cpp', '-c', '-o', '/home/harnen/work/ucl/timers/ns-3/build/.conf_check_15efe9a408f56600837aaf8c9de3e6d4/testbuild/test.cpp.1.o']
+['/usr/bin/g++', '-std=c++0x', '-std=c++11', '-O0', '-ggdb', '-g3', '-Wall', '-Wno-error=deprecated-declarations', '-fstrict-aliasing', '-Wstrict-aliasing', '-Wl,--soname=foo', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '../test.cpp', '-c', '-o', '/home/khabak3/MyResources/Timers-Cisco3/timers/ns-3/build/.conf_check_427f5a9f5237e41c01c0f895cba2a6a5/testbuild/test.cpp.1.o']
 ok
 ---------------------------------------------------------
 Checking for program 'python'
 /usr/bin/python
-find program=['python'] paths=['/home/harnen/.yarn/bin', '/usr/local/sbin', '/usr/local/bin', '/usr/sbin', '/usr/bin', '/sbin', '/bin', '/usr/games', '/usr/local/games', '/snap/bin', '/home/harnen/Downloads/eclipse', '/home/harnen/go/bin', '/usr/local/go/bin', '/home/harnen/work/ucl/blockchain/node-v6.11.0-linux-x64/bin', '/home/harnen/Desktop/SGX/sgxsdk/bin', '/home/harnen/Desktop/SGX/sgxsdk/bin/x64'] var='PYTHON' -> ['/usr/bin/python']
+find program=['python'] paths=['/usr/local/sbin', '/usr/local/bin', '/usr/sbin', '/usr/bin', '/sbin', '/bin', '/usr/games', '/usr/local/games', '/snap/bin'] var='PYTHON' -> ['/usr/bin/python']
 ['/usr/bin/python', '-c', 'import imp;print(imp.get_tag())']
 err: Traceback (most recent call last):
   File "<string>", line 1, in <module>
@@ -180,7 +180,7 @@ AttributeError: 'module' object has no attribute 'get_tag'
 ['/usr/bin/python', '-c', 'import sys\nfor x in sys.version_info: print(str(x))']
 out: 2
 7
-14
+12
 final
 0
 
@@ -196,7 +196,7 @@ out: '/usr/local/lib/python2.7/dist-packages'
 
 ---------------------------------------------------------
 Checking for python version
-(2, 7, 14, 'final', 0)
+(2, 7, 12, 'final', 0)
 ['/usr/bin/python', '-c', "from distutils.sysconfig import get_config_var, get_python_lib\n\nprint(repr(get_config_var('prefix') or ''))\nprint(repr(get_config_var('SO') or ''))\nprint(repr(get_config_var('LDFLAGS') or ''))\nprint(repr(get_config_var('LIBDIR') or ''))\nprint(repr(get_config_var('LIBPL') or ''))\nprint(repr(get_config_var('INCLUDEPY') or ''))\nprint(repr(get_config_var('Py_ENABLE_SHARED') or ''))\nprint(repr(get_config_var('MACOSX_DEPLOYMENT_TARGET') or ''))\nprint(repr(get_config_var('LDSHARED') or ''))\nprint(repr(get_config_var('CFLAGS') or ''))\nprint(repr(get_config_var('LDVERSION') or ''))"]
 out: '/usr'
 '.so'
@@ -206,8 +206,8 @@ out: '/usr'
 '/usr/include/python2.7'
 1
 ''
-'x86_64-linux-gnu-gcc -pthread -shared -Wl,-O1 -Wl,-Bsymbolic-functions -Wl,-Bsymbolic-functions -Wl,-z,relro -fno-strict-aliasing -DNDEBUG -g -fwrapv -O2 -Wall -Wstrict-prototypes -Wdate-time -D_FORTIFY_SOURCE=2 -g -fdebug-prefix-map=/build/python2.7-l1RrwO/python2.7-2.7.14=. -fstack-protector-strong -Wformat -Werror=format-security  '
-'-fno-strict-aliasing -DNDEBUG -g -fwrapv -O2 -Wall -Wstrict-prototypes -Wdate-time -D_FORTIFY_SOURCE=2 -g -fdebug-prefix-map=/build/python2.7-l1RrwO/python2.7-2.7.14=. -fstack-protector-strong -Wformat -Werror=format-security  '
+'x86_64-linux-gnu-gcc -pthread -shared -Wl,-O1 -Wl,-Bsymbolic-functions -Wl,-Bsymbolic-functions -Wl,-z,relro -fno-strict-aliasing -DNDEBUG -g -fwrapv -O2 -Wall -Wstrict-prototypes -Wdate-time -D_FORTIFY_SOURCE=2 -g -fstack-protector-strong -Wformat -Werror=format-security  '
+'-fno-strict-aliasing -DNDEBUG -g -fwrapv -O2 -Wall -Wstrict-prototypes -Wdate-time -D_FORTIFY_SOURCE=2 -g -fstack-protector-strong -Wformat -Werror=format-security  '
 ''
 
 '/usr'
@@ -218,8 +218,8 @@ out: '/usr'
 '/usr/include/python2.7'
 1
 ''
-'x86_64-linux-gnu-gcc -pthread -shared -Wl,-O1 -Wl,-Bsymbolic-functions -Wl,-Bsymbolic-functions -Wl,-z,relro -fno-strict-aliasing -DNDEBUG -g -fwrapv -O2 -Wall -Wstrict-prototypes -Wdate-time -D_FORTIFY_SOURCE=2 -g -fdebug-prefix-map=/build/python2.7-l1RrwO/python2.7-2.7.14=. -fstack-protector-strong -Wformat -Werror=format-security  '
-'-fno-strict-aliasing -DNDEBUG -g -fwrapv -O2 -Wall -Wstrict-prototypes -Wdate-time -D_FORTIFY_SOURCE=2 -g -fdebug-prefix-map=/build/python2.7-l1RrwO/python2.7-2.7.14=. -fstack-protector-strong -Wformat -Werror=format-security  '
+'x86_64-linux-gnu-gcc -pthread -shared -Wl,-O1 -Wl,-Bsymbolic-functions -Wl,-Bsymbolic-functions -Wl,-z,relro -fno-strict-aliasing -DNDEBUG -g -fwrapv -O2 -Wall -Wstrict-prototypes -Wdate-time -D_FORTIFY_SOURCE=2 -g -fstack-protector-strong -Wformat -Werror=format-security  '
+'-fno-strict-aliasing -DNDEBUG -g -fwrapv -O2 -Wall -Wstrict-prototypes -Wdate-time -D_FORTIFY_SOURCE=2 -g -fstack-protector-strong -Wformat -Werror=format-security  '
 ''
 
 Configuration returned from ['/usr/bin/python']:
@@ -231,18 +231,18 @@ LIBPL = '/usr/lib/python2.7/config-x86_64-linux-gnu'
 INCLUDEPY = '/usr/include/python2.7'
 Py_ENABLE_SHARED = 1
 MACOSX_DEPLOYMENT_TARGET = ''
-LDSHARED = 'x86_64-linux-gnu-gcc -pthread -shared -Wl,-O1 -Wl,-Bsymbolic-functions -Wl,-Bsymbolic-functions -Wl,-z,relro -fno-strict-aliasing -DNDEBUG -g -fwrapv -O2 -Wall -Wstrict-prototypes -Wdate-time -D_FORTIFY_SOURCE=2 -g -fdebug-prefix-map=/build/python2.7-l1RrwO/python2.7-2.7.14=. -fstack-protector-strong -Wformat -Werror=format-security  '
-CFLAGS = '-fno-strict-aliasing -DNDEBUG -g -fwrapv -O2 -Wall -Wstrict-prototypes -Wdate-time -D_FORTIFY_SOURCE=2 -g -fdebug-prefix-map=/build/python2.7-l1RrwO/python2.7-2.7.14=. -fstack-protector-strong -Wformat -Werror=format-security  '
+LDSHARED = 'x86_64-linux-gnu-gcc -pthread -shared -Wl,-O1 -Wl,-Bsymbolic-functions -Wl,-Bsymbolic-functions -Wl,-z,relro -fno-strict-aliasing -DNDEBUG -g -fwrapv -O2 -Wall -Wstrict-prototypes -Wdate-time -D_FORTIFY_SOURCE=2 -g -fstack-protector-strong -Wformat -Werror=format-security  '
+CFLAGS = '-fno-strict-aliasing -DNDEBUG -g -fwrapv -O2 -Wall -Wstrict-prototypes -Wdate-time -D_FORTIFY_SOURCE=2 -g -fstack-protector-strong -Wformat -Werror=format-security  '
 LDVERSION = ''
 
 ---------------------------------------------------------
 python-config
 /usr/bin/python-config
-find program=['/usr/bin/python-config', 'python2.7-config', 'python-config-2.7', 'python2.7m-config'] paths=['/home/harnen/.yarn/bin', '/usr/local/sbin', '/usr/local/bin', '/usr/sbin', '/usr/bin', '/sbin', '/bin', '/usr/games', '/usr/local/games', '/snap/bin', '/home/harnen/Downloads/eclipse', '/home/harnen/go/bin', '/usr/local/go/bin', '/home/harnen/work/ucl/blockchain/node-v6.11.0-linux-x64/bin', '/home/harnen/Desktop/SGX/sgxsdk/bin', '/home/harnen/Desktop/SGX/sgxsdk/bin/x64'] var='PYTHON_CONFIG' -> ['/usr/bin/python-config']
+find program=['/usr/bin/python-config', 'python2.7-config', 'python-config-2.7', 'python2.7m-config'] paths=['/usr/local/sbin', '/usr/local/bin', '/usr/sbin', '/usr/bin', '/sbin', '/bin', '/usr/games', '/usr/local/games', '/snap/bin'] var='PYTHON_CONFIG' -> ['/usr/bin/python-config']
 ------------------------------------------------------------------
 Asking python-config for pyembed '--cflags --libs --ldflags' flags
 ['/usr/bin/python-config', '--cflags', '--libs', '--ldflags']
-out: -I/usr/include/python2.7 -I/usr/include/x86_64-linux-gnu/python2.7  -fno-strict-aliasing -Wdate-time -D_FORTIFY_SOURCE=2 -g -fdebug-prefix-map=/build/python2.7-l1RrwO/python2.7-2.7.14=. -fstack-protector-strong -Wformat -Werror=format-security  -DNDEBUG -g -fwrapv -O2 -Wall -Wstrict-prototypes
+out: -I/usr/include/python2.7 -I/usr/include/x86_64-linux-gnu/python2.7  -fno-strict-aliasing -Wdate-time -D_FORTIFY_SOURCE=2 -g -fstack-protector-strong -Wformat -Werror=format-security  -DNDEBUG -g -fwrapv -O2 -Wall -Wstrict-prototypes
 -lpython2.7 -lpthread -ldl  -lutil -lm 
 -L/usr/lib/python2.7/config-x86_64-linux-gnu -L/usr/lib -lpython2.7 -lpthread -ldl  -lutil -lm  -Xlinker -export-dynamic -Wl,-O1 -Wl,-Bsymbolic-functions
 
@@ -269,17 +269,17 @@ int main(int argc, char **argv)
 }
 
 <==
-[1/2] Compiling [32mbuild/.conf_check_d06eec90914d0305efa23f75fdb3c2e8/test.cpp[0m
+[1/2] Compiling [32mbuild/.conf_check_5331e46b1d8064a77af68c0dba5ac5e7/test.cpp[0m
 
-['/usr/bin/g++', '-std=c++0x', '-std=c++11', '-O0', '-ggdb', '-g3', '-Wall', '-Wno-error=deprecated-declarations', '-fstrict-aliasing', '-Wstrict-aliasing', '-fno-strict-aliasing', '-fdebug-prefix-map=/build/python2.7-l1RrwO/python2.7-2.7.14=.', '-fstack-protector-strong', '-fwrapv', '-I/usr/include/python2.7', '-I/usr/include/x86_64-linux-gnu/python2.7', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '-DPYTHONDIR="/usr/local/lib/python2.7/dist-packages"', '-DPYTHONARCHDIR="/usr/local/lib/python2.7/dist-packages"', '-DHAVE_PYEMBED=1', '-D_FORTIFY_SOURCE=2', '-DNDEBUG', '../test.cpp', '-c', '-o', '/home/harnen/work/ucl/timers/ns-3/build/.conf_check_d06eec90914d0305efa23f75fdb3c2e8/testbuild/test.cpp.1.o']
-[2/2] Linking [33mbuild/.conf_check_d06eec90914d0305efa23f75fdb3c2e8/testbuild/testprog[0m
+['/usr/bin/g++', '-std=c++0x', '-std=c++11', '-O0', '-ggdb', '-g3', '-Wall', '-Wno-error=deprecated-declarations', '-fstrict-aliasing', '-Wstrict-aliasing', '-fno-strict-aliasing', '-fstack-protector-strong', '-fwrapv', '-I/usr/include/python2.7', '-I/usr/include/x86_64-linux-gnu/python2.7', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '-DPYTHONDIR="/usr/local/lib/python2.7/dist-packages"', '-DPYTHONARCHDIR="/usr/local/lib/python2.7/dist-packages"', '-DHAVE_PYEMBED=1', '-D_FORTIFY_SOURCE=2', '-DNDEBUG', '../test.cpp', '-c', '-o', '/home/khabak3/MyResources/Timers-Cisco3/timers/ns-3/build/.conf_check_5331e46b1d8064a77af68c0dba5ac5e7/testbuild/test.cpp.1.o']
+[2/2] Linking [33mbuild/.conf_check_5331e46b1d8064a77af68c0dba5ac5e7/testbuild/testprog[0m
 
-['/usr/bin/g++', '-Xlinker', '-export-dynamic', '-Wl,-O1', '-Wl,-Bsymbolic-functions', 'test.cpp.1.o', '-o', '/home/harnen/work/ucl/timers/ns-3/build/.conf_check_d06eec90914d0305efa23f75fdb3c2e8/testbuild/testprog', '-Wl,-Bstatic', '-Wl,-Bdynamic', '-L/usr/lib/python2.7/config-x86_64-linux-gnu', '-L/usr/lib', '-lpython2.7', '-lpthread', '-ldl', '-lutil', '-lm']
+['/usr/bin/g++', '-Xlinker', '-export-dynamic', '-Wl,-O1', '-Wl,-Bsymbolic-functions', 'test.cpp.1.o', '-o', '/home/khabak3/MyResources/Timers-Cisco3/timers/ns-3/build/.conf_check_5331e46b1d8064a77af68c0dba5ac5e7/testbuild/testprog', '-Wl,-Bstatic', '-Wl,-Bdynamic', '-L/usr/lib/python2.7/config-x86_64-linux-gnu', '-L/usr/lib', '-lpython2.7', '-lpthread', '-ldl', '-lutil', '-lm']
 yes
 ------------------------------------------------------------------
 Asking python-config for pyext '--cflags --libs --ldflags' flags
 ['/usr/bin/python-config', '--cflags', '--libs', '--ldflags']
-out: -I/usr/include/python2.7 -I/usr/include/x86_64-linux-gnu/python2.7  -fno-strict-aliasing -Wdate-time -D_FORTIFY_SOURCE=2 -g -fdebug-prefix-map=/build/python2.7-l1RrwO/python2.7-2.7.14=. -fstack-protector-strong -Wformat -Werror=format-security  -DNDEBUG -g -fwrapv -O2 -Wall -Wstrict-prototypes
+out: -I/usr/include/python2.7 -I/usr/include/x86_64-linux-gnu/python2.7  -fno-strict-aliasing -Wdate-time -D_FORTIFY_SOURCE=2 -g -fstack-protector-strong -Wformat -Werror=format-security  -DNDEBUG -g -fwrapv -O2 -Wall -Wstrict-prototypes
 -lpython2.7 -lpthread -ldl  -lutil -lm 
 -L/usr/lib/python2.7/config-x86_64-linux-gnu -L/usr/lib -lpython2.7 -lpthread -ldl  -lutil -lm  -Xlinker -export-dynamic -Wl,-O1 -Wl,-Bsymbolic-functions
 
@@ -306,30 +306,30 @@ int main(int argc, char **argv)
 }
 
 <==
-[1/2] Compiling [32mbuild/.conf_check_c6dbc53f88dcf60f331d1fb760983518/test.cpp[0m
+[1/2] Compiling [32mbuild/.conf_check_f098bc479cfb9f489fb0379658a52578/test.cpp[0m
 
-['/usr/bin/g++', '-std=c++0x', '-std=c++11', '-O0', '-ggdb', '-g3', '-Wall', '-Wno-error=deprecated-declarations', '-fstrict-aliasing', '-Wstrict-aliasing', '-fPIC', '-fno-strict-aliasing', '-fdebug-prefix-map=/build/python2.7-l1RrwO/python2.7-2.7.14=.', '-fstack-protector-strong', '-fwrapv', '-I/usr/include/python2.7', '-I/usr/include/x86_64-linux-gnu/python2.7', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '-DPYTHONDIR="/usr/local/lib/python2.7/dist-packages"', '-DPYTHONARCHDIR="/usr/local/lib/python2.7/dist-packages"', '-DHAVE_PYEMBED=1', '-DHAVE_PYEXT=1', '-D_FORTIFY_SOURCE=2', '-DNDEBUG', '../test.cpp', '-c', '-o', '/home/harnen/work/ucl/timers/ns-3/build/.conf_check_c6dbc53f88dcf60f331d1fb760983518/testbuild/test.cpp.1.o']
-[2/2] Linking [33mbuild/.conf_check_c6dbc53f88dcf60f331d1fb760983518/testbuild/testprog.so[0m
+['/usr/bin/g++', '-std=c++0x', '-std=c++11', '-O0', '-ggdb', '-g3', '-Wall', '-Wno-error=deprecated-declarations', '-fstrict-aliasing', '-Wstrict-aliasing', '-fPIC', '-fno-strict-aliasing', '-fstack-protector-strong', '-fwrapv', '-I/usr/include/python2.7', '-I/usr/include/x86_64-linux-gnu/python2.7', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '-DPYTHONDIR="/usr/local/lib/python2.7/dist-packages"', '-DPYTHONARCHDIR="/usr/local/lib/python2.7/dist-packages"', '-DHAVE_PYEMBED=1', '-DHAVE_PYEXT=1', '-D_FORTIFY_SOURCE=2', '-DNDEBUG', '../test.cpp', '-c', '-o', '/home/khabak3/MyResources/Timers-Cisco3/timers/ns-3/build/.conf_check_f098bc479cfb9f489fb0379658a52578/testbuild/test.cpp.1.o']
+[2/2] Linking [33mbuild/.conf_check_f098bc479cfb9f489fb0379658a52578/testbuild/testprog.so[0m
 
-['/usr/bin/g++', '-shared', '-Xlinker', '-export-dynamic', '-Wl,-O1', '-Wl,-Bsymbolic-functions', 'test.cpp.1.o', '-o', '/home/harnen/work/ucl/timers/ns-3/build/.conf_check_c6dbc53f88dcf60f331d1fb760983518/testbuild/testprog.so', '-Wl,-Bstatic', '-Wl,-Bdynamic', '-L/usr/lib/python2.7/config-x86_64-linux-gnu', '-L/usr/lib', '-lpython2.7', '-lpthread', '-ldl', '-lutil', '-lm']
+['/usr/bin/g++', '-shared', '-Xlinker', '-export-dynamic', '-Wl,-O1', '-Wl,-Bsymbolic-functions', 'test.cpp.1.o', '-o', '/home/khabak3/MyResources/Timers-Cisco3/timers/ns-3/build/.conf_check_f098bc479cfb9f489fb0379658a52578/testbuild/testprog.so', '-Wl,-Bstatic', '-Wl,-Bdynamic', '-L/usr/lib/python2.7/config-x86_64-linux-gnu', '-L/usr/lib', '-lpython2.7', '-lpthread', '-ldl', '-lutil', '-lm']
 yes
 ------------------------------------------------------------------
 Checking for compilation flag -fvisibility=hidden... support
 ==>
 int main() { return 0; }
 <==
-[1/1] Compiling [32mbuild/.conf_check_15efe9a408f56600837aaf8c9de3e6d4/test.cpp[0m
+[1/1] Compiling [32mbuild/.conf_check_427f5a9f5237e41c01c0f895cba2a6a5/test.cpp[0m
 
-['/usr/bin/g++', '-std=c++0x', '-std=c++11', '-O0', '-ggdb', '-g3', '-Wall', '-Wno-error=deprecated-declarations', '-fstrict-aliasing', '-Wstrict-aliasing', '-fvisibility=hidden', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '-DPYTHONDIR="/usr/local/lib/python2.7/dist-packages"', '-DPYTHONARCHDIR="/usr/local/lib/python2.7/dist-packages"', '-DHAVE_PYEMBED=1', '-DHAVE_PYEXT=1', '-DHAVE_PYTHON_H=1', '../test.cpp', '-c', '-o', '/home/harnen/work/ucl/timers/ns-3/build/.conf_check_15efe9a408f56600837aaf8c9de3e6d4/testbuild/test.cpp.1.o']
+['/usr/bin/g++', '-std=c++0x', '-std=c++11', '-O0', '-ggdb', '-g3', '-Wall', '-Wno-error=deprecated-declarations', '-fstrict-aliasing', '-Wstrict-aliasing', '-fvisibility=hidden', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '-DPYTHONDIR="/usr/local/lib/python2.7/dist-packages"', '-DPYTHONARCHDIR="/usr/local/lib/python2.7/dist-packages"', '-DHAVE_PYEMBED=1', '-DHAVE_PYEXT=1', '-DHAVE_PYTHON_H=1', '../test.cpp', '-c', '-o', '/home/khabak3/MyResources/Timers-Cisco3/timers/ns-3/build/.conf_check_427f5a9f5237e41c01c0f895cba2a6a5/testbuild/test.cpp.1.o']
 ok
 ------------------------------------------------------------------
 Checking for compilation flag -Wno-array-bounds... support
 ==>
 int main() { return 0; }
 <==
-[1/1] Compiling [32mbuild/.conf_check_15efe9a408f56600837aaf8c9de3e6d4/test.cpp[0m
+[1/1] Compiling [32mbuild/.conf_check_427f5a9f5237e41c01c0f895cba2a6a5/test.cpp[0m
 
-['/usr/bin/g++', '-std=c++0x', '-std=c++11', '-O0', '-ggdb', '-g3', '-Wall', '-Wno-error=deprecated-declarations', '-fstrict-aliasing', '-Wstrict-aliasing', '-Wno-array-bounds', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '-DPYTHONDIR="/usr/local/lib/python2.7/dist-packages"', '-DPYTHONARCHDIR="/usr/local/lib/python2.7/dist-packages"', '-DHAVE_PYEMBED=1', '-DHAVE_PYEXT=1', '-DHAVE_PYTHON_H=1', '../test.cpp', '-c', '-o', '/home/harnen/work/ucl/timers/ns-3/build/.conf_check_15efe9a408f56600837aaf8c9de3e6d4/testbuild/test.cpp.1.o']
+['/usr/bin/g++', '-std=c++0x', '-std=c++11', '-O0', '-ggdb', '-g3', '-Wall', '-Wno-error=deprecated-declarations', '-fstrict-aliasing', '-Wstrict-aliasing', '-Wno-array-bounds', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '-DPYTHONDIR="/usr/local/lib/python2.7/dist-packages"', '-DPYTHONARCHDIR="/usr/local/lib/python2.7/dist-packages"', '-DHAVE_PYEMBED=1', '-DHAVE_PYEXT=1', '-DHAVE_PYTHON_H=1', '../test.cpp', '-c', '-o', '/home/khabak3/MyResources/Timers-Cisco3/timers/ns-3/build/.conf_check_427f5a9f5237e41c01c0f895cba2a6a5/testbuild/test.cpp.1.o']
 ok
 ------------------------------------------------------------------
 Checking for pybindgen location
@@ -344,200 +344,196 @@ ok
 Checking for pybindgen version
 ------------------------------------------------------------------
 Checking boost includes
-1_62
+1_58
 ------------------------------------------------------------------
 Checking boost libs
 Found the boost path in /usr/lib/x86_64-linux-gnu with the libraries:
     /usr/lib/x86_64-linux-gnu/libboost_atomic.a
     /usr/lib/x86_64-linux-gnu/libboost_atomic.so
-    /usr/lib/x86_64-linux-gnu/libboost_atomic.so.1.62.0
+    /usr/lib/x86_64-linux-gnu/libboost_atomic.so.1.58.0
     /usr/lib/x86_64-linux-gnu/libboost_chrono.a
     /usr/lib/x86_64-linux-gnu/libboost_chrono.so
-    /usr/lib/x86_64-linux-gnu/libboost_chrono.so.1.62.0
+    /usr/lib/x86_64-linux-gnu/libboost_chrono.so.1.58.0
     /usr/lib/x86_64-linux-gnu/libboost_context.a
     /usr/lib/x86_64-linux-gnu/libboost_context.so
-    /usr/lib/x86_64-linux-gnu/libboost_context.so.1.62.0
+    /usr/lib/x86_64-linux-gnu/libboost_context.so.1.58.0
     /usr/lib/x86_64-linux-gnu/libboost_coroutine.a
     /usr/lib/x86_64-linux-gnu/libboost_coroutine.so
-    /usr/lib/x86_64-linux-gnu/libboost_coroutine.so.1.62.0
+    /usr/lib/x86_64-linux-gnu/libboost_coroutine.so.1.58.0
     /usr/lib/x86_64-linux-gnu/libboost_date_time.a
     /usr/lib/x86_64-linux-gnu/libboost_date_time.so
-    /usr/lib/x86_64-linux-gnu/libboost_date_time.so.1.62.0
+    /usr/lib/x86_64-linux-gnu/libboost_date_time.so.1.58.0
     /usr/lib/x86_64-linux-gnu/libboost_exception.a
-    /usr/lib/x86_64-linux-gnu/libboost_fiber.a
-    /usr/lib/x86_64-linux-gnu/libboost_fiber.so
-    /usr/lib/x86_64-linux-gnu/libboost_fiber.so.1.62.0
     /usr/lib/x86_64-linux-gnu/libboost_filesystem.a
     /usr/lib/x86_64-linux-gnu/libboost_filesystem.so
-    /usr/lib/x86_64-linux-gnu/libboost_filesystem.so.1.62.0
+    /usr/lib/x86_64-linux-gnu/libboost_filesystem.so.1.58.0
     /usr/lib/x86_64-linux-gnu/libboost_graph.a
     /usr/lib/x86_64-linux-gnu/libboost_graph.so
-    /usr/lib/x86_64-linux-gnu/libboost_graph.so.1.62.0
+    /usr/lib/x86_64-linux-gnu/libboost_graph.so.1.55.0
+    /usr/lib/x86_64-linux-gnu/libboost_graph.so.1.58.0
     /usr/lib/x86_64-linux-gnu/libboost_graph_parallel.a
     /usr/lib/x86_64-linux-gnu/libboost_graph_parallel.so
-    /usr/lib/x86_64-linux-gnu/libboost_graph_parallel.so.1.62.0
+    /usr/lib/x86_64-linux-gnu/libboost_graph_parallel.so.1.58.0
     /usr/lib/x86_64-linux-gnu/libboost_iostreams.a
     /usr/lib/x86_64-linux-gnu/libboost_iostreams.so
-    /usr/lib/x86_64-linux-gnu/libboost_iostreams.so.1.62.0
+    /usr/lib/x86_64-linux-gnu/libboost_iostreams.so.1.55.0
+    /usr/lib/x86_64-linux-gnu/libboost_iostreams.so.1.58.0
     /usr/lib/x86_64-linux-gnu/libboost_locale.a
     /usr/lib/x86_64-linux-gnu/libboost_locale.so
-    /usr/lib/x86_64-linux-gnu/libboost_locale.so.1.62.0
+    /usr/lib/x86_64-linux-gnu/libboost_locale.so.1.58.0
     /usr/lib/x86_64-linux-gnu/libboost_log.a
     /usr/lib/x86_64-linux-gnu/libboost_log.so
-    /usr/lib/x86_64-linux-gnu/libboost_log.so.1.62.0
+    /usr/lib/x86_64-linux-gnu/libboost_log.so.1.58.0
     /usr/lib/x86_64-linux-gnu/libboost_log_setup.a
     /usr/lib/x86_64-linux-gnu/libboost_log_setup.so
-    /usr/lib/x86_64-linux-gnu/libboost_log_setup.so.1.62.0
+    /usr/lib/x86_64-linux-gnu/libboost_log_setup.so.1.58.0
     /usr/lib/x86_64-linux-gnu/libboost_math_c99.a
     /usr/lib/x86_64-linux-gnu/libboost_math_c99.so
-    /usr/lib/x86_64-linux-gnu/libboost_math_c99.so.1.62.0
+    /usr/lib/x86_64-linux-gnu/libboost_math_c99.so.1.58.0
     /usr/lib/x86_64-linux-gnu/libboost_math_c99f.a
     /usr/lib/x86_64-linux-gnu/libboost_math_c99f.so
-    /usr/lib/x86_64-linux-gnu/libboost_math_c99f.so.1.62.0
+    /usr/lib/x86_64-linux-gnu/libboost_math_c99f.so.1.58.0
     /usr/lib/x86_64-linux-gnu/libboost_math_c99l.a
     /usr/lib/x86_64-linux-gnu/libboost_math_c99l.so
-    /usr/lib/x86_64-linux-gnu/libboost_math_c99l.so.1.62.0
+    /usr/lib/x86_64-linux-gnu/libboost_math_c99l.so.1.58.0
     /usr/lib/x86_64-linux-gnu/libboost_math_tr1.a
     /usr/lib/x86_64-linux-gnu/libboost_math_tr1.so
-    /usr/lib/x86_64-linux-gnu/libboost_math_tr1.so.1.62.0
+    /usr/lib/x86_64-linux-gnu/libboost_math_tr1.so.1.58.0
     /usr/lib/x86_64-linux-gnu/libboost_math_tr1f.a
     /usr/lib/x86_64-linux-gnu/libboost_math_tr1f.so
-    /usr/lib/x86_64-linux-gnu/libboost_math_tr1f.so.1.62.0
+    /usr/lib/x86_64-linux-gnu/libboost_math_tr1f.so.1.58.0
     /usr/lib/x86_64-linux-gnu/libboost_math_tr1l.a
     /usr/lib/x86_64-linux-gnu/libboost_math_tr1l.so
-    /usr/lib/x86_64-linux-gnu/libboost_math_tr1l.so.1.62.0
+    /usr/lib/x86_64-linux-gnu/libboost_math_tr1l.so.1.58.0
     /usr/lib/x86_64-linux-gnu/libboost_mpi.a
     /usr/lib/x86_64-linux-gnu/libboost_mpi.so
-    /usr/lib/x86_64-linux-gnu/libboost_mpi.so.1.62.0
+    /usr/lib/x86_64-linux-gnu/libboost_mpi.so.1.58.0
     /usr/lib/x86_64-linux-gnu/libboost_mpi_python-py27.a
     /usr/lib/x86_64-linux-gnu/libboost_mpi_python-py27.so
-    /usr/lib/x86_64-linux-gnu/libboost_mpi_python-py27.so.1.62.0
+    /usr/lib/x86_64-linux-gnu/libboost_mpi_python-py27.so.1.58.0
     /usr/lib/x86_64-linux-gnu/libboost_mpi_python-py35.a
     /usr/lib/x86_64-linux-gnu/libboost_mpi_python-py35.so
-    /usr/lib/x86_64-linux-gnu/libboost_mpi_python-py35.so.1.62.0
-    /usr/lib/x86_64-linux-gnu/libboost_mpi_python-py36.a
-    /usr/lib/x86_64-linux-gnu/libboost_mpi_python-py36.so
-    /usr/lib/x86_64-linux-gnu/libboost_mpi_python-py36.so.1.62.0
+    /usr/lib/x86_64-linux-gnu/libboost_mpi_python-py35.so.1.58.0
     /usr/lib/x86_64-linux-gnu/libboost_mpi_python.a
     /usr/lib/x86_64-linux-gnu/libboost_mpi_python.so
     /usr/lib/x86_64-linux-gnu/libboost_prg_exec_monitor.a
     /usr/lib/x86_64-linux-gnu/libboost_prg_exec_monitor.so
-    /usr/lib/x86_64-linux-gnu/libboost_prg_exec_monitor.so.1.62.0
+    /usr/lib/x86_64-linux-gnu/libboost_prg_exec_monitor.so.1.58.0
     /usr/lib/x86_64-linux-gnu/libboost_program_options.a
     /usr/lib/x86_64-linux-gnu/libboost_program_options.so
-    /usr/lib/x86_64-linux-gnu/libboost_program_options.so.1.62.0
+    /usr/lib/x86_64-linux-gnu/libboost_program_options.so.1.58.0
     /usr/lib/x86_64-linux-gnu/libboost_python-py27.a
     /usr/lib/x86_64-linux-gnu/libboost_python-py27.so
-    /usr/lib/x86_64-linux-gnu/libboost_python-py27.so.1.62.0
+    /usr/lib/x86_64-linux-gnu/libboost_python-py27.so.1.55.0
+    /usr/lib/x86_64-linux-gnu/libboost_python-py27.so.1.58.0
+    /usr/lib/x86_64-linux-gnu/libboost_python-py33.so.1.55.0
+    /usr/lib/x86_64-linux-gnu/libboost_python-py34.so.1.55.0
     /usr/lib/x86_64-linux-gnu/libboost_python-py35.a
     /usr/lib/x86_64-linux-gnu/libboost_python-py35.so
-    /usr/lib/x86_64-linux-gnu/libboost_python-py35.so.1.62.0
-    /usr/lib/x86_64-linux-gnu/libboost_python-py36.a
-    /usr/lib/x86_64-linux-gnu/libboost_python-py36.so
-    /usr/lib/x86_64-linux-gnu/libboost_python-py36.so.1.62.0
+    /usr/lib/x86_64-linux-gnu/libboost_python-py35.so.1.58.0
     /usr/lib/x86_64-linux-gnu/libboost_python.a
     /usr/lib/x86_64-linux-gnu/libboost_python.so
     /usr/lib/x86_64-linux-gnu/libboost_random.a
     /usr/lib/x86_64-linux-gnu/libboost_random.so
-    /usr/lib/x86_64-linux-gnu/libboost_random.so.1.62.0
+    /usr/lib/x86_64-linux-gnu/libboost_random.so.1.58.0
     /usr/lib/x86_64-linux-gnu/libboost_regex.a
     /usr/lib/x86_64-linux-gnu/libboost_regex.so
-    /usr/lib/x86_64-linux-gnu/libboost_regex.so.1.62.0
+    /usr/lib/x86_64-linux-gnu/libboost_regex.so.1.55.0
+    /usr/lib/x86_64-linux-gnu/libboost_regex.so.1.58.0
     /usr/lib/x86_64-linux-gnu/libboost_serialization.a
     /usr/lib/x86_64-linux-gnu/libboost_serialization.so
-    /usr/lib/x86_64-linux-gnu/libboost_serialization.so.1.62.0
+    /usr/lib/x86_64-linux-gnu/libboost_serialization.so.1.58.0
     /usr/lib/x86_64-linux-gnu/libboost_signals.a
     /usr/lib/x86_64-linux-gnu/libboost_signals.so
-    /usr/lib/x86_64-linux-gnu/libboost_signals.so.1.62.0
+    /usr/lib/x86_64-linux-gnu/libboost_signals.so.1.58.0
     /usr/lib/x86_64-linux-gnu/libboost_system.a
     /usr/lib/x86_64-linux-gnu/libboost_system.so
-    /usr/lib/x86_64-linux-gnu/libboost_system.so.1.62.0
+    /usr/lib/x86_64-linux-gnu/libboost_system.so.1.55.0
+    /usr/lib/x86_64-linux-gnu/libboost_system.so.1.58.0
     /usr/lib/x86_64-linux-gnu/libboost_test_exec_monitor.a
     /usr/lib/x86_64-linux-gnu/libboost_thread.a
     /usr/lib/x86_64-linux-gnu/libboost_thread.so
-    /usr/lib/x86_64-linux-gnu/libboost_thread.so.1.62.0
+    /usr/lib/x86_64-linux-gnu/libboost_thread.so.1.55.0
+    /usr/lib/x86_64-linux-gnu/libboost_thread.so.1.58.0
     /usr/lib/x86_64-linux-gnu/libboost_timer.a
     /usr/lib/x86_64-linux-gnu/libboost_timer.so
-    /usr/lib/x86_64-linux-gnu/libboost_timer.so.1.62.0
-    /usr/lib/x86_64-linux-gnu/libboost_type_erasure.a
-    /usr/lib/x86_64-linux-gnu/libboost_type_erasure.so
-    /usr/lib/x86_64-linux-gnu/libboost_type_erasure.so.1.62.0
+    /usr/lib/x86_64-linux-gnu/libboost_timer.so.1.58.0
     /usr/lib/x86_64-linux-gnu/libboost_unit_test_framework.a
     /usr/lib/x86_64-linux-gnu/libboost_unit_test_framework.so
-    /usr/lib/x86_64-linux-gnu/libboost_unit_test_framework.so.1.62.0
+    /usr/lib/x86_64-linux-gnu/libboost_unit_test_framework.so.1.58.0
     /usr/lib/x86_64-linux-gnu/libboost_wave.a
     /usr/lib/x86_64-linux-gnu/libboost_wave.so
-    /usr/lib/x86_64-linux-gnu/libboost_wave.so.1.62.0
+    /usr/lib/x86_64-linux-gnu/libboost_wave.so.1.58.0
     /usr/lib/x86_64-linux-gnu/libboost_wserialization.a
     /usr/lib/x86_64-linux-gnu/libboost_wserialization.so
-    /usr/lib/x86_64-linux-gnu/libboost_wserialization.so.1.62.0
-Trying pattern boost_graph(-gcc[0-9]{0,3})-1_62.so$
-Trying pattern boost_graph-1_62.so$
+    /usr/lib/x86_64-linux-gnu/libboost_wserialization.so.1.58.0
+Trying pattern boost_graph(-gcc[0-9]{0,3})-1_58.so$
+Trying pattern boost_graph-1_58.so$
 Trying pattern boost_graph(-gcc[0-9]{0,3}).so$
 Trying pattern boost_graph.so$
 Found boost lib libboost_graph.so
-Trying pattern boost_thread(-gcc[0-9]{0,3})-1_62.so$
-Trying pattern boost_thread-1_62.so$
+Trying pattern boost_thread(-gcc[0-9]{0,3})-1_58.so$
+Trying pattern boost_thread-1_58.so$
 Trying pattern boost_thread(-gcc[0-9]{0,3}).so$
 Trying pattern boost_thread.so$
 Found boost lib libboost_thread.so
-Trying pattern boost_unit_test_framework(-gcc[0-9]{0,3})-1_62.so$
-Trying pattern boost_unit_test_framework-1_62.so$
+Trying pattern boost_unit_test_framework(-gcc[0-9]{0,3})-1_58.so$
+Trying pattern boost_unit_test_framework-1_58.so$
 Trying pattern boost_unit_test_framework(-gcc[0-9]{0,3}).so$
 Trying pattern boost_unit_test_framework.so$
 Found boost lib libboost_unit_test_framework.so
-Trying pattern boost_system(-gcc[0-9]{0,3})-1_62.so$
-Trying pattern boost_system-1_62.so$
+Trying pattern boost_system(-gcc[0-9]{0,3})-1_58.so$
+Trying pattern boost_system-1_58.so$
 Trying pattern boost_system(-gcc[0-9]{0,3}).so$
 Trying pattern boost_system.so$
 Found boost lib libboost_system.so
-Trying pattern boost_random(-gcc[0-9]{0,3})-1_62.so$
-Trying pattern boost_random-1_62.so$
+Trying pattern boost_random(-gcc[0-9]{0,3})-1_58.so$
+Trying pattern boost_random-1_58.so$
 Trying pattern boost_random(-gcc[0-9]{0,3}).so$
 Trying pattern boost_random.so$
 Found boost lib libboost_random.so
-Trying pattern boost_date_time(-gcc[0-9]{0,3})-1_62.so$
-Trying pattern boost_date_time-1_62.so$
+Trying pattern boost_date_time(-gcc[0-9]{0,3})-1_58.so$
+Trying pattern boost_date_time-1_58.so$
 Trying pattern boost_date_time(-gcc[0-9]{0,3}).so$
 Trying pattern boost_date_time.so$
 Found boost lib libboost_date_time.so
-Trying pattern boost_iostreams(-gcc[0-9]{0,3})-1_62.so$
-Trying pattern boost_iostreams-1_62.so$
+Trying pattern boost_iostreams(-gcc[0-9]{0,3})-1_58.so$
+Trying pattern boost_iostreams-1_58.so$
 Trying pattern boost_iostreams(-gcc[0-9]{0,3}).so$
 Trying pattern boost_iostreams.so$
 Found boost lib libboost_iostreams.so
-Trying pattern boost_regex(-gcc[0-9]{0,3})-1_62.so$
-Trying pattern boost_regex-1_62.so$
+Trying pattern boost_regex(-gcc[0-9]{0,3})-1_58.so$
+Trying pattern boost_regex-1_58.so$
 Trying pattern boost_regex(-gcc[0-9]{0,3}).so$
 Trying pattern boost_regex.so$
 Found boost lib libboost_regex.so
-Trying pattern boost_program_options(-gcc[0-9]{0,3})-1_62.so$
-Trying pattern boost_program_options-1_62.so$
+Trying pattern boost_program_options(-gcc[0-9]{0,3})-1_58.so$
+Trying pattern boost_program_options-1_58.so$
 Trying pattern boost_program_options(-gcc[0-9]{0,3}).so$
 Trying pattern boost_program_options.so$
 Found boost lib libboost_program_options.so
-Trying pattern boost_chrono(-gcc[0-9]{0,3})-1_62.so$
-Trying pattern boost_chrono-1_62.so$
+Trying pattern boost_chrono(-gcc[0-9]{0,3})-1_58.so$
+Trying pattern boost_chrono-1_58.so$
 Trying pattern boost_chrono(-gcc[0-9]{0,3}).so$
 Trying pattern boost_chrono.so$
 Found boost lib libboost_chrono.so
-Trying pattern boost_filesystem(-gcc[0-9]{0,3})-1_62.so$
-Trying pattern boost_filesystem-1_62.so$
+Trying pattern boost_filesystem(-gcc[0-9]{0,3})-1_58.so$
+Trying pattern boost_filesystem-1_58.so$
 Trying pattern boost_filesystem(-gcc[0-9]{0,3}).so$
 Trying pattern boost_filesystem.so$
 Found boost lib libboost_filesystem.so
-Trying pattern boost_system(-gcc[0-9]{0,3})-1_62.so$
-Trying pattern boost_system-1_62.so$
+Trying pattern boost_system(-gcc[0-9]{0,3})-1_58.so$
+Trying pattern boost_system-1_58.so$
 Trying pattern boost_system(-gcc[0-9]{0,3}).so$
 Trying pattern boost_system.so$
 Found boost lib libboost_system.so
-Trying pattern boost_signals(-gcc[0-9]{0,3})-1_62.so$
-Trying pattern boost_signals-1_62.so$
+Trying pattern boost_signals(-gcc[0-9]{0,3})-1_58.so$
+Trying pattern boost_signals-1_58.so$
 Trying pattern boost_signals(-gcc[0-9]{0,3}).so$
 Trying pattern boost_signals.so$
 Found boost lib libboost_signals.so
-Trying pattern boost_filesystem(-gcc[0-9]{0,3})-1_62.so$
-Trying pattern boost_filesystem-1_62.so$
+Trying pattern boost_filesystem(-gcc[0-9]{0,3})-1_58.so$
+Trying pattern boost_filesystem-1_58.so$
 Trying pattern boost_filesystem(-gcc[0-9]{0,3}).so$
 Trying pattern boost_filesystem.so$
 Found boost lib libboost_filesystem.so
@@ -550,24 +546,24 @@ Checking for boost linkage
 int main() { boost::system::error_code c; }
 
 <==
-[1/2] Compiling [32mbuild/.conf_check_98154fc6f9b03af7759721eb3ca441ec/test.cpp[0m
+[1/2] Compiling [32mbuild/.conf_check_1619bad58ee11290b5bd704cfa56a3cc/test.cpp[0m
 
-['/usr/bin/g++', '-std=c++0x', '-std=c++11', '-O0', '-ggdb', '-g3', '-Wall', '-Wno-error=deprecated-declarations', '-fstrict-aliasing', '-Wstrict-aliasing', '-I/usr/include', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '-DPYTHONDIR="/usr/local/lib/python2.7/dist-packages"', '-DPYTHONARCHDIR="/usr/local/lib/python2.7/dist-packages"', '-DHAVE_PYEMBED=1', '-DHAVE_PYEXT=1', '-DHAVE_PYTHON_H=1', '../test.cpp', '-c', '-o', '/home/harnen/work/ucl/timers/ns-3/build/.conf_check_98154fc6f9b03af7759721eb3ca441ec/testbuild/test.cpp.1.o']
-[2/2] Linking [33mbuild/.conf_check_98154fc6f9b03af7759721eb3ca441ec/testbuild/testprog[0m
+['/usr/bin/g++', '-std=c++0x', '-std=c++11', '-O0', '-ggdb', '-g3', '-Wall', '-Wno-error=deprecated-declarations', '-fstrict-aliasing', '-Wstrict-aliasing', '-I/usr/include', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '-DPYTHONDIR="/usr/local/lib/python2.7/dist-packages"', '-DPYTHONARCHDIR="/usr/local/lib/python2.7/dist-packages"', '-DHAVE_PYEMBED=1', '-DHAVE_PYEXT=1', '-DHAVE_PYTHON_H=1', '../test.cpp', '-c', '-o', '/home/khabak3/MyResources/Timers-Cisco3/timers/ns-3/build/.conf_check_1619bad58ee11290b5bd704cfa56a3cc/testbuild/test.cpp.1.o']
+[2/2] Linking [33mbuild/.conf_check_1619bad58ee11290b5bd704cfa56a3cc/testbuild/testprog[0m
 
-['/usr/bin/g++', 'test.cpp.1.o', '-o', '/home/harnen/work/ucl/timers/ns-3/build/.conf_check_98154fc6f9b03af7759721eb3ca441ec/testbuild/testprog', '-Wl,-Bstatic', '-Wl,-Bdynamic', '-L/usr/lib/x86_64-linux-gnu', '-lboost_graph', '-lboost_thread', '-lboost_unit_test_framework', '-lboost_system', '-lboost_random', '-lboost_date_time', '-lboost_iostreams', '-lboost_regex', '-lboost_program_options', '-lboost_chrono', '-lboost_filesystem', '-lboost_system', '-lboost_signals', '-lboost_filesystem']
+['/usr/bin/g++', 'test.cpp.1.o', '-o', '/home/khabak3/MyResources/Timers-Cisco3/timers/ns-3/build/.conf_check_1619bad58ee11290b5bd704cfa56a3cc/testbuild/testprog', '-Wl,-Bstatic', '-Wl,-Bdynamic', '-L/usr/lib/x86_64-linux-gnu', '-lboost_graph', '-lboost_thread', '-lboost_unit_test_framework', '-lboost_system', '-lboost_random', '-lboost_date_time', '-lboost_iostreams', '-lboost_regex', '-lboost_program_options', '-lboost_chrono', '-lboost_filesystem', '-lboost_system', '-lboost_signals', '-lboost_filesystem']
 ==>
 
 #include <boost/thread.hpp>
 int main() { boost::thread t; }
 
 <==
-[1/2] Compiling [32mbuild/.conf_check_b82877d8a51e7116d4954d0839f22762/test.cpp[0m
+[1/2] Compiling [32mbuild/.conf_check_3034b6c86b892de179a2c1793ed2243c/test.cpp[0m
 
-['/usr/bin/g++', '-std=c++0x', '-std=c++11', '-O0', '-ggdb', '-g3', '-Wall', '-Wno-error=deprecated-declarations', '-fstrict-aliasing', '-Wstrict-aliasing', '-I/usr/include', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '-DPYTHONDIR="/usr/local/lib/python2.7/dist-packages"', '-DPYTHONARCHDIR="/usr/local/lib/python2.7/dist-packages"', '-DHAVE_PYEMBED=1', '-DHAVE_PYEXT=1', '-DHAVE_PYTHON_H=1', '../test.cpp', '-c', '-o', '/home/harnen/work/ucl/timers/ns-3/build/.conf_check_b82877d8a51e7116d4954d0839f22762/testbuild/test.cpp.1.o']
-[2/2] Linking [33mbuild/.conf_check_b82877d8a51e7116d4954d0839f22762/testbuild/testprog[0m
+['/usr/bin/g++', '-std=c++0x', '-std=c++11', '-O0', '-ggdb', '-g3', '-Wall', '-Wno-error=deprecated-declarations', '-fstrict-aliasing', '-Wstrict-aliasing', '-I/usr/include', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '-DPYTHONDIR="/usr/local/lib/python2.7/dist-packages"', '-DPYTHONARCHDIR="/usr/local/lib/python2.7/dist-packages"', '-DHAVE_PYEMBED=1', '-DHAVE_PYEXT=1', '-DHAVE_PYTHON_H=1', '../test.cpp', '-c', '-o', '/home/khabak3/MyResources/Timers-Cisco3/timers/ns-3/build/.conf_check_3034b6c86b892de179a2c1793ed2243c/testbuild/test.cpp.1.o']
+[2/2] Linking [33mbuild/.conf_check_3034b6c86b892de179a2c1793ed2243c/testbuild/testprog[0m
 
-['/usr/bin/g++', 'test.cpp.1.o', '-o', '/home/harnen/work/ucl/timers/ns-3/build/.conf_check_b82877d8a51e7116d4954d0839f22762/testbuild/testprog', '-Wl,-Bstatic', '-Wl,-Bdynamic', '-L/usr/lib/x86_64-linux-gnu', '-lboost_graph', '-lboost_thread', '-lboost_unit_test_framework', '-lboost_system', '-lboost_random', '-lboost_date_time', '-lboost_iostreams', '-lboost_regex', '-lboost_program_options', '-lboost_chrono', '-lboost_filesystem', '-lboost_system', '-lboost_signals', '-lboost_filesystem']
+['/usr/bin/g++', 'test.cpp.1.o', '-o', '/home/khabak3/MyResources/Timers-Cisco3/timers/ns-3/build/.conf_check_3034b6c86b892de179a2c1793ed2243c/testbuild/testprog', '-Wl,-Bstatic', '-Wl,-Bdynamic', '-L/usr/lib/x86_64-linux-gnu', '-lboost_graph', '-lboost_thread', '-lboost_unit_test_framework', '-lboost_system', '-lboost_random', '-lboost_date_time', '-lboost_iostreams', '-lboost_regex', '-lboost_program_options', '-lboost_chrono', '-lboost_filesystem', '-lboost_system', '-lboost_signals', '-lboost_filesystem']
 ok
 ------------------------------------------------------------------
 Checking for click location
@@ -575,12 +571,12 @@ not found
 ------------------------------------------------------------------
 Checking for program 'pkg-config'
 /usr/bin/pkg-config
-find program=['pkg-config'] paths=['/home/harnen/.yarn/bin', '/usr/local/sbin', '/usr/local/bin', '/usr/sbin', '/usr/bin', '/sbin', '/bin', '/usr/games', '/usr/local/games', '/snap/bin', '/home/harnen/Downloads/eclipse', '/home/harnen/go/bin', '/usr/local/go/bin', '/home/harnen/work/ucl/blockchain/node-v6.11.0-linux-x64/bin', '/home/harnen/Desktop/SGX/sgxsdk/bin', '/home/harnen/Desktop/SGX/sgxsdk/bin/x64'] var='PKGCONFIG' -> ['/usr/bin/pkg-config']
+find program=['pkg-config'] paths=['/usr/local/sbin', '/usr/local/bin', '/usr/sbin', '/usr/bin', '/sbin', '/bin', '/usr/games', '/usr/local/games', '/snap/bin'] var='PKGCONFIG' -> ['/usr/bin/pkg-config']
 ------------------------------------------------------------------
 Checking for 'gtk+-2.0' >= 2.12
 ['/usr/bin/pkg-config', '--atleast-version=2.12', 'gtk+-2.0']
 ['/usr/bin/pkg-config', '--cflags', '--libs', 'gtk+-2.0']
-out: -pthread -I/usr/include/gtk-2.0 -I/usr/lib/x86_64-linux-gnu/gtk-2.0/include -I/usr/include/gio-unix-2.0/ -I/usr/include/cairo -I/usr/include/pango-1.0 -I/usr/include/atk-1.0 -I/usr/include/cairo -I/usr/include/pixman-1 -I/usr/include/libpng16 -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/libpng16 -I/usr/include/pango-1.0 -I/usr/include/harfbuzz -I/usr/include/pango-1.0 -I/usr/include/glib-2.0 -I/usr/lib/x86_64-linux-gnu/glib-2.0/include -I/usr/include/freetype2 -lgtk-x11-2.0 -lgdk-x11-2.0 -lpangocairo-1.0 -latk-1.0 -lcairo -lgdk_pixbuf-2.0 -lgio-2.0 -lpangoft2-1.0 -lpango-1.0 -lgobject-2.0 -lglib-2.0 -lfontconfig -lfreetype
+out: -pthread -I/usr/include/gtk-2.0 -I/usr/lib/x86_64-linux-gnu/gtk-2.0/include -I/usr/include/gio-unix-2.0/ -I/usr/include/cairo -I/usr/include/pango-1.0 -I/usr/include/atk-1.0 -I/usr/include/cairo -I/usr/include/pixman-1 -I/usr/include/libpng12 -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/libpng12 -I/usr/include/pango-1.0 -I/usr/include/harfbuzz -I/usr/include/pango-1.0 -I/usr/include/glib-2.0 -I/usr/lib/x86_64-linux-gnu/glib-2.0/include -I/usr/include/freetype2 -lgtk-x11-2.0 -lgdk-x11-2.0 -lpangocairo-1.0 -latk-1.0 -lcairo -lgdk_pixbuf-2.0 -lgio-2.0 -lpangoft2-1.0 -lpango-1.0 -lgobject-2.0 -lglib-2.0 -lfontconfig -lfreetype
 
 yes
 ------------------------------------------------------------------
@@ -603,17 +599,13 @@ int main(int argc, char **argv) {
 }
 
 <==
-[1/2] Compiling [32mbuild/.conf_check_ea949bb65c7df2d78daca93dd757c4f0/test.cpp[0m
+[1/2] Compiling [32mbuild/.conf_check_06f520a85d4fc718fb1e222cb1fc44ac/test.cpp[0m
 
-['/usr/bin/g++', '-std=c++0x', '-std=c++11', '-O0', '-ggdb', '-g3', '-Wall', '-Wno-error=deprecated-declarations', '-fstrict-aliasing', '-Wstrict-aliasing', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '../test.cpp', '-c', '-o', '/home/harnen/work/ucl/timers/ns-3/build/.conf_check_ea949bb65c7df2d78daca93dd757c4f0/testbuild/test.cpp.1.o']
+['/usr/bin/g++', '-std=c++0x', '-std=c++11', '-O0', '-ggdb', '-g3', '-Wall', '-Wno-error=deprecated-declarations', '-fstrict-aliasing', '-Wstrict-aliasing', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '../test.cpp', '-c', '-o', '/home/khabak3/MyResources/Timers-Cisco3/timers/ns-3/build/.conf_check_06f520a85d4fc718fb1e222cb1fc44ac/testbuild/test.cpp.1.o']
 err: ../test.cpp: In function ‘int main(int, char**)’:
 ../test.cpp:5:7: error: ‘uint128_t’ was not declared in this scope
   if ((uint128_t *) 0) return 0;
-       ^~~~~~~~~
-../test.cpp:5:7: note: suggested alternative: ‘uint32_t’
-  if ((uint128_t *) 0) return 0;
-       ^~~~~~~~~
-       uint32_t
+       ^
 ../test.cpp:5:18: error: expected primary-expression before ‘)’ token
   if ((uint128_t *) 0) return 0;
                   ^
@@ -622,24 +614,20 @@ err: ../test.cpp: In function ‘int main(int, char**)’:
                     ^
 ../test.cpp:6:14: error: ‘uint128_t’ was not declared in this scope
   if (sizeof (uint128_t)) return 0;
-              ^~~~~~~~~
-../test.cpp:6:14: note: suggested alternative: ‘uint32_t’
-  if (sizeof (uint128_t)) return 0;
-              ^~~~~~~~~
-              uint32_t
+              ^
 
-from /home/harnen/work/ucl/timers/ns-3/src/core: Test does not build: Traceback (most recent call last):
-  File "/home/harnen/work/ucl/timers/ns-3/.waf-1.8.12-f00e5b53f6bbeab1384a38c9cc5d51f7/waflib/Configure.py", line 339, in run_build
+from /home/khabak3/MyResources/Timers-Cisco3/timers/ns-3/src/core: Test does not build: Traceback (most recent call last):
+  File "/home/khabak3/MyResources/Timers-Cisco3/timers/ns-3/.waf-1.8.12-f00e5b53f6bbeab1384a38c9cc5d51f7/waflib/Configure.py", line 339, in run_build
     bld.compile()
-  File "/home/harnen/work/ucl/timers/ns-3/.waf-1.8.12-f00e5b53f6bbeab1384a38c9cc5d51f7/waflib/Build.py", line 182, in compile
+  File "/home/khabak3/MyResources/Timers-Cisco3/timers/ns-3/.waf-1.8.12-f00e5b53f6bbeab1384a38c9cc5d51f7/waflib/Build.py", line 182, in compile
     raise Errors.BuildError(self.producer.error)
 BuildError: Build failed
  -> task in 'testprog' failed (exit status 1): 
-	{task 140286566043408: cxx test.cpp -> test.cpp.1.o}
-['/usr/bin/g++', '-std=c++0x', '-std=c++11', '-O0', '-ggdb', '-g3', '-Wall', '-Wno-error=deprecated-declarations', '-fstrict-aliasing', '-Wstrict-aliasing', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '../test.cpp', '-c', '-o', '/home/harnen/work/ucl/timers/ns-3/build/.conf_check_ea949bb65c7df2d78daca93dd757c4f0/testbuild/test.cpp.1.o']
+	{task 139701654145104: cxx test.cpp -> test.cpp.1.o}
+['/usr/bin/g++', '-std=c++0x', '-std=c++11', '-O0', '-ggdb', '-g3', '-Wall', '-Wno-error=deprecated-declarations', '-fstrict-aliasing', '-Wstrict-aliasing', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '../test.cpp', '-c', '-o', '/home/khabak3/MyResources/Timers-Cisco3/timers/ns-3/build/.conf_check_06f520a85d4fc718fb1e222cb1fc44ac/testbuild/test.cpp.1.o']
 
 not found
-from /home/harnen/work/ucl/timers/ns-3/src/core: The configuration failed
+from /home/khabak3/MyResources/Timers-Cisco3/timers/ns-3/src/core: The configuration failed
 ------------------------------------------------------------------
 Checking for type __uint128_t
 ==>
@@ -653,12 +641,12 @@ int main(int argc, char **argv) {
 }
 
 <==
-[1/2] Compiling [32mbuild/.conf_check_34a275bad4658f97a91af86c5a26af77/test.cpp[0m
+[1/2] Compiling [32mbuild/.conf_check_1b43b7bcc333a96a7c0f54b53f678e5a/test.cpp[0m
 
-['/usr/bin/g++', '-std=c++0x', '-std=c++11', '-O0', '-ggdb', '-g3', '-Wall', '-Wno-error=deprecated-declarations', '-fstrict-aliasing', '-Wstrict-aliasing', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '../test.cpp', '-c', '-o', '/home/harnen/work/ucl/timers/ns-3/build/.conf_check_34a275bad4658f97a91af86c5a26af77/testbuild/test.cpp.1.o']
-[2/2] Linking [33mbuild/.conf_check_34a275bad4658f97a91af86c5a26af77/testbuild/testprog[0m
+['/usr/bin/g++', '-std=c++0x', '-std=c++11', '-O0', '-ggdb', '-g3', '-Wall', '-Wno-error=deprecated-declarations', '-fstrict-aliasing', '-Wstrict-aliasing', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '../test.cpp', '-c', '-o', '/home/khabak3/MyResources/Timers-Cisco3/timers/ns-3/build/.conf_check_1b43b7bcc333a96a7c0f54b53f678e5a/testbuild/test.cpp.1.o']
+[2/2] Linking [33mbuild/.conf_check_1b43b7bcc333a96a7c0f54b53f678e5a/testbuild/testprog[0m
 
-['/usr/bin/g++', 'test.cpp.1.o', '-o', '/home/harnen/work/ucl/timers/ns-3/build/.conf_check_34a275bad4658f97a91af86c5a26af77/testbuild/testprog', '-Wl,-Bstatic', '-Wl,-Bdynamic']
+['/usr/bin/g++', 'test.cpp.1.o', '-o', '/home/khabak3/MyResources/Timers-Cisco3/timers/ns-3/build/.conf_check_1b43b7bcc333a96a7c0f54b53f678e5a/testbuild/testprog', '-Wl,-Bstatic', '-Wl,-Bdynamic']
 yes
 ------------------------------------------------------------------
 Checking high precision implementation
@@ -674,12 +662,12 @@ int main(int argc, char **argv) {
 }
 
 <==
-[1/2] Compiling [32mbuild/.conf_check_8d804fe16aaead7682086b4bbb7598b5/test.cpp[0m
+[1/2] Compiling [32mbuild/.conf_check_cba714d6295a9eacafb6b51471097605/test.cpp[0m
 
-['/usr/bin/g++', '-std=c++0x', '-std=c++11', '-O0', '-ggdb', '-g3', '-Wall', '-Wno-error=deprecated-declarations', '-fstrict-aliasing', '-Wstrict-aliasing', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '-DHAVE___UINT128_T=1', '-DINT64X64_USE_128=1', '../test.cpp', '-c', '-o', '/home/harnen/work/ucl/timers/ns-3/build/.conf_check_8d804fe16aaead7682086b4bbb7598b5/testbuild/test.cpp.1.o']
-[2/2] Linking [33mbuild/.conf_check_8d804fe16aaead7682086b4bbb7598b5/testbuild/testprog[0m
+['/usr/bin/g++', '-std=c++0x', '-std=c++11', '-O0', '-ggdb', '-g3', '-Wall', '-Wno-error=deprecated-declarations', '-fstrict-aliasing', '-Wstrict-aliasing', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '-DHAVE___UINT128_T=1', '-DINT64X64_USE_128=1', '../test.cpp', '-c', '-o', '/home/khabak3/MyResources/Timers-Cisco3/timers/ns-3/build/.conf_check_cba714d6295a9eacafb6b51471097605/testbuild/test.cpp.1.o']
+[2/2] Linking [33mbuild/.conf_check_cba714d6295a9eacafb6b51471097605/testbuild/testprog[0m
 
-['/usr/bin/g++', 'test.cpp.1.o', '-o', '/home/harnen/work/ucl/timers/ns-3/build/.conf_check_8d804fe16aaead7682086b4bbb7598b5/testbuild/testprog', '-Wl,-Bstatic', '-Wl,-Bdynamic']
+['/usr/bin/g++', 'test.cpp.1.o', '-o', '/home/khabak3/MyResources/Timers-Cisco3/timers/ns-3/build/.conf_check_cba714d6295a9eacafb6b51471097605/testbuild/testprog', '-Wl,-Bstatic', '-Wl,-Bdynamic']
 yes
 ------------------------------------------------------------------
 Checking for header inttypes.h
@@ -692,12 +680,12 @@ int main(int argc, char **argv) {
 }
 
 <==
-[1/2] Compiling [32mbuild/.conf_check_957d5e31115760deda9cdb537f4775fe/test.cpp[0m
+[1/2] Compiling [32mbuild/.conf_check_fb6b9c39eaf80b228ebcb93420ea8d90/test.cpp[0m
 
-['/usr/bin/g++', '-std=c++0x', '-std=c++11', '-O0', '-ggdb', '-g3', '-Wall', '-Wno-error=deprecated-declarations', '-fstrict-aliasing', '-Wstrict-aliasing', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '-DHAVE___UINT128_T=1', '-DINT64X64_USE_128=1', '-DHAVE_STDINT_H=1', '../test.cpp', '-c', '-o', '/home/harnen/work/ucl/timers/ns-3/build/.conf_check_957d5e31115760deda9cdb537f4775fe/testbuild/test.cpp.1.o']
-[2/2] Linking [33mbuild/.conf_check_957d5e31115760deda9cdb537f4775fe/testbuild/testprog[0m
+['/usr/bin/g++', '-std=c++0x', '-std=c++11', '-O0', '-ggdb', '-g3', '-Wall', '-Wno-error=deprecated-declarations', '-fstrict-aliasing', '-Wstrict-aliasing', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '-DHAVE___UINT128_T=1', '-DINT64X64_USE_128=1', '-DHAVE_STDINT_H=1', '../test.cpp', '-c', '-o', '/home/khabak3/MyResources/Timers-Cisco3/timers/ns-3/build/.conf_check_fb6b9c39eaf80b228ebcb93420ea8d90/testbuild/test.cpp.1.o']
+[2/2] Linking [33mbuild/.conf_check_fb6b9c39eaf80b228ebcb93420ea8d90/testbuild/testprog[0m
 
-['/usr/bin/g++', 'test.cpp.1.o', '-o', '/home/harnen/work/ucl/timers/ns-3/build/.conf_check_957d5e31115760deda9cdb537f4775fe/testbuild/testprog', '-Wl,-Bstatic', '-Wl,-Bdynamic']
+['/usr/bin/g++', 'test.cpp.1.o', '-o', '/home/khabak3/MyResources/Timers-Cisco3/timers/ns-3/build/.conf_check_fb6b9c39eaf80b228ebcb93420ea8d90/testbuild/testprog', '-Wl,-Bstatic', '-Wl,-Bdynamic']
 yes
 ------------------------------------------------------------------
 Checking for header sys/inttypes.h
@@ -710,26 +698,24 @@ int main(int argc, char **argv) {
 }
 
 <==
-[1/2] Compiling [32mbuild/.conf_check_9300cf0ee0d81f935de9b15bd16be48c/test.cpp[0m
+[1/2] Compiling [32mbuild/.conf_check_0f12f558c8c9997d16329f06a5629bc6/test.cpp[0m
 
-['/usr/bin/g++', '-std=c++0x', '-std=c++11', '-O0', '-ggdb', '-g3', '-Wall', '-Wno-error=deprecated-declarations', '-fstrict-aliasing', '-Wstrict-aliasing', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '-DHAVE___UINT128_T=1', '-DINT64X64_USE_128=1', '-DHAVE_STDINT_H=1', '-DHAVE_INTTYPES_H=1', '../test.cpp', '-c', '-o', '/home/harnen/work/ucl/timers/ns-3/build/.conf_check_9300cf0ee0d81f935de9b15bd16be48c/testbuild/test.cpp.1.o']
-err: ../test.cpp:1:10: fatal error: sys/inttypes.h: No such file or directory
- #include <sys/inttypes.h>
-          ^~~~~~~~~~~~~~~~
+['/usr/bin/g++', '-std=c++0x', '-std=c++11', '-O0', '-ggdb', '-g3', '-Wall', '-Wno-error=deprecated-declarations', '-fstrict-aliasing', '-Wstrict-aliasing', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '-DHAVE___UINT128_T=1', '-DINT64X64_USE_128=1', '-DHAVE_STDINT_H=1', '-DHAVE_INTTYPES_H=1', '../test.cpp', '-c', '-o', '/home/khabak3/MyResources/Timers-Cisco3/timers/ns-3/build/.conf_check_0f12f558c8c9997d16329f06a5629bc6/testbuild/test.cpp.1.o']
+err: ../test.cpp:1:26: fatal error: sys/inttypes.h: No such file or directory
 compilation terminated.
 
-from /home/harnen/work/ucl/timers/ns-3/src/core: Test does not build: Traceback (most recent call last):
-  File "/home/harnen/work/ucl/timers/ns-3/.waf-1.8.12-f00e5b53f6bbeab1384a38c9cc5d51f7/waflib/Configure.py", line 339, in run_build
+from /home/khabak3/MyResources/Timers-Cisco3/timers/ns-3/src/core: Test does not build: Traceback (most recent call last):
+  File "/home/khabak3/MyResources/Timers-Cisco3/timers/ns-3/.waf-1.8.12-f00e5b53f6bbeab1384a38c9cc5d51f7/waflib/Configure.py", line 339, in run_build
     bld.compile()
-  File "/home/harnen/work/ucl/timers/ns-3/.waf-1.8.12-f00e5b53f6bbeab1384a38c9cc5d51f7/waflib/Build.py", line 182, in compile
+  File "/home/khabak3/MyResources/Timers-Cisco3/timers/ns-3/.waf-1.8.12-f00e5b53f6bbeab1384a38c9cc5d51f7/waflib/Build.py", line 182, in compile
     raise Errors.BuildError(self.producer.error)
 BuildError: Build failed
  -> task in 'testprog' failed (exit status 1): 
-	{task 140286531328080: cxx test.cpp -> test.cpp.1.o}
-['/usr/bin/g++', '-std=c++0x', '-std=c++11', '-O0', '-ggdb', '-g3', '-Wall', '-Wno-error=deprecated-declarations', '-fstrict-aliasing', '-Wstrict-aliasing', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '-DHAVE___UINT128_T=1', '-DINT64X64_USE_128=1', '-DHAVE_STDINT_H=1', '-DHAVE_INTTYPES_H=1', '../test.cpp', '-c', '-o', '/home/harnen/work/ucl/timers/ns-3/build/.conf_check_9300cf0ee0d81f935de9b15bd16be48c/testbuild/test.cpp.1.o']
+	{task 139701652817552: cxx test.cpp -> test.cpp.1.o}
+['/usr/bin/g++', '-std=c++0x', '-std=c++11', '-O0', '-ggdb', '-g3', '-Wall', '-Wno-error=deprecated-declarations', '-fstrict-aliasing', '-Wstrict-aliasing', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '-DHAVE___UINT128_T=1', '-DINT64X64_USE_128=1', '-DHAVE_STDINT_H=1', '-DHAVE_INTTYPES_H=1', '../test.cpp', '-c', '-o', '/home/khabak3/MyResources/Timers-Cisco3/timers/ns-3/build/.conf_check_0f12f558c8c9997d16329f06a5629bc6/testbuild/test.cpp.1.o']
 
 not found
-from /home/harnen/work/ucl/timers/ns-3/src/core: The configuration failed
+from /home/khabak3/MyResources/Timers-Cisco3/timers/ns-3/src/core: The configuration failed
 ------------------------------------------------------------------
 Checking for header sys/types.h
 ==>
@@ -741,12 +727,12 @@ int main(int argc, char **argv) {
 }
 
 <==
-[1/2] Compiling [32mbuild/.conf_check_617936a6a154326f621c67afb265bfdb/test.cpp[0m
+[1/2] Compiling [32mbuild/.conf_check_c04d0fa6200808e49f6efd5fda793374/test.cpp[0m
 
-['/usr/bin/g++', '-std=c++0x', '-std=c++11', '-O0', '-ggdb', '-g3', '-Wall', '-Wno-error=deprecated-declarations', '-fstrict-aliasing', '-Wstrict-aliasing', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '-DHAVE___UINT128_T=1', '-DINT64X64_USE_128=1', '-DHAVE_STDINT_H=1', '-DHAVE_INTTYPES_H=1', '../test.cpp', '-c', '-o', '/home/harnen/work/ucl/timers/ns-3/build/.conf_check_617936a6a154326f621c67afb265bfdb/testbuild/test.cpp.1.o']
-[2/2] Linking [33mbuild/.conf_check_617936a6a154326f621c67afb265bfdb/testbuild/testprog[0m
+['/usr/bin/g++', '-std=c++0x', '-std=c++11', '-O0', '-ggdb', '-g3', '-Wall', '-Wno-error=deprecated-declarations', '-fstrict-aliasing', '-Wstrict-aliasing', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '-DHAVE___UINT128_T=1', '-DINT64X64_USE_128=1', '-DHAVE_STDINT_H=1', '-DHAVE_INTTYPES_H=1', '../test.cpp', '-c', '-o', '/home/khabak3/MyResources/Timers-Cisco3/timers/ns-3/build/.conf_check_c04d0fa6200808e49f6efd5fda793374/testbuild/test.cpp.1.o']
+[2/2] Linking [33mbuild/.conf_check_c04d0fa6200808e49f6efd5fda793374/testbuild/testprog[0m
 
-['/usr/bin/g++', 'test.cpp.1.o', '-o', '/home/harnen/work/ucl/timers/ns-3/build/.conf_check_617936a6a154326f621c67afb265bfdb/testbuild/testprog', '-Wl,-Bstatic', '-Wl,-Bdynamic']
+['/usr/bin/g++', 'test.cpp.1.o', '-o', '/home/khabak3/MyResources/Timers-Cisco3/timers/ns-3/build/.conf_check_c04d0fa6200808e49f6efd5fda793374/testbuild/testprog', '-Wl,-Bstatic', '-Wl,-Bdynamic']
 yes
 ------------------------------------------------------------------
 Checking for header sys/stat.h
@@ -759,12 +745,12 @@ int main(int argc, char **argv) {
 }
 
 <==
-[1/2] Compiling [32mbuild/.conf_check_818623cebfac4786626df0a55b77df34/test.cpp[0m
+[1/2] Compiling [32mbuild/.conf_check_e267fba039d43929cca2724d576e2452/test.cpp[0m
 
-['/usr/bin/g++', '-std=c++0x', '-std=c++11', '-O0', '-ggdb', '-g3', '-Wall', '-Wno-error=deprecated-declarations', '-fstrict-aliasing', '-Wstrict-aliasing', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '-DHAVE___UINT128_T=1', '-DINT64X64_USE_128=1', '-DHAVE_STDINT_H=1', '-DHAVE_INTTYPES_H=1', '-DHAVE_SYS_TYPES_H=1', '../test.cpp', '-c', '-o', '/home/harnen/work/ucl/timers/ns-3/build/.conf_check_818623cebfac4786626df0a55b77df34/testbuild/test.cpp.1.o']
-[2/2] Linking [33mbuild/.conf_check_818623cebfac4786626df0a55b77df34/testbuild/testprog[0m
+['/usr/bin/g++', '-std=c++0x', '-std=c++11', '-O0', '-ggdb', '-g3', '-Wall', '-Wno-error=deprecated-declarations', '-fstrict-aliasing', '-Wstrict-aliasing', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '-DHAVE___UINT128_T=1', '-DINT64X64_USE_128=1', '-DHAVE_STDINT_H=1', '-DHAVE_INTTYPES_H=1', '-DHAVE_SYS_TYPES_H=1', '../test.cpp', '-c', '-o', '/home/khabak3/MyResources/Timers-Cisco3/timers/ns-3/build/.conf_check_e267fba039d43929cca2724d576e2452/testbuild/test.cpp.1.o']
+[2/2] Linking [33mbuild/.conf_check_e267fba039d43929cca2724d576e2452/testbuild/testprog[0m
 
-['/usr/bin/g++', 'test.cpp.1.o', '-o', '/home/harnen/work/ucl/timers/ns-3/build/.conf_check_818623cebfac4786626df0a55b77df34/testbuild/testprog', '-Wl,-Bstatic', '-Wl,-Bdynamic']
+['/usr/bin/g++', 'test.cpp.1.o', '-o', '/home/khabak3/MyResources/Timers-Cisco3/timers/ns-3/build/.conf_check_e267fba039d43929cca2724d576e2452/testbuild/testprog', '-Wl,-Bstatic', '-Wl,-Bdynamic']
 yes
 ------------------------------------------------------------------
 Checking for header dirent.h
@@ -777,12 +763,12 @@ int main(int argc, char **argv) {
 }
 
 <==
-[1/2] Compiling [32mbuild/.conf_check_7a7ee906caf2a86ee369e1282af450e5/test.cpp[0m
+[1/2] Compiling [32mbuild/.conf_check_25674a1f739c6034a4449d8cfa57a84b/test.cpp[0m
 
-['/usr/bin/g++', '-std=c++0x', '-std=c++11', '-O0', '-ggdb', '-g3', '-Wall', '-Wno-error=deprecated-declarations', '-fstrict-aliasing', '-Wstrict-aliasing', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '-DHAVE___UINT128_T=1', '-DINT64X64_USE_128=1', '-DHAVE_STDINT_H=1', '-DHAVE_INTTYPES_H=1', '-DHAVE_SYS_TYPES_H=1', '-DHAVE_SYS_STAT_H=1', '../test.cpp', '-c', '-o', '/home/harnen/work/ucl/timers/ns-3/build/.conf_check_7a7ee906caf2a86ee369e1282af450e5/testbuild/test.cpp.1.o']
-[2/2] Linking [33mbuild/.conf_check_7a7ee906caf2a86ee369e1282af450e5/testbuild/testprog[0m
+['/usr/bin/g++', '-std=c++0x', '-std=c++11', '-O0', '-ggdb', '-g3', '-Wall', '-Wno-error=deprecated-declarations', '-fstrict-aliasing', '-Wstrict-aliasing', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '-DHAVE___UINT128_T=1', '-DINT64X64_USE_128=1', '-DHAVE_STDINT_H=1', '-DHAVE_INTTYPES_H=1', '-DHAVE_SYS_TYPES_H=1', '-DHAVE_SYS_STAT_H=1', '../test.cpp', '-c', '-o', '/home/khabak3/MyResources/Timers-Cisco3/timers/ns-3/build/.conf_check_25674a1f739c6034a4449d8cfa57a84b/testbuild/test.cpp.1.o']
+[2/2] Linking [33mbuild/.conf_check_25674a1f739c6034a4449d8cfa57a84b/testbuild/testprog[0m
 
-['/usr/bin/g++', 'test.cpp.1.o', '-o', '/home/harnen/work/ucl/timers/ns-3/build/.conf_check_7a7ee906caf2a86ee369e1282af450e5/testbuild/testprog', '-Wl,-Bstatic', '-Wl,-Bdynamic']
+['/usr/bin/g++', 'test.cpp.1.o', '-o', '/home/khabak3/MyResources/Timers-Cisco3/timers/ns-3/build/.conf_check_25674a1f739c6034a4449d8cfa57a84b/testbuild/testprog', '-Wl,-Bstatic', '-Wl,-Bdynamic']
 yes
 ------------------------------------------------------------------
 Checking for header stdlib.h
@@ -795,12 +781,12 @@ int main(int argc, char **argv) {
 }
 
 <==
-[1/2] Compiling [32mbuild/.conf_check_ce29b45f3aca1b50f7eaf15aa33936a3/test.cpp[0m
+[1/2] Compiling [32mbuild/.conf_check_14093cad5e184f00b5dd244e2023d195/test.cpp[0m
 
-['/usr/bin/g++', '-std=c++0x', '-std=c++11', '-O0', '-ggdb', '-g3', '-Wall', '-Wno-error=deprecated-declarations', '-fstrict-aliasing', '-Wstrict-aliasing', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '-DHAVE___UINT128_T=1', '-DINT64X64_USE_128=1', '-DHAVE_STDINT_H=1', '-DHAVE_INTTYPES_H=1', '-DHAVE_SYS_TYPES_H=1', '-DHAVE_SYS_STAT_H=1', '-DHAVE_DIRENT_H=1', '../test.cpp', '-c', '-o', '/home/harnen/work/ucl/timers/ns-3/build/.conf_check_ce29b45f3aca1b50f7eaf15aa33936a3/testbuild/test.cpp.1.o']
-[2/2] Linking [33mbuild/.conf_check_ce29b45f3aca1b50f7eaf15aa33936a3/testbuild/testprog[0m
+['/usr/bin/g++', '-std=c++0x', '-std=c++11', '-O0', '-ggdb', '-g3', '-Wall', '-Wno-error=deprecated-declarations', '-fstrict-aliasing', '-Wstrict-aliasing', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '-DHAVE___UINT128_T=1', '-DINT64X64_USE_128=1', '-DHAVE_STDINT_H=1', '-DHAVE_INTTYPES_H=1', '-DHAVE_SYS_TYPES_H=1', '-DHAVE_SYS_STAT_H=1', '-DHAVE_DIRENT_H=1', '../test.cpp', '-c', '-o', '/home/khabak3/MyResources/Timers-Cisco3/timers/ns-3/build/.conf_check_14093cad5e184f00b5dd244e2023d195/testbuild/test.cpp.1.o']
+[2/2] Linking [33mbuild/.conf_check_14093cad5e184f00b5dd244e2023d195/testbuild/testprog[0m
 
-['/usr/bin/g++', 'test.cpp.1.o', '-o', '/home/harnen/work/ucl/timers/ns-3/build/.conf_check_ce29b45f3aca1b50f7eaf15aa33936a3/testbuild/testprog', '-Wl,-Bstatic', '-Wl,-Bdynamic']
+['/usr/bin/g++', 'test.cpp.1.o', '-o', '/home/khabak3/MyResources/Timers-Cisco3/timers/ns-3/build/.conf_check_14093cad5e184f00b5dd244e2023d195/testbuild/testprog', '-Wl,-Bstatic', '-Wl,-Bdynamic']
 yes
 ------------------------------------------------------------------
 Checking for header signal.h
@@ -813,12 +799,12 @@ int main(int argc, char **argv) {
 }
 
 <==
-[1/2] Compiling [32mbuild/.conf_check_12135881f5a3a71a350b461db82abedf/test.cpp[0m
+[1/2] Compiling [32mbuild/.conf_check_53b3d35f1b5f3e1a4c3d71b42068fbc6/test.cpp[0m
 
-['/usr/bin/g++', '-std=c++0x', '-std=c++11', '-O0', '-ggdb', '-g3', '-Wall', '-Wno-error=deprecated-declarations', '-fstrict-aliasing', '-Wstrict-aliasing', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '-DHAVE___UINT128_T=1', '-DINT64X64_USE_128=1', '-DHAVE_STDINT_H=1', '-DHAVE_INTTYPES_H=1', '-DHAVE_SYS_TYPES_H=1', '-DHAVE_SYS_STAT_H=1', '-DHAVE_DIRENT_H=1', '-DHAVE_STDLIB_H=1', '-DHAVE_GETENV=1', '../test.cpp', '-c', '-o', '/home/harnen/work/ucl/timers/ns-3/build/.conf_check_12135881f5a3a71a350b461db82abedf/testbuild/test.cpp.1.o']
-[2/2] Linking [33mbuild/.conf_check_12135881f5a3a71a350b461db82abedf/testbuild/testprog[0m
+['/usr/bin/g++', '-std=c++0x', '-std=c++11', '-O0', '-ggdb', '-g3', '-Wall', '-Wno-error=deprecated-declarations', '-fstrict-aliasing', '-Wstrict-aliasing', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '-DHAVE___UINT128_T=1', '-DINT64X64_USE_128=1', '-DHAVE_STDINT_H=1', '-DHAVE_INTTYPES_H=1', '-DHAVE_SYS_TYPES_H=1', '-DHAVE_SYS_STAT_H=1', '-DHAVE_DIRENT_H=1', '-DHAVE_STDLIB_H=1', '-DHAVE_GETENV=1', '../test.cpp', '-c', '-o', '/home/khabak3/MyResources/Timers-Cisco3/timers/ns-3/build/.conf_check_53b3d35f1b5f3e1a4c3d71b42068fbc6/testbuild/test.cpp.1.o']
+[2/2] Linking [33mbuild/.conf_check_53b3d35f1b5f3e1a4c3d71b42068fbc6/testbuild/testprog[0m
 
-['/usr/bin/g++', 'test.cpp.1.o', '-o', '/home/harnen/work/ucl/timers/ns-3/build/.conf_check_12135881f5a3a71a350b461db82abedf/testbuild/testprog', '-Wl,-Bstatic', '-Wl,-Bdynamic']
+['/usr/bin/g++', 'test.cpp.1.o', '-o', '/home/khabak3/MyResources/Timers-Cisco3/timers/ns-3/build/.conf_check_53b3d35f1b5f3e1a4c3d71b42068fbc6/testbuild/testprog', '-Wl,-Bstatic', '-Wl,-Bdynamic']
 yes
 ------------------------------------------------------------------
 Checking for header pthread.h
@@ -833,12 +819,12 @@ int main ()
 }
 
 <==
-[1/2] Compiling [32mbuild/.conf_check_75bba5f0e4080e363cc5aaf05cb0491d/test.cpp[0m
+[1/2] Compiling [32mbuild/.conf_check_e8bc154803b5309e95b6f37961612e93/test.cpp[0m
 
-['/usr/bin/g++', '-std=c++0x', '-std=c++11', '-O0', '-ggdb', '-g3', '-Wall', '-Wno-error=deprecated-declarations', '-fstrict-aliasing', '-Wstrict-aliasing', '-pthread', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '-DHAVE___UINT128_T=1', '-DINT64X64_USE_128=1', '-DHAVE_STDINT_H=1', '-DHAVE_INTTYPES_H=1', '-DHAVE_SYS_TYPES_H=1', '-DHAVE_SYS_STAT_H=1', '-DHAVE_DIRENT_H=1', '-DHAVE_STDLIB_H=1', '-DHAVE_GETENV=1', '-DHAVE_SIGNAL_H=1', '../test.cpp', '-c', '-o', '/home/harnen/work/ucl/timers/ns-3/build/.conf_check_75bba5f0e4080e363cc5aaf05cb0491d/testbuild/test.cpp.1.o']
-[2/2] Linking [33mbuild/.conf_check_75bba5f0e4080e363cc5aaf05cb0491d/testbuild/testprog[0m
+['/usr/bin/g++', '-std=c++0x', '-std=c++11', '-O0', '-ggdb', '-g3', '-Wall', '-Wno-error=deprecated-declarations', '-fstrict-aliasing', '-Wstrict-aliasing', '-pthread', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '-DHAVE___UINT128_T=1', '-DINT64X64_USE_128=1', '-DHAVE_STDINT_H=1', '-DHAVE_INTTYPES_H=1', '-DHAVE_SYS_TYPES_H=1', '-DHAVE_SYS_STAT_H=1', '-DHAVE_DIRENT_H=1', '-DHAVE_STDLIB_H=1', '-DHAVE_GETENV=1', '-DHAVE_SIGNAL_H=1', '../test.cpp', '-c', '-o', '/home/khabak3/MyResources/Timers-Cisco3/timers/ns-3/build/.conf_check_e8bc154803b5309e95b6f37961612e93/testbuild/test.cpp.1.o']
+[2/2] Linking [33mbuild/.conf_check_e8bc154803b5309e95b6f37961612e93/testbuild/testprog[0m
 
-['/usr/bin/g++', '-pthread', 'test.cpp.1.o', '-o', '/home/harnen/work/ucl/timers/ns-3/build/.conf_check_75bba5f0e4080e363cc5aaf05cb0491d/testbuild/testprog', '-Wl,-Bstatic', '-Wl,-Bdynamic']
+['/usr/bin/g++', '-pthread', 'test.cpp.1.o', '-o', '/home/khabak3/MyResources/Timers-Cisco3/timers/ns-3/build/.conf_check_e8bc154803b5309e95b6f37961612e93/testbuild/testprog', '-Wl,-Bstatic', '-Wl,-Bdynamic']
 yes
 ------------------------------------------------------------------
 Checking for header stdint.h
@@ -851,12 +837,12 @@ int main(int argc, char **argv) {
 }
 
 <==
-[1/2] Compiling [32mbuild/.conf_check_8d804fe16aaead7682086b4bbb7598b5/test.cpp[0m
+[1/2] Compiling [32mbuild/.conf_check_cba714d6295a9eacafb6b51471097605/test.cpp[0m
 
-['/usr/bin/g++', '-std=c++0x', '-std=c++11', '-O0', '-ggdb', '-g3', '-Wall', '-Wno-error=deprecated-declarations', '-fstrict-aliasing', '-Wstrict-aliasing', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '-DHAVE___UINT128_T=1', '-DINT64X64_USE_128=1', '-DHAVE_INTTYPES_H=1', '-DHAVE_SYS_TYPES_H=1', '-DHAVE_SYS_STAT_H=1', '-DHAVE_DIRENT_H=1', '-DHAVE_STDLIB_H=1', '-DHAVE_GETENV=1', '-DHAVE_SIGNAL_H=1', '-DHAVE_PTHREAD_H=1', '../test.cpp', '-c', '-o', '/home/harnen/work/ucl/timers/ns-3/build/.conf_check_8d804fe16aaead7682086b4bbb7598b5/testbuild/test.cpp.1.o']
-[2/2] Linking [33mbuild/.conf_check_8d804fe16aaead7682086b4bbb7598b5/testbuild/testprog[0m
+['/usr/bin/g++', '-std=c++0x', '-std=c++11', '-O0', '-ggdb', '-g3', '-Wall', '-Wno-error=deprecated-declarations', '-fstrict-aliasing', '-Wstrict-aliasing', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '-DHAVE___UINT128_T=1', '-DINT64X64_USE_128=1', '-DHAVE_INTTYPES_H=1', '-DHAVE_SYS_TYPES_H=1', '-DHAVE_SYS_STAT_H=1', '-DHAVE_DIRENT_H=1', '-DHAVE_STDLIB_H=1', '-DHAVE_GETENV=1', '-DHAVE_SIGNAL_H=1', '-DHAVE_PTHREAD_H=1', '../test.cpp', '-c', '-o', '/home/khabak3/MyResources/Timers-Cisco3/timers/ns-3/build/.conf_check_cba714d6295a9eacafb6b51471097605/testbuild/test.cpp.1.o']
+[2/2] Linking [33mbuild/.conf_check_cba714d6295a9eacafb6b51471097605/testbuild/testprog[0m
 
-['/usr/bin/g++', 'test.cpp.1.o', '-o', '/home/harnen/work/ucl/timers/ns-3/build/.conf_check_8d804fe16aaead7682086b4bbb7598b5/testbuild/testprog', '-Wl,-Bstatic', '-Wl,-Bdynamic']
+['/usr/bin/g++', 'test.cpp.1.o', '-o', '/home/khabak3/MyResources/Timers-Cisco3/timers/ns-3/build/.conf_check_cba714d6295a9eacafb6b51471097605/testbuild/testprog', '-Wl,-Bstatic', '-Wl,-Bdynamic']
 yes
 ------------------------------------------------------------------
 Checking for header inttypes.h
@@ -869,12 +855,12 @@ int main(int argc, char **argv) {
 }
 
 <==
-[1/2] Compiling [32mbuild/.conf_check_957d5e31115760deda9cdb537f4775fe/test.cpp[0m
+[1/2] Compiling [32mbuild/.conf_check_fb6b9c39eaf80b228ebcb93420ea8d90/test.cpp[0m
 
-['/usr/bin/g++', '-std=c++0x', '-std=c++11', '-O0', '-ggdb', '-g3', '-Wall', '-Wno-error=deprecated-declarations', '-fstrict-aliasing', '-Wstrict-aliasing', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '-DHAVE___UINT128_T=1', '-DINT64X64_USE_128=1', '-DHAVE_SYS_TYPES_H=1', '-DHAVE_SYS_STAT_H=1', '-DHAVE_DIRENT_H=1', '-DHAVE_STDLIB_H=1', '-DHAVE_GETENV=1', '-DHAVE_SIGNAL_H=1', '-DHAVE_PTHREAD_H=1', '-DHAVE_STDINT_H=1', '../test.cpp', '-c', '-o', '/home/harnen/work/ucl/timers/ns-3/build/.conf_check_957d5e31115760deda9cdb537f4775fe/testbuild/test.cpp.1.o']
-[2/2] Linking [33mbuild/.conf_check_957d5e31115760deda9cdb537f4775fe/testbuild/testprog[0m
+['/usr/bin/g++', '-std=c++0x', '-std=c++11', '-O0', '-ggdb', '-g3', '-Wall', '-Wno-error=deprecated-declarations', '-fstrict-aliasing', '-Wstrict-aliasing', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '-DHAVE___UINT128_T=1', '-DINT64X64_USE_128=1', '-DHAVE_SYS_TYPES_H=1', '-DHAVE_SYS_STAT_H=1', '-DHAVE_DIRENT_H=1', '-DHAVE_STDLIB_H=1', '-DHAVE_GETENV=1', '-DHAVE_SIGNAL_H=1', '-DHAVE_PTHREAD_H=1', '-DHAVE_STDINT_H=1', '../test.cpp', '-c', '-o', '/home/khabak3/MyResources/Timers-Cisco3/timers/ns-3/build/.conf_check_fb6b9c39eaf80b228ebcb93420ea8d90/testbuild/test.cpp.1.o']
+[2/2] Linking [33mbuild/.conf_check_fb6b9c39eaf80b228ebcb93420ea8d90/testbuild/testprog[0m
 
-['/usr/bin/g++', 'test.cpp.1.o', '-o', '/home/harnen/work/ucl/timers/ns-3/build/.conf_check_957d5e31115760deda9cdb537f4775fe/testbuild/testprog', '-Wl,-Bstatic', '-Wl,-Bdynamic']
+['/usr/bin/g++', 'test.cpp.1.o', '-o', '/home/khabak3/MyResources/Timers-Cisco3/timers/ns-3/build/.conf_check_fb6b9c39eaf80b228ebcb93420ea8d90/testbuild/testprog', '-Wl,-Bstatic', '-Wl,-Bdynamic']
 yes
 ------------------------------------------------------------------
 Checking for header sys/inttypes.h
@@ -887,26 +873,24 @@ int main(int argc, char **argv) {
 }
 
 <==
-[1/2] Compiling [32mbuild/.conf_check_9300cf0ee0d81f935de9b15bd16be48c/test.cpp[0m
+[1/2] Compiling [32mbuild/.conf_check_0f12f558c8c9997d16329f06a5629bc6/test.cpp[0m
 
-['/usr/bin/g++', '-std=c++0x', '-std=c++11', '-O0', '-ggdb', '-g3', '-Wall', '-Wno-error=deprecated-declarations', '-fstrict-aliasing', '-Wstrict-aliasing', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '-DHAVE___UINT128_T=1', '-DINT64X64_USE_128=1', '-DHAVE_SYS_TYPES_H=1', '-DHAVE_SYS_STAT_H=1', '-DHAVE_DIRENT_H=1', '-DHAVE_STDLIB_H=1', '-DHAVE_GETENV=1', '-DHAVE_SIGNAL_H=1', '-DHAVE_PTHREAD_H=1', '-DHAVE_STDINT_H=1', '-DHAVE_INTTYPES_H=1', '../test.cpp', '-c', '-o', '/home/harnen/work/ucl/timers/ns-3/build/.conf_check_9300cf0ee0d81f935de9b15bd16be48c/testbuild/test.cpp.1.o']
-err: ../test.cpp:1:10: fatal error: sys/inttypes.h: No such file or directory
- #include <sys/inttypes.h>
-          ^~~~~~~~~~~~~~~~
+['/usr/bin/g++', '-std=c++0x', '-std=c++11', '-O0', '-ggdb', '-g3', '-Wall', '-Wno-error=deprecated-declarations', '-fstrict-aliasing', '-Wstrict-aliasing', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '-DHAVE___UINT128_T=1', '-DINT64X64_USE_128=1', '-DHAVE_SYS_TYPES_H=1', '-DHAVE_SYS_STAT_H=1', '-DHAVE_DIRENT_H=1', '-DHAVE_STDLIB_H=1', '-DHAVE_GETENV=1', '-DHAVE_SIGNAL_H=1', '-DHAVE_PTHREAD_H=1', '-DHAVE_STDINT_H=1', '-DHAVE_INTTYPES_H=1', '../test.cpp', '-c', '-o', '/home/khabak3/MyResources/Timers-Cisco3/timers/ns-3/build/.conf_check_0f12f558c8c9997d16329f06a5629bc6/testbuild/test.cpp.1.o']
+err: ../test.cpp:1:26: fatal error: sys/inttypes.h: No such file or directory
 compilation terminated.
 
-from /home/harnen/work/ucl/timers/ns-3/src/core: Test does not build: Traceback (most recent call last):
-  File "/home/harnen/work/ucl/timers/ns-3/.waf-1.8.12-f00e5b53f6bbeab1384a38c9cc5d51f7/waflib/Configure.py", line 339, in run_build
+from /home/khabak3/MyResources/Timers-Cisco3/timers/ns-3/src/core: Test does not build: Traceback (most recent call last):
+  File "/home/khabak3/MyResources/Timers-Cisco3/timers/ns-3/.waf-1.8.12-f00e5b53f6bbeab1384a38c9cc5d51f7/waflib/Configure.py", line 339, in run_build
     bld.compile()
-  File "/home/harnen/work/ucl/timers/ns-3/.waf-1.8.12-f00e5b53f6bbeab1384a38c9cc5d51f7/waflib/Build.py", line 182, in compile
+  File "/home/khabak3/MyResources/Timers-Cisco3/timers/ns-3/.waf-1.8.12-f00e5b53f6bbeab1384a38c9cc5d51f7/waflib/Build.py", line 182, in compile
     raise Errors.BuildError(self.producer.error)
 BuildError: Build failed
  -> task in 'testprog' failed (exit status 1): 
-	{task 140286528936016: cxx test.cpp -> test.cpp.1.o}
-['/usr/bin/g++', '-std=c++0x', '-std=c++11', '-O0', '-ggdb', '-g3', '-Wall', '-Wno-error=deprecated-declarations', '-fstrict-aliasing', '-Wstrict-aliasing', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '-DHAVE___UINT128_T=1', '-DINT64X64_USE_128=1', '-DHAVE_SYS_TYPES_H=1', '-DHAVE_SYS_STAT_H=1', '-DHAVE_DIRENT_H=1', '-DHAVE_STDLIB_H=1', '-DHAVE_GETENV=1', '-DHAVE_SIGNAL_H=1', '-DHAVE_PTHREAD_H=1', '-DHAVE_STDINT_H=1', '-DHAVE_INTTYPES_H=1', '../test.cpp', '-c', '-o', '/home/harnen/work/ucl/timers/ns-3/build/.conf_check_9300cf0ee0d81f935de9b15bd16be48c/testbuild/test.cpp.1.o']
+	{task 139701654285136: cxx test.cpp -> test.cpp.1.o}
+['/usr/bin/g++', '-std=c++0x', '-std=c++11', '-O0', '-ggdb', '-g3', '-Wall', '-Wno-error=deprecated-declarations', '-fstrict-aliasing', '-Wstrict-aliasing', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '-DHAVE___UINT128_T=1', '-DINT64X64_USE_128=1', '-DHAVE_SYS_TYPES_H=1', '-DHAVE_SYS_STAT_H=1', '-DHAVE_DIRENT_H=1', '-DHAVE_STDLIB_H=1', '-DHAVE_GETENV=1', '-DHAVE_SIGNAL_H=1', '-DHAVE_PTHREAD_H=1', '-DHAVE_STDINT_H=1', '-DHAVE_INTTYPES_H=1', '../test.cpp', '-c', '-o', '/home/khabak3/MyResources/Timers-Cisco3/timers/ns-3/build/.conf_check_0f12f558c8c9997d16329f06a5629bc6/testbuild/test.cpp.1.o']
 
 not found
-from /home/harnen/work/ucl/timers/ns-3/src/core: The configuration failed
+from /home/khabak3/MyResources/Timers-Cisco3/timers/ns-3/src/core: The configuration failed
 ------------------------------------------------------------------
 Checking for library rt
 ==>
@@ -917,12 +901,12 @@ int main(int argc, char **argv) {
 }
 
 <==
-[1/2] Compiling [32mbuild/.conf_check_b3c81702fb2664a3672a8431b9042b9c/test.cpp[0m
+[1/2] Compiling [32mbuild/.conf_check_5e64341537790bba6d8596ec788e114a/test.cpp[0m
 
-['/usr/bin/g++', '-std=c++0x', '-std=c++11', '-O0', '-ggdb', '-g3', '-Wall', '-Wno-error=deprecated-declarations', '-fstrict-aliasing', '-Wstrict-aliasing', '-pthread', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '-DHAVE___UINT128_T=1', '-DINT64X64_USE_128=1', '-DHAVE_SYS_TYPES_H=1', '-DHAVE_SYS_STAT_H=1', '-DHAVE_DIRENT_H=1', '-DHAVE_STDLIB_H=1', '-DHAVE_GETENV=1', '-DHAVE_SIGNAL_H=1', '-DHAVE_PTHREAD_H=1', '-DHAVE_STDINT_H=1', '-DHAVE_INTTYPES_H=1', '../test.cpp', '-c', '-o', '/home/harnen/work/ucl/timers/ns-3/build/.conf_check_b3c81702fb2664a3672a8431b9042b9c/testbuild/test.cpp.1.o']
-[2/2] Linking [33mbuild/.conf_check_b3c81702fb2664a3672a8431b9042b9c/testbuild/testprog[0m
+['/usr/bin/g++', '-std=c++0x', '-std=c++11', '-O0', '-ggdb', '-g3', '-Wall', '-Wno-error=deprecated-declarations', '-fstrict-aliasing', '-Wstrict-aliasing', '-pthread', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '-DHAVE___UINT128_T=1', '-DINT64X64_USE_128=1', '-DHAVE_SYS_TYPES_H=1', '-DHAVE_SYS_STAT_H=1', '-DHAVE_DIRENT_H=1', '-DHAVE_STDLIB_H=1', '-DHAVE_GETENV=1', '-DHAVE_SIGNAL_H=1', '-DHAVE_PTHREAD_H=1', '-DHAVE_STDINT_H=1', '-DHAVE_INTTYPES_H=1', '../test.cpp', '-c', '-o', '/home/khabak3/MyResources/Timers-Cisco3/timers/ns-3/build/.conf_check_5e64341537790bba6d8596ec788e114a/testbuild/test.cpp.1.o']
+[2/2] Linking [33mbuild/.conf_check_5e64341537790bba6d8596ec788e114a/testbuild/testprog[0m
 
-['/usr/bin/g++', '-pthread', 'test.cpp.1.o', '-o', '/home/harnen/work/ucl/timers/ns-3/build/.conf_check_b3c81702fb2664a3672a8431b9042b9c/testbuild/testprog', '-Wl,-Bstatic', '-Wl,-Bdynamic', '-lrt']
+['/usr/bin/g++', '-pthread', 'test.cpp.1.o', '-o', '/home/khabak3/MyResources/Timers-Cisco3/timers/ns-3/build/.conf_check_5e64341537790bba6d8596ec788e114a/testbuild/testprog', '-Wl,-Bstatic', '-Wl,-Bdynamic', '-lrt']
 yes
 ------------------------------------------------------------------
 Checking for header sys/ioctl.h
@@ -935,12 +919,12 @@ int main(int argc, char **argv) {
 }
 
 <==
-[1/2] Compiling [32mbuild/.conf_check_1e739841756cc90cb61a095ba64db93d/test.cpp[0m
+[1/2] Compiling [32mbuild/.conf_check_258dcf6804392ca9334c15a383780680/test.cpp[0m
 
-['/usr/bin/g++', '-std=c++0x', '-std=c++11', '-O0', '-ggdb', '-g3', '-Wall', '-Wno-error=deprecated-declarations', '-fstrict-aliasing', '-Wstrict-aliasing', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '../test.cpp', '-c', '-o', '/home/harnen/work/ucl/timers/ns-3/build/.conf_check_1e739841756cc90cb61a095ba64db93d/testbuild/test.cpp.1.o']
-[2/2] Linking [33mbuild/.conf_check_1e739841756cc90cb61a095ba64db93d/testbuild/testprog[0m
+['/usr/bin/g++', '-std=c++0x', '-std=c++11', '-O0', '-ggdb', '-g3', '-Wall', '-Wno-error=deprecated-declarations', '-fstrict-aliasing', '-Wstrict-aliasing', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '../test.cpp', '-c', '-o', '/home/khabak3/MyResources/Timers-Cisco3/timers/ns-3/build/.conf_check_258dcf6804392ca9334c15a383780680/testbuild/test.cpp.1.o']
+[2/2] Linking [33mbuild/.conf_check_258dcf6804392ca9334c15a383780680/testbuild/testprog[0m
 
-['/usr/bin/g++', 'test.cpp.1.o', '-o', '/home/harnen/work/ucl/timers/ns-3/build/.conf_check_1e739841756cc90cb61a095ba64db93d/testbuild/testprog', '-Wl,-Bstatic', '-Wl,-Bdynamic']
+['/usr/bin/g++', 'test.cpp.1.o', '-o', '/home/khabak3/MyResources/Timers-Cisco3/timers/ns-3/build/.conf_check_258dcf6804392ca9334c15a383780680/testbuild/testprog', '-Wl,-Bstatic', '-Wl,-Bdynamic']
 yes
 ------------------------------------------------------------------
 Checking for header net/if.h
@@ -953,12 +937,12 @@ int main(int argc, char **argv) {
 }
 
 <==
-[1/2] Compiling [32mbuild/.conf_check_ac7fcc8a8793dc2a82132271f813a215/test.cpp[0m
+[1/2] Compiling [32mbuild/.conf_check_4f756c7b3e05431cb07590056af70d63/test.cpp[0m
 
-['/usr/bin/g++', '-std=c++0x', '-std=c++11', '-O0', '-ggdb', '-g3', '-Wall', '-Wno-error=deprecated-declarations', '-fstrict-aliasing', '-Wstrict-aliasing', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '-DHAVE_SYS_IOCTL_H=1', '../test.cpp', '-c', '-o', '/home/harnen/work/ucl/timers/ns-3/build/.conf_check_ac7fcc8a8793dc2a82132271f813a215/testbuild/test.cpp.1.o']
-[2/2] Linking [33mbuild/.conf_check_ac7fcc8a8793dc2a82132271f813a215/testbuild/testprog[0m
+['/usr/bin/g++', '-std=c++0x', '-std=c++11', '-O0', '-ggdb', '-g3', '-Wall', '-Wno-error=deprecated-declarations', '-fstrict-aliasing', '-Wstrict-aliasing', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '-DHAVE_SYS_IOCTL_H=1', '../test.cpp', '-c', '-o', '/home/khabak3/MyResources/Timers-Cisco3/timers/ns-3/build/.conf_check_4f756c7b3e05431cb07590056af70d63/testbuild/test.cpp.1.o']
+[2/2] Linking [33mbuild/.conf_check_4f756c7b3e05431cb07590056af70d63/testbuild/testprog[0m
 
-['/usr/bin/g++', 'test.cpp.1.o', '-o', '/home/harnen/work/ucl/timers/ns-3/build/.conf_check_ac7fcc8a8793dc2a82132271f813a215/testbuild/testprog', '-Wl,-Bstatic', '-Wl,-Bdynamic']
+['/usr/bin/g++', 'test.cpp.1.o', '-o', '/home/khabak3/MyResources/Timers-Cisco3/timers/ns-3/build/.conf_check_4f756c7b3e05431cb07590056af70d63/testbuild/testprog', '-Wl,-Bstatic', '-Wl,-Bdynamic']
 yes
 ------------------------------------------------------------------
 Checking for header net/ethernet.h
@@ -971,12 +955,12 @@ int main(int argc, char **argv) {
 }
 
 <==
-[1/2] Compiling [32mbuild/.conf_check_6159c87548fa8d7f6950028ea2e55a09/test.cpp[0m
+[1/2] Compiling [32mbuild/.conf_check_35c9f14b86c6f16b7711e93260732c57/test.cpp[0m
 
-['/usr/bin/g++', '-std=c++0x', '-std=c++11', '-O0', '-ggdb', '-g3', '-Wall', '-Wno-error=deprecated-declarations', '-fstrict-aliasing', '-Wstrict-aliasing', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '-DHAVE_SYS_IOCTL_H=1', '-DHAVE_IF_NETS_H=1', '../test.cpp', '-c', '-o', '/home/harnen/work/ucl/timers/ns-3/build/.conf_check_6159c87548fa8d7f6950028ea2e55a09/testbuild/test.cpp.1.o']
-[2/2] Linking [33mbuild/.conf_check_6159c87548fa8d7f6950028ea2e55a09/testbuild/testprog[0m
+['/usr/bin/g++', '-std=c++0x', '-std=c++11', '-O0', '-ggdb', '-g3', '-Wall', '-Wno-error=deprecated-declarations', '-fstrict-aliasing', '-Wstrict-aliasing', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '-DHAVE_SYS_IOCTL_H=1', '-DHAVE_IF_NETS_H=1', '../test.cpp', '-c', '-o', '/home/khabak3/MyResources/Timers-Cisco3/timers/ns-3/build/.conf_check_35c9f14b86c6f16b7711e93260732c57/testbuild/test.cpp.1.o']
+[2/2] Linking [33mbuild/.conf_check_35c9f14b86c6f16b7711e93260732c57/testbuild/testprog[0m
 
-['/usr/bin/g++', 'test.cpp.1.o', '-o', '/home/harnen/work/ucl/timers/ns-3/build/.conf_check_6159c87548fa8d7f6950028ea2e55a09/testbuild/testprog', '-Wl,-Bstatic', '-Wl,-Bdynamic']
+['/usr/bin/g++', 'test.cpp.1.o', '-o', '/home/khabak3/MyResources/Timers-Cisco3/timers/ns-3/build/.conf_check_35c9f14b86c6f16b7711e93260732c57/testbuild/testprog', '-Wl,-Bstatic', '-Wl,-Bdynamic']
 yes
 ------------------------------------------------------------------
 Checking for header linux/if_tun.h
@@ -989,12 +973,12 @@ int main(int argc, char **argv) {
 }
 
 <==
-[1/2] Compiling [32mbuild/.conf_check_8d6610963155798c67bfdc35635f8f42/test.cpp[0m
+[1/2] Compiling [32mbuild/.conf_check_1d2b9d6f84c4be7e3ec93e143d8ba220/test.cpp[0m
 
-['/usr/bin/g++', '-std=c++0x', '-std=c++11', '-O0', '-ggdb', '-g3', '-Wall', '-Wno-error=deprecated-declarations', '-fstrict-aliasing', '-Wstrict-aliasing', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '-DHAVE_SYS_IOCTL_H=1', '-DHAVE_IF_NETS_H=1', '-DHAVE_NET_ETHERNET_H=1', '../test.cpp', '-c', '-o', '/home/harnen/work/ucl/timers/ns-3/build/.conf_check_8d6610963155798c67bfdc35635f8f42/testbuild/test.cpp.1.o']
-[2/2] Linking [33mbuild/.conf_check_8d6610963155798c67bfdc35635f8f42/testbuild/testprog[0m
+['/usr/bin/g++', '-std=c++0x', '-std=c++11', '-O0', '-ggdb', '-g3', '-Wall', '-Wno-error=deprecated-declarations', '-fstrict-aliasing', '-Wstrict-aliasing', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '-DHAVE_SYS_IOCTL_H=1', '-DHAVE_IF_NETS_H=1', '-DHAVE_NET_ETHERNET_H=1', '../test.cpp', '-c', '-o', '/home/khabak3/MyResources/Timers-Cisco3/timers/ns-3/build/.conf_check_1d2b9d6f84c4be7e3ec93e143d8ba220/testbuild/test.cpp.1.o']
+[2/2] Linking [33mbuild/.conf_check_1d2b9d6f84c4be7e3ec93e143d8ba220/testbuild/testprog[0m
 
-['/usr/bin/g++', 'test.cpp.1.o', '-o', '/home/harnen/work/ucl/timers/ns-3/build/.conf_check_8d6610963155798c67bfdc35635f8f42/testbuild/testprog', '-Wl,-Bstatic', '-Wl,-Bdynamic']
+['/usr/bin/g++', 'test.cpp.1.o', '-o', '/home/khabak3/MyResources/Timers-Cisco3/timers/ns-3/build/.conf_check_1d2b9d6f84c4be7e3ec93e143d8ba220/testbuild/testprog', '-Wl,-Bstatic', '-Wl,-Bdynamic']
 yes
 ------------------------------------------------------------------
 Checking for header netpacket/packet.h
@@ -1007,12 +991,12 @@ int main(int argc, char **argv) {
 }
 
 <==
-[1/2] Compiling [32mbuild/.conf_check_07bd41593dd5e88b459f93e3ee516d2c/test.cpp[0m
+[1/2] Compiling [32mbuild/.conf_check_3e73919fa20ea58e823bd72602fbf9c2/test.cpp[0m
 
-['/usr/bin/g++', '-std=c++0x', '-std=c++11', '-O0', '-ggdb', '-g3', '-Wall', '-Wno-error=deprecated-declarations', '-fstrict-aliasing', '-Wstrict-aliasing', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '-DHAVE_SYS_IOCTL_H=1', '-DHAVE_IF_NETS_H=1', '-DHAVE_NET_ETHERNET_H=1', '-DHAVE_IF_TUN_H=1', '../test.cpp', '-c', '-o', '/home/harnen/work/ucl/timers/ns-3/build/.conf_check_07bd41593dd5e88b459f93e3ee516d2c/testbuild/test.cpp.1.o']
-[2/2] Linking [33mbuild/.conf_check_07bd41593dd5e88b459f93e3ee516d2c/testbuild/testprog[0m
+['/usr/bin/g++', '-std=c++0x', '-std=c++11', '-O0', '-ggdb', '-g3', '-Wall', '-Wno-error=deprecated-declarations', '-fstrict-aliasing', '-Wstrict-aliasing', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '-DHAVE_SYS_IOCTL_H=1', '-DHAVE_IF_NETS_H=1', '-DHAVE_NET_ETHERNET_H=1', '-DHAVE_IF_TUN_H=1', '../test.cpp', '-c', '-o', '/home/khabak3/MyResources/Timers-Cisco3/timers/ns-3/build/.conf_check_3e73919fa20ea58e823bd72602fbf9c2/testbuild/test.cpp.1.o']
+[2/2] Linking [33mbuild/.conf_check_3e73919fa20ea58e823bd72602fbf9c2/testbuild/testprog[0m
 
-['/usr/bin/g++', 'test.cpp.1.o', '-o', '/home/harnen/work/ucl/timers/ns-3/build/.conf_check_07bd41593dd5e88b459f93e3ee516d2c/testbuild/testprog', '-Wl,-Bstatic', '-Wl,-Bdynamic']
+['/usr/bin/g++', 'test.cpp.1.o', '-o', '/home/khabak3/MyResources/Timers-Cisco3/timers/ns-3/build/.conf_check_3e73919fa20ea58e823bd72602fbf9c2/testbuild/testprog', '-Wl,-Bstatic', '-Wl,-Bdynamic']
 yes
 ------------------------------------------------------------------
 Checking for NSC location
@@ -1020,24 +1004,24 @@ not found
 ------------------------------------------------------------------
 Checking for program 'doxygen'
 /usr/bin/doxygen
-find program=['doxygen'] paths=['/home/harnen/.yarn/bin', '/usr/local/sbin', '/usr/local/bin', '/usr/sbin', '/usr/bin', '/sbin', '/bin', '/usr/games', '/usr/local/games', '/snap/bin', '/home/harnen/Downloads/eclipse', '/home/harnen/go/bin', '/usr/local/go/bin', '/home/harnen/work/ucl/blockchain/node-v6.11.0-linux-x64/bin', '/home/harnen/Desktop/SGX/sgxsdk/bin', '/home/harnen/Desktop/SGX/sgxsdk/bin/x64'] var='DOXYGEN' -> ['/usr/bin/doxygen']
+find program=['doxygen'] paths=['/usr/local/sbin', '/usr/local/bin', '/usr/sbin', '/usr/bin', '/sbin', '/bin', '/usr/games', '/usr/local/games', '/snap/bin'] var='DOXYGEN' -> ['/usr/bin/doxygen']
 ------------------------------------------------------------------
 Checking for program 'tar'
 /bin/tar
-find program=['tar'] paths=['/home/harnen/.yarn/bin', '/usr/local/sbin', '/usr/local/bin', '/usr/sbin', '/usr/bin', '/sbin', '/bin', '/usr/games', '/usr/local/games', '/snap/bin', '/home/harnen/Downloads/eclipse', '/home/harnen/go/bin', '/usr/local/go/bin', '/home/harnen/work/ucl/blockchain/node-v6.11.0-linux-x64/bin', '/home/harnen/Desktop/SGX/sgxsdk/bin', '/home/harnen/Desktop/SGX/sgxsdk/bin/x64'] var='TAR' -> ['/bin/tar']
+find program=['tar'] paths=['/usr/local/sbin', '/usr/local/bin', '/usr/sbin', '/usr/bin', '/sbin', '/bin', '/usr/games', '/usr/local/games', '/snap/bin'] var='TAR' -> ['/bin/tar']
 ------------------------------------------------------------------
 Checking for program 'sphinx-build'
 /usr/bin/sphinx-build
-find program=['sphinx-build'] paths=['/home/harnen/.yarn/bin', '/usr/local/sbin', '/usr/local/bin', '/usr/sbin', '/usr/bin', '/sbin', '/bin', '/usr/games', '/usr/local/games', '/snap/bin', '/home/harnen/Downloads/eclipse', '/home/harnen/go/bin', '/usr/local/go/bin', '/home/harnen/work/ucl/blockchain/node-v6.11.0-linux-x64/bin', '/home/harnen/Desktop/SGX/sgxsdk/bin', '/home/harnen/Desktop/SGX/sgxsdk/bin/x64'] var='SPHINX_BUILD' -> ['/usr/bin/sphinx-build']
+find program=['sphinx-build'] paths=['/usr/local/sbin', '/usr/local/bin', '/usr/sbin', '/usr/bin', '/sbin', '/bin', '/usr/games', '/usr/local/games', '/snap/bin'] var='SPHINX_BUILD' -> ['/usr/bin/sphinx-build']
 ------------------------------------------------------------------
 Checking for std::is_default_constructible
 ==>
 #include <type_traits>
 static_assert(std::is_default_constructible<int>::value, "");
 <==
-[1/1] Compiling [32mbuild/.conf_check_c8ec760eba51bb08c1a77fe3f179f6d3/test.cpp[0m
+[1/1] Compiling [32mbuild/.conf_check_e69aa4f337bdf0b466d364d776f35726/test.cpp[0m
 
-['/usr/bin/g++', '-std=c++0x', '-std=c++11', '-O0', '-ggdb', '-g3', '-Wall', '-Wno-error=deprecated-declarations', '-fstrict-aliasing', '-Wstrict-aliasing', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '-DHAVE_SYS_IOCTL_H=1', '-DHAVE_IF_NETS_H=1', '-DHAVE_NET_ETHERNET_H=1', '-DHAVE_IF_TUN_H=1', '-DHAVE_PACKET_H=1', '../test.cpp', '-c', '-o', '/home/harnen/work/ucl/timers/ns-3/build/.conf_check_c8ec760eba51bb08c1a77fe3f179f6d3/testbuild/test.cpp.1.o']
+['/usr/bin/g++', '-std=c++0x', '-std=c++11', '-O0', '-ggdb', '-g3', '-Wall', '-Wno-error=deprecated-declarations', '-fstrict-aliasing', '-Wstrict-aliasing', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '-DHAVE_SYS_IOCTL_H=1', '-DHAVE_IF_NETS_H=1', '-DHAVE_NET_ETHERNET_H=1', '-DHAVE_IF_TUN_H=1', '-DHAVE_PACKET_H=1', '../test.cpp', '-c', '-o', '/home/khabak3/MyResources/Timers-Cisco3/timers/ns-3/build/.conf_check_e69aa4f337bdf0b466d364d776f35726/testbuild/test.cpp.1.o']
 yes
 ------------------------------------------------------------------
 Checking for std::is_nothrow_move_constructible
@@ -1045,9 +1029,9 @@ Checking for std::is_nothrow_move_constructible
 #include <type_traits>
 static_assert(std::is_nothrow_move_constructible<int>::value, "");
 <==
-[1/1] Compiling [32mbuild/.conf_check_1d287c6955eb0b1edcc6e4ef2e9dd9fe/test.cpp[0m
+[1/1] Compiling [32mbuild/.conf_check_6688f898a18c65f93281a0bfc3f51a34/test.cpp[0m
 
-['/usr/bin/g++', '-std=c++0x', '-std=c++11', '-O0', '-ggdb', '-g3', '-Wall', '-Wno-error=deprecated-declarations', '-fstrict-aliasing', '-Wstrict-aliasing', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '-DHAVE_SYS_IOCTL_H=1', '-DHAVE_IF_NETS_H=1', '-DHAVE_NET_ETHERNET_H=1', '-DHAVE_IF_TUN_H=1', '-DHAVE_PACKET_H=1', '-DHAVE_IS_DEFAULT_CONSTRUCTIBLE=1', '../test.cpp', '-c', '-o', '/home/harnen/work/ucl/timers/ns-3/build/.conf_check_1d287c6955eb0b1edcc6e4ef2e9dd9fe/testbuild/test.cpp.1.o']
+['/usr/bin/g++', '-std=c++0x', '-std=c++11', '-O0', '-ggdb', '-g3', '-Wall', '-Wno-error=deprecated-declarations', '-fstrict-aliasing', '-Wstrict-aliasing', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '-DHAVE_SYS_IOCTL_H=1', '-DHAVE_IF_NETS_H=1', '-DHAVE_NET_ETHERNET_H=1', '-DHAVE_IF_TUN_H=1', '-DHAVE_PACKET_H=1', '-DHAVE_IS_DEFAULT_CONSTRUCTIBLE=1', '../test.cpp', '-c', '-o', '/home/khabak3/MyResources/Timers-Cisco3/timers/ns-3/build/.conf_check_6688f898a18c65f93281a0bfc3f51a34/testbuild/test.cpp.1.o']
 yes
 ------------------------------------------------------------------
 Checking for std::is_nothrow_move_assignable
@@ -1055,9 +1039,9 @@ Checking for std::is_nothrow_move_assignable
 #include <type_traits>
 static_assert(std::is_nothrow_move_assignable<int>::value, "");
 <==
-[1/1] Compiling [32mbuild/.conf_check_8af9cd16d8df2fb9b414b09b58adb325/test.cpp[0m
+[1/1] Compiling [32mbuild/.conf_check_85a4d181bde9c724f276c7200d9dd2b6/test.cpp[0m
 
-['/usr/bin/g++', '-std=c++0x', '-std=c++11', '-O0', '-ggdb', '-g3', '-Wall', '-Wno-error=deprecated-declarations', '-fstrict-aliasing', '-Wstrict-aliasing', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '-DHAVE_SYS_IOCTL_H=1', '-DHAVE_IF_NETS_H=1', '-DHAVE_NET_ETHERNET_H=1', '-DHAVE_IF_TUN_H=1', '-DHAVE_PACKET_H=1', '-DHAVE_IS_DEFAULT_CONSTRUCTIBLE=1', '-DHAVE_IS_NOTHROW_MOVE_CONSTRUCTIBLE=1', '../test.cpp', '-c', '-o', '/home/harnen/work/ucl/timers/ns-3/build/.conf_check_8af9cd16d8df2fb9b414b09b58adb325/testbuild/test.cpp.1.o']
+['/usr/bin/g++', '-std=c++0x', '-std=c++11', '-O0', '-ggdb', '-g3', '-Wall', '-Wno-error=deprecated-declarations', '-fstrict-aliasing', '-Wstrict-aliasing', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '-DHAVE_SYS_IOCTL_H=1', '-DHAVE_IF_NETS_H=1', '-DHAVE_NET_ETHERNET_H=1', '-DHAVE_IF_TUN_H=1', '-DHAVE_PACKET_H=1', '-DHAVE_IS_DEFAULT_CONSTRUCTIBLE=1', '-DHAVE_IS_NOTHROW_MOVE_CONSTRUCTIBLE=1', '../test.cpp', '-c', '-o', '/home/khabak3/MyResources/Timers-Cisco3/timers/ns-3/build/.conf_check_85a4d181bde9c724f276c7200d9dd2b6/testbuild/test.cpp.1.o']
 yes
 ------------------------------------------------------------------
 Checking for std::to_string
@@ -1080,9 +1064,9 @@ main()
 }
 
 <==
-[1/1] Compiling [32mbuild/.conf_check_109e16e9a256fece51a1e6e5531206d5/test.cpp[0m
+[1/1] Compiling [32mbuild/.conf_check_92e2f9ef97ab0de9c901bb643113d818/test.cpp[0m
 
-['/usr/bin/g++', '-std=c++0x', '-std=c++11', '-O0', '-ggdb', '-g3', '-Wall', '-Wno-error=deprecated-declarations', '-fstrict-aliasing', '-Wstrict-aliasing', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '-DHAVE_SYS_IOCTL_H=1', '-DHAVE_IF_NETS_H=1', '-DHAVE_NET_ETHERNET_H=1', '-DHAVE_IF_TUN_H=1', '-DHAVE_PACKET_H=1', '-DHAVE_IS_DEFAULT_CONSTRUCTIBLE=1', '-DHAVE_IS_NOTHROW_MOVE_CONSTRUCTIBLE=1', '-DHAVE_IS_NOTHROW_MOVE_ASSIGNABLE=1', '../test.cpp', '-c', '-o', '/home/harnen/work/ucl/timers/ns-3/build/.conf_check_109e16e9a256fece51a1e6e5531206d5/testbuild/test.cpp.1.o']
+['/usr/bin/g++', '-std=c++0x', '-std=c++11', '-O0', '-ggdb', '-g3', '-Wall', '-Wno-error=deprecated-declarations', '-fstrict-aliasing', '-Wstrict-aliasing', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '-DHAVE_SYS_IOCTL_H=1', '-DHAVE_IF_NETS_H=1', '-DHAVE_NET_ETHERNET_H=1', '-DHAVE_IF_TUN_H=1', '-DHAVE_PACKET_H=1', '-DHAVE_IS_DEFAULT_CONSTRUCTIBLE=1', '-DHAVE_IS_NOTHROW_MOVE_CONSTRUCTIBLE=1', '-DHAVE_IS_NOTHROW_MOVE_ASSIGNABLE=1', '../test.cpp', '-c', '-o', '/home/khabak3/MyResources/Timers-Cisco3/timers/ns-3/build/.conf_check_92e2f9ef97ab0de9c901bb643113d818/testbuild/test.cpp.1.o']
 yes
 ------------------------------------------------------------------
 Checking for std::vector::insert with const_iterator
@@ -1101,9 +1085,9 @@ main()
 }
 
 <==
-[1/1] Compiling [32mbuild/.conf_check_2241db5f2b8e6e243ffdb80f0a4bf7ea/test.cpp[0m
+[1/1] Compiling [32mbuild/.conf_check_299917daf9052043962532c97d309689/test.cpp[0m
 
-['/usr/bin/g++', '-std=c++0x', '-std=c++11', '-O0', '-ggdb', '-g3', '-Wall', '-Wno-error=deprecated-declarations', '-fstrict-aliasing', '-Wstrict-aliasing', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '-DHAVE_SYS_IOCTL_H=1', '-DHAVE_IF_NETS_H=1', '-DHAVE_NET_ETHERNET_H=1', '-DHAVE_IF_TUN_H=1', '-DHAVE_PACKET_H=1', '-DHAVE_IS_DEFAULT_CONSTRUCTIBLE=1', '-DHAVE_IS_NOTHROW_MOVE_CONSTRUCTIBLE=1', '-DHAVE_IS_NOTHROW_MOVE_ASSIGNABLE=1', '-DHAVE_STD_TO_STRING=1', '../test.cpp', '-c', '-o', '/home/harnen/work/ucl/timers/ns-3/build/.conf_check_2241db5f2b8e6e243ffdb80f0a4bf7ea/testbuild/test.cpp.1.o']
+['/usr/bin/g++', '-std=c++0x', '-std=c++11', '-O0', '-ggdb', '-g3', '-Wall', '-Wno-error=deprecated-declarations', '-fstrict-aliasing', '-Wstrict-aliasing', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '-DHAVE_SYS_IOCTL_H=1', '-DHAVE_IF_NETS_H=1', '-DHAVE_NET_ETHERNET_H=1', '-DHAVE_IF_TUN_H=1', '-DHAVE_PACKET_H=1', '-DHAVE_IS_DEFAULT_CONSTRUCTIBLE=1', '-DHAVE_IS_NOTHROW_MOVE_CONSTRUCTIBLE=1', '-DHAVE_IS_NOTHROW_MOVE_ASSIGNABLE=1', '-DHAVE_STD_TO_STRING=1', '../test.cpp', '-c', '-o', '/home/khabak3/MyResources/Timers-Cisco3/timers/ns-3/build/.conf_check_299917daf9052043962532c97d309689/testbuild/test.cpp.1.o']
 yes
 ------------------------------------------------------------------
 Checking for library pthread
@@ -1115,12 +1099,12 @@ int main(int argc, char **argv) {
 }
 
 <==
-[1/2] Compiling [32mbuild/.conf_check_191235be8122e54d4271c331d620efc6/test.cpp[0m
+[1/2] Compiling [32mbuild/.conf_check_132eb3b274833a5fef168621aa668e20/test.cpp[0m
 
-['/usr/bin/g++', '-std=c++0x', '-std=c++11', '-O0', '-ggdb', '-g3', '-Wall', '-Wno-error=deprecated-declarations', '-fstrict-aliasing', '-Wstrict-aliasing', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '-DHAVE_SYS_IOCTL_H=1', '-DHAVE_IF_NETS_H=1', '-DHAVE_NET_ETHERNET_H=1', '-DHAVE_IF_TUN_H=1', '-DHAVE_PACKET_H=1', '-DHAVE_IS_DEFAULT_CONSTRUCTIBLE=1', '-DHAVE_IS_NOTHROW_MOVE_CONSTRUCTIBLE=1', '-DHAVE_IS_NOTHROW_MOVE_ASSIGNABLE=1', '-DHAVE_STD_TO_STRING=1', '-DHAVE_VECTOR_INSERT_ERASE_CONST_ITERATOR=1', '../test.cpp', '-c', '-o', '/home/harnen/work/ucl/timers/ns-3/build/.conf_check_191235be8122e54d4271c331d620efc6/testbuild/test.cpp.1.o']
-[2/2] Linking [33mbuild/.conf_check_191235be8122e54d4271c331d620efc6/testbuild/testprog[0m
+['/usr/bin/g++', '-std=c++0x', '-std=c++11', '-O0', '-ggdb', '-g3', '-Wall', '-Wno-error=deprecated-declarations', '-fstrict-aliasing', '-Wstrict-aliasing', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '-DHAVE_SYS_IOCTL_H=1', '-DHAVE_IF_NETS_H=1', '-DHAVE_NET_ETHERNET_H=1', '-DHAVE_IF_TUN_H=1', '-DHAVE_PACKET_H=1', '-DHAVE_IS_DEFAULT_CONSTRUCTIBLE=1', '-DHAVE_IS_NOTHROW_MOVE_CONSTRUCTIBLE=1', '-DHAVE_IS_NOTHROW_MOVE_ASSIGNABLE=1', '-DHAVE_STD_TO_STRING=1', '-DHAVE_VECTOR_INSERT_ERASE_CONST_ITERATOR=1', '../test.cpp', '-c', '-o', '/home/khabak3/MyResources/Timers-Cisco3/timers/ns-3/build/.conf_check_132eb3b274833a5fef168621aa668e20/testbuild/test.cpp.1.o']
+[2/2] Linking [33mbuild/.conf_check_132eb3b274833a5fef168621aa668e20/testbuild/testprog[0m
 
-['/usr/bin/g++', 'test.cpp.1.o', '-o', '/home/harnen/work/ucl/timers/ns-3/build/.conf_check_191235be8122e54d4271c331d620efc6/testbuild/testprog', '-Wl,-Bstatic', '-Wl,-Bdynamic', '-lpthread']
+['/usr/bin/g++', 'test.cpp.1.o', '-o', '/home/khabak3/MyResources/Timers-Cisco3/timers/ns-3/build/.conf_check_132eb3b274833a5fef168621aa668e20/testbuild/testprog', '-Wl,-Bstatic', '-Wl,-Bdynamic', '-lpthread']
 yes
 ------------------------------------------------------------------
 Checking for 'sqlite3'
@@ -1130,7 +1114,7 @@ out: -lsqlite3
 yes
 ------------------------------------------------------------------
 Checking Crypto++ lib
-5.6.4
+5.6.1
 ------------------------------------------------------------------
 Checking if CryptoPP library works
 ==>
@@ -1151,12 +1135,12 @@ main()
 }
 
 <==
-[1/2] Compiling [32mbuild/.conf_check_048718e5b6eff49a02c1535c7819dfde/test.cpp[0m
+[1/2] Compiling [32mbuild/.conf_check_7490b71502b9cdfa452aacd0d7b20c54/test.cpp[0m
 
-['/usr/bin/g++', '-std=c++0x', '-std=c++11', '-O0', '-ggdb', '-g3', '-Wall', '-Wno-error=deprecated-declarations', '-fstrict-aliasing', '-Wstrict-aliasing', '-pthread', '-I/usr/include', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '-DHAVE_SYS_IOCTL_H=1', '-DHAVE_IF_NETS_H=1', '-DHAVE_NET_ETHERNET_H=1', '-DHAVE_IF_TUN_H=1', '-DHAVE_PACKET_H=1', '-DHAVE_IS_DEFAULT_CONSTRUCTIBLE=1', '-DHAVE_IS_NOTHROW_MOVE_CONSTRUCTIBLE=1', '-DHAVE_IS_NOTHROW_MOVE_ASSIGNABLE=1', '-DHAVE_STD_TO_STRING=1', '-DHAVE_VECTOR_INSERT_ERASE_CONST_ITERATOR=1', '-DHAVE_PTHREAD=1', '-DHAVE_SQLITE3=1', '../test.cpp', '-c', '-o', '/home/harnen/work/ucl/timers/ns-3/build/.conf_check_048718e5b6eff49a02c1535c7819dfde/testbuild/test.cpp.1.o']
-[2/2] Linking [33mbuild/.conf_check_048718e5b6eff49a02c1535c7819dfde/testbuild/testprog[0m
+['/usr/bin/g++', '-std=c++0x', '-std=c++11', '-O0', '-ggdb', '-g3', '-Wall', '-Wno-error=deprecated-declarations', '-fstrict-aliasing', '-Wstrict-aliasing', '-pthread', '-I/usr/include', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '-DHAVE_SYS_IOCTL_H=1', '-DHAVE_IF_NETS_H=1', '-DHAVE_NET_ETHERNET_H=1', '-DHAVE_IF_TUN_H=1', '-DHAVE_PACKET_H=1', '-DHAVE_IS_DEFAULT_CONSTRUCTIBLE=1', '-DHAVE_IS_NOTHROW_MOVE_CONSTRUCTIBLE=1', '-DHAVE_IS_NOTHROW_MOVE_ASSIGNABLE=1', '-DHAVE_STD_TO_STRING=1', '-DHAVE_VECTOR_INSERT_ERASE_CONST_ITERATOR=1', '-DHAVE_PTHREAD=1', '-DHAVE_SQLITE3=1', '../test.cpp', '-c', '-o', '/home/khabak3/MyResources/Timers-Cisco3/timers/ns-3/build/.conf_check_7490b71502b9cdfa452aacd0d7b20c54/testbuild/test.cpp.1.o']
+[2/2] Linking [33mbuild/.conf_check_7490b71502b9cdfa452aacd0d7b20c54/testbuild/testprog[0m
 
-['/usr/bin/g++', '-pthread', 'test.cpp.1.o', '-o', '/home/harnen/work/ucl/timers/ns-3/build/.conf_check_048718e5b6eff49a02c1535c7819dfde/testbuild/testprog', '-Wl,-Bstatic', '-Wl,-Bdynamic', '-L/usr/lib', '-lcryptopp', '-lpthread']
+['/usr/bin/g++', '-pthread', 'test.cpp.1.o', '-o', '/home/khabak3/MyResources/Timers-Cisco3/timers/ns-3/build/.conf_check_7490b71502b9cdfa452aacd0d7b20c54/testbuild/testprog', '-Wl,-Bstatic', '-Wl,-Bdynamic', '-L/usr/lib', '-lcryptopp', '-lpthread']
 yes
 ------------------------------------------------------------------
 Checking for OpenSSL lib
@@ -1171,12 +1155,12 @@ int main(int argc, char **argv) {
 }
 
 <==
-[1/2] Compiling [32mbuild/.conf_check_896de4fb3f1212c39ca34d1e9294ca01/test.cpp[0m
+[1/2] Compiling [32mbuild/.conf_check_ee6d7d82fa72034dd1b57d5140150113/test.cpp[0m
 
-['/usr/bin/g++', '-std=c++0x', '-std=c++11', '-O0', '-ggdb', '-g3', '-Wall', '-Wno-error=deprecated-declarations', '-fstrict-aliasing', '-Wstrict-aliasing', '-I/usr/include', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '-DHAVE_SYS_IOCTL_H=1', '-DHAVE_IF_NETS_H=1', '-DHAVE_NET_ETHERNET_H=1', '-DHAVE_IF_TUN_H=1', '-DHAVE_PACKET_H=1', '-DHAVE_IS_DEFAULT_CONSTRUCTIBLE=1', '-DHAVE_IS_NOTHROW_MOVE_CONSTRUCTIBLE=1', '-DHAVE_IS_NOTHROW_MOVE_ASSIGNABLE=1', '-DHAVE_STD_TO_STRING=1', '-DHAVE_VECTOR_INSERT_ERASE_CONST_ITERATOR=1', '-DHAVE_PTHREAD=1', '-DHAVE_SQLITE3=1', '../test.cpp', '-c', '-o', '/home/harnen/work/ucl/timers/ns-3/build/.conf_check_896de4fb3f1212c39ca34d1e9294ca01/testbuild/test.cpp.1.o']
-[2/2] Linking [33mbuild/.conf_check_896de4fb3f1212c39ca34d1e9294ca01/testbuild/testprog[0m
+['/usr/bin/g++', '-std=c++0x', '-std=c++11', '-O0', '-ggdb', '-g3', '-Wall', '-Wno-error=deprecated-declarations', '-fstrict-aliasing', '-Wstrict-aliasing', '-I/usr/include', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '-DHAVE_SYS_IOCTL_H=1', '-DHAVE_IF_NETS_H=1', '-DHAVE_NET_ETHERNET_H=1', '-DHAVE_IF_TUN_H=1', '-DHAVE_PACKET_H=1', '-DHAVE_IS_DEFAULT_CONSTRUCTIBLE=1', '-DHAVE_IS_NOTHROW_MOVE_CONSTRUCTIBLE=1', '-DHAVE_IS_NOTHROW_MOVE_ASSIGNABLE=1', '-DHAVE_STD_TO_STRING=1', '-DHAVE_VECTOR_INSERT_ERASE_CONST_ITERATOR=1', '-DHAVE_PTHREAD=1', '-DHAVE_SQLITE3=1', '../test.cpp', '-c', '-o', '/home/khabak3/MyResources/Timers-Cisco3/timers/ns-3/build/.conf_check_ee6d7d82fa72034dd1b57d5140150113/testbuild/test.cpp.1.o']
+[2/2] Linking [33mbuild/.conf_check_ee6d7d82fa72034dd1b57d5140150113/testbuild/testprog[0m
 
-['/usr/bin/g++', 'test.cpp.1.o', '-o', '/home/harnen/work/ucl/timers/ns-3/build/.conf_check_896de4fb3f1212c39ca34d1e9294ca01/testbuild/testprog', '-Wl,-Bstatic', '-Wl,-Bdynamic', '-L/usr/lib', '-lssl', '-lcrypto']
+['/usr/bin/g++', 'test.cpp.1.o', '-o', '/home/khabak3/MyResources/Timers-Cisco3/timers/ns-3/build/.conf_check_ee6d7d82fa72034dd1b57d5140150113/testbuild/testprog', '-Wl,-Bstatic', '-Wl,-Bdynamic', '-L/usr/lib', '-lssl', '-lcrypto']
 yes
 ------------------------------------------------------------------
 Checking for OpenFlow location
@@ -1198,32 +1182,28 @@ int main(int argc, char **argv) {
 }
 
 <==
-[1/2] Compiling [32mbuild/.conf_check_8d6610963155798c67bfdc35635f8f42/test.cpp[0m
+[1/2] Compiling [32mbuild/.conf_check_1d2b9d6f84c4be7e3ec93e143d8ba220/test.cpp[0m
 
-['/usr/bin/g++', '-std=c++0x', '-std=c++11', '-O0', '-ggdb', '-g3', '-Wall', '-Wno-error=deprecated-declarations', '-fstrict-aliasing', '-Wstrict-aliasing', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '-DHAVE_SYS_IOCTL_H=1', '-DHAVE_IF_NETS_H=1', '-DHAVE_NET_ETHERNET_H=1', '-DHAVE_PACKET_H=1', '-DHAVE_IS_DEFAULT_CONSTRUCTIBLE=1', '-DHAVE_IS_NOTHROW_MOVE_CONSTRUCTIBLE=1', '-DHAVE_IS_NOTHROW_MOVE_ASSIGNABLE=1', '-DHAVE_STD_TO_STRING=1', '-DHAVE_VECTOR_INSERT_ERASE_CONST_ITERATOR=1', '-DHAVE_PTHREAD=1', '-DHAVE_SQLITE3=1', '-DHAVE_OPENSSL=1', '../test.cpp', '-c', '-o', '/home/harnen/work/ucl/timers/ns-3/build/.conf_check_8d6610963155798c67bfdc35635f8f42/testbuild/test.cpp.1.o']
-[2/2] Linking [33mbuild/.conf_check_8d6610963155798c67bfdc35635f8f42/testbuild/testprog[0m
+['/usr/bin/g++', '-std=c++0x', '-std=c++11', '-O0', '-ggdb', '-g3', '-Wall', '-Wno-error=deprecated-declarations', '-fstrict-aliasing', '-Wstrict-aliasing', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '-DHAVE_SYS_IOCTL_H=1', '-DHAVE_IF_NETS_H=1', '-DHAVE_NET_ETHERNET_H=1', '-DHAVE_PACKET_H=1', '-DHAVE_IS_DEFAULT_CONSTRUCTIBLE=1', '-DHAVE_IS_NOTHROW_MOVE_CONSTRUCTIBLE=1', '-DHAVE_IS_NOTHROW_MOVE_ASSIGNABLE=1', '-DHAVE_STD_TO_STRING=1', '-DHAVE_VECTOR_INSERT_ERASE_CONST_ITERATOR=1', '-DHAVE_PTHREAD=1', '-DHAVE_SQLITE3=1', '-DHAVE_OPENSSL=1', '../test.cpp', '-c', '-o', '/home/khabak3/MyResources/Timers-Cisco3/timers/ns-3/build/.conf_check_1d2b9d6f84c4be7e3ec93e143d8ba220/testbuild/test.cpp.1.o']
+[2/2] Linking [33mbuild/.conf_check_1d2b9d6f84c4be7e3ec93e143d8ba220/testbuild/testprog[0m
 
-['/usr/bin/g++', 'test.cpp.1.o', '-o', '/home/harnen/work/ucl/timers/ns-3/build/.conf_check_8d6610963155798c67bfdc35635f8f42/testbuild/testprog', '-Wl,-Bstatic', '-Wl,-Bdynamic']
+['/usr/bin/g++', 'test.cpp.1.o', '-o', '/home/khabak3/MyResources/Timers-Cisco3/timers/ns-3/build/.conf_check_1d2b9d6f84c4be7e3ec93e143d8ba220/testbuild/testprog', '-Wl,-Bstatic', '-Wl,-Bdynamic']
 yes
 ------------------------------------------------------------------
 Checking for program 'sudo'
 /usr/bin/sudo
-find program=['sudo'] paths=['/home/harnen/.yarn/bin', '/usr/local/sbin', '/usr/local/bin', '/usr/sbin', '/usr/bin', '/sbin', '/bin', '/usr/games', '/usr/local/games', '/snap/bin', '/home/harnen/Downloads/eclipse', '/home/harnen/go/bin', '/usr/local/go/bin', '/home/harnen/work/ucl/blockchain/node-v6.11.0-linux-x64/bin', '/home/harnen/Desktop/SGX/sgxsdk/bin', '/home/harnen/Desktop/SGX/sgxsdk/bin/x64'] var='SUDO' -> ['/usr/bin/sudo']
+find program=['sudo'] paths=['/usr/local/sbin', '/usr/local/bin', '/usr/sbin', '/usr/bin', '/sbin', '/bin', '/usr/games', '/usr/local/games', '/snap/bin'] var='SUDO' -> ['/usr/bin/sudo']
 ------------------------------------------------------------------
 Checking for program 'valgrind'
 /usr/bin/valgrind
-find program=['valgrind'] paths=['/home/harnen/.yarn/bin', '/usr/local/sbin', '/usr/local/bin', '/usr/sbin', '/usr/bin', '/sbin', '/bin', '/usr/games', '/usr/local/games', '/snap/bin', '/home/harnen/Downloads/eclipse', '/home/harnen/go/bin', '/usr/local/go/bin', '/home/harnen/work/ucl/blockchain/node-v6.11.0-linux-x64/bin', '/home/harnen/Desktop/SGX/sgxsdk/bin', '/home/harnen/Desktop/SGX/sgxsdk/bin/x64'] var='VALGRIND' -> ['/usr/bin/valgrind']
+find program=['valgrind'] paths=['/usr/local/sbin', '/usr/local/bin', '/usr/sbin', '/usr/bin', '/sbin', '/bin', '/usr/games', '/usr/local/games', '/snap/bin'] var='VALGRIND' -> ['/usr/bin/valgrind']
 ------------------------------------------------------------------
 Checking for 'gsl'
 ['/usr/bin/pkg-config', '--cflags', '--libs', 'gsl']
-err: Package gsl was not found in the pkg-config search path.
-Perhaps you should add the directory containing `gsl.pc'
-to the PKG_CONFIG_PATH environment variable
-No package 'gsl' found
+out: -lgsl -lgslcblas -lm
 
-not found
-from /home/harnen/work/ucl/timers/ns-3: The configuration failed
+yes
 ------------------------------------------------------------------
 Checking for program 'doxygen'
 /usr/bin/doxygen
-find program=['doxygen'] paths=['/home/harnen/.yarn/bin', '/usr/local/sbin', '/usr/local/bin', '/usr/sbin', '/usr/bin', '/sbin', '/bin', '/usr/games', '/usr/local/games', '/snap/bin', '/home/harnen/Downloads/eclipse', '/home/harnen/go/bin', '/usr/local/go/bin', '/home/harnen/work/ucl/blockchain/node-v6.11.0-linux-x64/bin', '/home/harnen/Desktop/SGX/sgxsdk/bin', '/home/harnen/Desktop/SGX/sgxsdk/bin/x64'] var='DOXYGEN' -> ['/usr/bin/doxygen']
+find program=['doxygen'] paths=['/usr/local/sbin', '/usr/local/bin', '/usr/sbin', '/usr/bin', '/sbin', '/bin', '/usr/games', '/usr/local/games', '/snap/bin'] var='DOXYGEN' -> ['/usr/bin/doxygen']

@@ -114,6 +114,25 @@ ConsumerACKs::GetRetxTimer() const
 }
 
 
+void
+ConsumerACKs::extendRetxTimeout(uint32_t seqNo, Time extension)
+{
+  if (!m_seqTimeouts.empty()) {
+    SeqTimeoutsContainer::index<i_timestamp>::type::iterator entry =
+      m_seqTimeouts.get<i_timestamp>().begin();
+
+    while(entry != m_seqTimeouts.get<i_timestamp>().end()){
+      if (entry->seq == seqNo){
+        Time newTimeout = entry->time + extension;
+        entry->time = newTimeout;
+        break; // Only One packet will have this sequence number
+      } else {
+        std::advance(entry, 1);
+      }
+    }
+  }
+}
+
 // FIX HABAK
 void
 ConsumerACKs::CheckRetxTimeout()
@@ -136,7 +155,8 @@ ConsumerACKs::CheckRetxTimeout()
       break; // nothing else to do. All later packets need not be retransmitted
   }
 
-  m_retxEvent = Simulator::Schedule(m_retxTimer, &ConsumerACKs::CheckRetxTimeout, this);
+  m_retxEvent = Simulator::Schedule(m_retxTimer,
+      &ConsumerACKs::CheckRetxTimeout, this);
 }
 
 // Application Methods

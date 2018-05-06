@@ -215,6 +215,12 @@ PUBLIC_WITH_TESTS_ELSE_PRIVATE: // pipelines
   onContentStoreHit(const Face& inFace, const shared_ptr<pit::Entry>& pitEntry,
                     const Interest& interest, const Data& data);
 
+  /** KHabak ACK 
+  */
+//  VIRTUAL_WITH_TESTS void
+//  onContentStoreACKHit(const Face& inFace, const shared_ptr<pit::Entry>& pitEntry,
+//                    const Interest& interest, const Data& data);
+
   /** \brief outgoing Interest pipeline
    */
   VIRTUAL_WITH_TESTS void

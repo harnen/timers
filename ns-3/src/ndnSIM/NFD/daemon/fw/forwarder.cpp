@@ -170,6 +170,11 @@ Forwarder::onIncomingInterest(Face& inFace, const Interest& interest)
       shared_ptr<Data> match = m_csFromNdnSim->Lookup(interest.shared_from_this());
       if (match != nullptr) {
         this->onContentStoreHit(inFace, pitEntry, interest, *match);
+        // FIX THIS PART
+       // if ( != nullptr){
+        //} else {
+        //  this->onContentStoreACKHit(inFace, pitEntry, interest, *match);
+        //}
       }
       else {
         this->onContentStoreMiss(inFace, pitEntry, interest);
@@ -254,6 +259,58 @@ Forwarder::onContentStoreHit(const Face& inFace, const shared_ptr<pit::Entry>& p
   // goto outgoing Data pipeline
   this->onOutgoingData(data, *const_pointer_cast<Face>(inFace.shared_from_this()));
 }
+
+/*
+void
+Forwarder::onContentStoreACKHit(const Face& inFace, const shared_ptr<pit::Entry>& pitEntry,
+                             const Interest& interest, const Data& data)
+{
+  // From the content store miss
+  NFD_LOG_DEBUG("onContentStoreACKHit interest=" << interest.getName());
+
+  // insert in-record
+  pitEntry->insertOrUpdateInRecord(const_cast<Face&>(inFace), interest);
+
+
+  // set PIT unsatisfy timer
+  //this->setUnsatisfyTimer(pitEntry, interest.getDeadline()); Khabak: Keep the old one as is
+
+  // has NextHopFaceId?
+  shared_ptr<lp::NextHopFaceIdTag> nextHopTag = interest.getTag<lp::NextHopFaceIdTag>();
+  if (nextHopTag != nullptr) {
+    // chosen NextHop face exists?
+    Face* nextHopFace = m_faceTable.get(*nextHopTag);
+    if (nextHopFace != nullptr) {
+      NFD_LOG_DEBUG("onContentStoreMiss interest=" << interest.getName() << " nexthop-faceid=" << nextHopFace->getId());
+      // go to outgoing Interest pipeline
+      // scope control is unnecessary, because privileged app explicitly wants to forward
+      this->onOutgoingInterest(pitEntry, *nextHopFace, interest);
+    }
+    return;
+  }
+
+  // dispatch to strategy: after incoming Interest
+  this->dispatchToStrategy(*pitEntry,
+    [&] (fw::Strategy& strategy) { strategy.afterReceiveInterest(inFace, interest, pitEntry); });
+
+
+  // From the content store hit
+  NFD_LOG_DEBUG("onContentStoreHit interest=" << interest.getName());
+
+  beforeSatisfyInterest(*pitEntry, *m_csFace, data);
+  this->dispatchToStrategy(*pitEntry,
+    [&] (fw::Strategy& strategy) { strategy.beforeSatisfyInterest(pitEntry, *m_csFace, data); });
+
+  data.setTag(make_shared<lp::IncomingFaceIdTag>(face::FACEID_CONTENT_STORE));
+  // XXX should we lookup PIT for other Interests that also match csMatch?
+
+  // set PIT straggler timer
+  this->setStragglerTimer(pitEntry, true, data.getFreshnessPeriod());
+
+  // goto outgoing Data pipeline
+  this->onOutgoingData(data, *const_pointer_cast<Face>(inFace.shared_from_this()));
+}
+*/
 
 void
 Forwarder::onOutgoingInterest(const shared_ptr<pit::Entry>& pitEntry, Face& outFace, const Interest& interest)
@@ -373,6 +430,8 @@ Forwarder::onIncomingData(Face& inFace, const Data& data)
   for (const shared_ptr<pit::Entry>& pitEntry : pitMatches) {
     NFD_LOG_DEBUG("onIncomingData matching=" << pitEntry->getName());
 
+    // HABAK .... FIX
+
     // cancel unsatisfy & straggler timer
     this->cancelUnsatisfyAndStragglerTimer(*pitEntry);
 
@@ -414,6 +473,13 @@ Forwarder::onIncomingData(Face& inFace, const Data& data)
 void
 Forwarder::onDataUnsolicited(Face& inFace, const Data& data)
 {
+
+        // FIX THIS PART
+       // if ( != nullptr){
+        //} else {
+        //}
+
+
   // accept to cache?
   fw::UnsolicitedDataDecision decision = m_unsolicitedDataPolicy->decide(inFace, data);
   if (decision == fw::UnsolicitedDataDecision::CACHE) {
@@ -563,6 +629,7 @@ compare_InRecord_expiry(const pit::InRecord& a, const pit::InRecord& b)
   return a.getExpiry() < b.getExpiry();
 }
 
+// HABAK
 void
 Forwarder::setUnsatisfyTimer(const shared_ptr<pit::Entry>& pitEntry, int deadline)
 {

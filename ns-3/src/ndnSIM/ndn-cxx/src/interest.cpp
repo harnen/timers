@@ -240,14 +240,13 @@ size_t Interest::wireEncode(EncodingImpl<TAG>& encoder) const {
 		totalLength += getSelectors().wireEncode(encoder);
 	}
 
-	//Path
-	//unsigned int myVal = encoder.prependByteArrayBlock(tlv::Path, m_path, PATH_SIZE);
-
-	//totalLength += myVal;
-
 	//Repeated
 	totalLength += prependNonNegativeIntegerBlock(encoder, tlv::Repeated,
 			getRepeated());
+
+	//Deadline
+	totalLength += prependNonNegativeIntegerBlock(encoder, tlv::Deadline,
+			getDeadline());
 
 	// Name
 	totalLength += getName().wireEncode(encoder);
@@ -301,9 +300,16 @@ void Interest::wireDecode(const Block& wire) {
 	// Name
 	m_name.wireDecode(m_wire.get(tlv::Name));
 
+	//Deadline
+	Block::element_const_iterator val = m_wire.find(tlv::Deadline);
+	if (val != m_wire.elements_end()) {
+		m_deadline = readNonNegativeInteger(*val);
+	} else {
+		m_deadline = 0;
+	}
 
 	//Repeated
-	Block::element_const_iterator val = m_wire.find(tlv::Repeated);
+	val = m_wire.find(tlv::Repeated);
 	if (val != m_wire.elements_end()) {
 		m_repeated = readNonNegativeInteger(*val);
 	} else {
@@ -472,6 +478,10 @@ operator<<(std::ostream& os, const Interest& interest) {
 		delim = '&';
 	}
 
+	if (1) {
+		os << delim << "ndn.Deadline=" << interest.getDeadline();
+		delim = '&';
+	}
 
 	if (1) {
 			os << delim << "ndn.Repeated=" << interest.getRepeated();

@@ -346,11 +346,9 @@ operator<<(std::ostream& os, const Data& data) {
 			<< ", value_length: " << data.getSignature().getValue().value_size()
 			<< ")";
 	os << "&" << "ndn.Repeated" << data.getRepeated() << ",";
-	os << "&" << "ndn.Path=";
+	os << "&" << "ndn.Deadline=" << data.getDeadline();
 	os << "&" << "isACK" << data.isACK();
-	for (int i = 0; i < PATH_SIZE; i++) {
-		os << (int) data.getPath(i) << ",";
-	}
+
 	os << std::endl;
 
 	return os;

@@ -329,7 +329,7 @@ public:
 		return m_deadline;
 	}
 
-	Interest&
+	Data&
 	setDeadline(unsigned int deadline) {
 		m_deadline = deadline;
 		return *this;

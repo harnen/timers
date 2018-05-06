@@ -487,10 +487,6 @@ operator<<(std::ostream& os, const Interest& interest) {
 		delim = '&';
 	}
 
-	if (1) {
-		os << delim << "ndn.Deadline=" << interest.getDeadline();
-		delim = '&';
-	}
 
 	if (1) {
 			os << delim << "ndn.Repeated=" << interest.getRepeated();

@@ -36,6 +36,8 @@ namespace nfd {
 
 NFD_LOG_INIT("Forwarder");
 
+
+
 Forwarder::Forwarder()
   : m_unsolicitedDataPolicy(new fw::DefaultUnsolicitedDataPolicy())
   , m_fib(m_nameTree)
@@ -68,6 +70,8 @@ Forwarder::Forwarder()
 }
 
 Forwarder::~Forwarder() = default;
+
+
 
 void
 Forwarder::startProcessInterest(Face& face, const Interest& interest)
@@ -218,8 +222,8 @@ Forwarder::onContentStoreMiss(const Face& inFace, const shared_ptr<pit::Entry>& 
   pitEntry->insertOrUpdateInRecord(const_cast<Face&>(inFace), interest);
 
 
-  // set PIT unsatisfy timer
-  this->setUnsatisfyTimer(pitEntry, interest.getDeadline());
+  /*// set PIT unsatisfy timer
+  this->setUnsatisfyTimer(pitEntry, interest.getDeadline());*/
 
   // has NextHopFaceId?
   shared_ptr<lp::NextHopFaceIdTag> nextHopTag = interest.getTag<lp::NextHopFaceIdTag>();
@@ -395,7 +399,11 @@ Forwarder::onIncomingData(Face& inFace, const Data& data)
   // receive Data
   NFD_LOG_DEBUG("onIncomingData face=" << inFace.getId() << " data=" << data.getName());
   data.setTag(make_shared<lp::IncomingFaceIdTag>(inFace.getId()));
-  ++m_counters.nInData;
+
+  // Habak
+  if (data->isACK != 0) {
+    ++m_counters.nInData;
+  }
 
   // /localhost scope control
   bool isViolatingLocalhost = inFace.getScope() == ndn::nfd::FACE_SCOPE_NON_LOCAL &&
@@ -415,14 +423,17 @@ Forwarder::onIncomingData(Face& inFace, const Data& data)
     return;
   }
 
-  shared_ptr<Data> dataCopyWithoutTag = make_shared<Data>(data);
-  dataCopyWithoutTag->removeTag<lp::HopCountTag>();
+  // Habak
+  if (data->isACK != 0) {
+    shared_ptr<Data> dataCopyWithoutTag = make_shared<Data>(data);
+    dataCopyWithoutTag->removeTag<lp::HopCountTag>();
 
-  // CS insert
-  if (m_csFromNdnSim == nullptr)
-    m_cs.insert(*dataCopyWithoutTag);
-  else
-    m_csFromNdnSim->Add(dataCopyWithoutTag);
+    // CS insert
+    if (m_csFromNdnSim == nullptr)
+      m_cs.insert(*dataCopyWithoutTag);
+    else
+      m_csFromNdnSim->Add(dataCopyWithoutTag);
+  }
 
   std::set<Face*> pendingDownstreams;
   // foreach PitEntry
@@ -449,13 +460,15 @@ Forwarder::onIncomingData(Face& inFace, const Data& data)
 
     // Dead Nonce List insert if necessary (for out-record of inFace)
     this->insertDeadNonceList(*pitEntry, true, data.getFreshnessPeriod(), &inFace);
+    // Habak
+    if (data->isACK != 0) {
+      // mark PIT satisfied
+      pitEntry->clearInRecords();
+      pitEntry->deleteOutRecord(inFace);
 
-    // mark PIT satisfied
-    pitEntry->clearInRecords();
-    pitEntry->deleteOutRecord(inFace);
-
-    // set PIT straggler timer
-    this->setStragglerTimer(pitEntry, true, data.getFreshnessPeriod());
+      // set PIT straggler timer
+      this->setStragglerTimer(pitEntry, true, data.getFreshnessPeriod());
+    }
   }
 
   NS_LOG_DEBUG("Will send data down now");
@@ -473,26 +486,25 @@ Forwarder::onIncomingData(Face& inFace, const Data& data)
 void
 Forwarder::onDataUnsolicited(Face& inFace, const Data& data)
 {
+  if (data->isACK != 0){
+    // accept to cache?
+    fw::UnsolicitedDataDecision decision = m_unsolicitedDataPolicy->decide(inFace, data);
+    if (decision == fw::UnsolicitedDataDecision::CACHE) {
+      // CS insert
+      if (m_csFromNdnSim == nullptr)
+        m_cs.insert(data, true);
+      else
+        m_csFromNdnSim->Add(data.shared_from_this());
+    }
 
-        // FIX THIS PART
-       // if ( != nullptr){
-        //} else {
-        //}
-
-
-  // accept to cache?
-  fw::UnsolicitedDataDecision decision = m_unsolicitedDataPolicy->decide(inFace, data);
-  if (decision == fw::UnsolicitedDataDecision::CACHE) {
-    // CS insert
-    if (m_csFromNdnSim == nullptr)
-      m_cs.insert(data, true);
-    else
-      m_csFromNdnSim->Add(data.shared_from_this());
+    NFD_LOG_DEBUG("onDataUnsolicited face=" << inFace.getId() <<
+                  " data=" << data.getName() <<
+                  " decision=" << decision);
+  } else {
+    NFD_LOG_DEBUG("onDataUnsolicited face=" << inFace.getId() <<
+                  " data=" << data.getName() <<
+                  " type= ACK");
   }
-
-  NFD_LOG_DEBUG("onDataUnsolicited face=" << inFace.getId() <<
-                " data=" << data.getName() <<
-                " decision=" << decision);
 }
 
 void

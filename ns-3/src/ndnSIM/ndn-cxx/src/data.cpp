@@ -76,6 +76,14 @@ size_t Data::wireEncode(EncodingImpl<TAG>& encoder,
 	totalLength += prependNonNegativeIntegerBlock(encoder, tlv::Repeated,
 			getRepeated());
 
+	//Deadline
+	totalLength += prependNonNegativeIntegerBlock(encoder, tlv::Deadline,
+			getDeadline());
+
+	//isACK
+	totalLength += prependNonNegativeIntegerBlock(encoder, tlv::isACK,
+				isACK());
+
 	//Path
 	totalLength += encoder.prependByteArrayBlock(tlv::Path, m_path, PATH_SIZE);
 
@@ -156,6 +164,22 @@ void Data::wireDecode(const Block& wire) {
 	Block::element_const_iterator val = m_wire.find(tlv::Path);
 	if (val != m_wire.elements_end()) {
 		memcpy(m_path, val->value(), PATH_SIZE);
+	}
+
+	//isACK
+	val = m_wire.find(tlv::isACK);
+		if (val != m_wire.elements_end()) {
+			m_repeated = readNonNegativeInteger(*val);
+		} else {
+			m_repeated = 0;
+	}
+
+	//Deadline
+	val = m_wire.find(tlv::Deadline);
+	if (val != m_wire.elements_end()) {
+		m_deadline = readNonNegativeInteger(*val);
+	} else {
+		m_deadline = 0;
 	}
 
 	//Repeated
@@ -322,10 +346,9 @@ operator<<(std::ostream& os, const Data& data) {
 			<< ", value_length: " << data.getSignature().getValue().value_size()
 			<< ")";
 	os << "&" << "ndn.Repeated" << data.getRepeated() << ",";
-	os << "&" << "ndn.Path=";
-	for (int i = 0; i < PATH_SIZE; i++) {
-		os << (int) data.getPath(i) << ",";
-	}
+	os << "&" << "ndn.Deadline=" << data.getDeadline();
+	os << "&" << "isACK" << data.isACK();
+
 	os << std::endl;
 
 	return os;

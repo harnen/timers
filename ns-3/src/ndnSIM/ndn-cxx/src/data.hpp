@@ -320,11 +320,29 @@ public:
 			return m_repeated;
 		}
 
-		Data&
-		setRepeated(unsigned int repeated) {
-			m_repeated = repeated;
-			return *this;
-		}
+	Data& setRepeated(unsigned int repeated) {
+		m_repeated = repeated;
+		return *this;
+	}
+
+	unsigned int getDeadline() const {
+		return m_deadline;
+	}
+
+	Data&
+	setDeadline(unsigned int deadline) {
+		m_deadline = deadline;
+		return *this;
+	}
+
+	unsigned int isACK() const {
+		return m_isACK;
+	}
+
+	Data& isACK(unsigned int isACK) {
+		m_isACK = isACK;
+		return *this;
+	}
 
 public:
 	// EqualityComparable concept
@@ -352,6 +370,9 @@ private:
 
 	uint8_t m_path[PATH_SIZE];
 	unsigned int m_repeated = 0;
+	unsigned int m_isACK = 0;
+	unsigned int m_deadline = 0;
+
 
 
 };

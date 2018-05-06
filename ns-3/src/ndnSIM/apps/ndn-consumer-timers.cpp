@@ -81,16 +81,18 @@ ConsumerTimers::ScheduleNextPacket()
   // double mean = 8.0 * m_payloadSize / m_desiredRate.GetBitRate ();
   // std::cout << "next: " << Simulator::Now().ToDouble(Time::S) + mean << "s\n";
   NS_LOG_DEBUG("Schedule next packet");
+  m_seq++;
   if (m_firstTime) {
-	  NS_LOG_DEBUG("Scheduling next packet in 0 seconds");
-    m_sendEvent = Simulator::Schedule(Seconds(0.0), &ConsumerThunks::SendPacket, this);
+	  NS_LOG_DEBUG("Scheduling next packet in 0 seconds seq:" << m_seq);
+    m_sendEvent = Simulator::Schedule(Seconds(0.0), &ConsumerThunks::SendPacket, this, m_interestName, m_seq);
     m_firstTime = false;
   }
-  else if (!m_sendEvent.IsRunning()){
-	  NS_LOG_DEBUG("Scheduling next packet in " << (1.0 / m_frequency) << " seconds");
+  //we want to keep sending packet no matter what
+  else {
+	  NS_LOG_DEBUG("Scheduling next packet in " << (1.0 / m_frequency) << " seconds" << "seq: " << m_seq);
     m_sendEvent = Simulator::Schedule((m_random == 0) ? Seconds(1.0 / m_frequency)
                                                       : Seconds(m_random->GetValue()),
-                                      &ConsumerThunks::SendPacket, this);
+                                      &ConsumerThunks::SendPacket, this, m_interestName, m_seq);
   }
 }
 

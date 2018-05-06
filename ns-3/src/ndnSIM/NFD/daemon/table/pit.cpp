@@ -25,6 +25,9 @@
 
 #include "pit.hpp"
 
+NS_LOG_COMPONENT_DEFINE("nfd.PIT");
+
+
 namespace nfd {
 namespace pit {
 
@@ -81,6 +84,9 @@ Pit::findOrInsert(const Interest& interest, bool allowInsert)
   auto entry = make_shared<Entry>(interest);
   nte->insertPitEntry(entry);
   ++m_nItems;
+  //get the max PIT size for statistics
+  if(this->size() > m_maxSize) m_maxSize = this->size();
+  NS_LOG_DEBUG("PIT size:" << this->size() << ": Max size:" << m_maxSize);
   return {entry, true};
 }
 
@@ -111,6 +117,7 @@ Pit::erase(Entry* entry, bool canDeleteNte)
     m_nameTree.eraseIfEmpty(nte);
   }
   --m_nItems;
+  NS_LOG_DEBUG("PIT size:" << this->size() << ": Max size:" << m_maxSize);
 }
 
 void

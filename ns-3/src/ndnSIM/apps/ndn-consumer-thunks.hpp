@@ -77,7 +77,7 @@ public:
    * @brief Actually send packet
    */
   void
-  SendPacket();
+  SendPacket(Name name, uint32_t seq);
 
 
 
@@ -149,8 +149,11 @@ protected:
   Name m_interestName;     ///< \brief NDN Name of the Interest (use Name)
   Time m_interestLifeTime; ///< \brief LifeTime for interest packet
   long m_appDelay; 		   ///< \brief Data Generation Time
-  bool m_thunkEstablished;
-  Name m_thunk;
+  std::map<uint32_t,Name> m_names;
+  std::map<uint32_t,Time> m_times;
+
+  /*bool m_thunkEstablished;
+  Name m_thunk;*/
 
   /// @cond include_hidden
   /**

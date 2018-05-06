@@ -88,7 +88,7 @@ ConsumerThunks::ConsumerThunks()
   : m_rand(CreateObject<UniformRandomVariable>())
   , m_seq(0)
   , m_seqMax(0) // don't request anything
-  , m_thunkEstablished(false)
+  /*, m_thunkEstablished(false)*/
 {
   NS_LOG_FUNCTION_NOARGS();
 
@@ -166,7 +166,7 @@ ConsumerThunks::StopApplication() // Called at time specified by Stop
 
 
 void
-ConsumerThunks::SendPacket(){
+ConsumerThunks::SendPacket(Name name, uint32_t seq){
   if (!m_active){
 	  NS_LOG_DEBUG("not active");
     return;
@@ -174,37 +174,45 @@ ConsumerThunks::SendPacket(){
 
   //NS_LOG_FUNCTION_NOARGS();
 
-  uint32_t seq = std::numeric_limits<uint32_t>::max(); // invalid
+  //uint32_t seq = std::numeric_limits<uint32_t>::max(); // invalid
 
   while (m_retxSeqs.size()) {
-    seq = *m_retxSeqs.begin();
+    //seq = *m_retxSeqs.begin();
     m_retxSeqs.erase(m_retxSeqs.begin());
     break;
   }
 
-  if (seq == std::numeric_limits<uint32_t>::max()) {
+  /*if (seq == std::numeric_limits<uint32_t>::max()) {
     if (m_seqMax != std::numeric_limits<uint32_t>::max()) {
       if (m_seq >= m_seqMax) {
         return; // we are totally done
       }
     }
     seq = m_seq++;
-  }
+  }*/
+
   shared_ptr<Name> nameWithSequence;
   shared_ptr<Interest> interest = make_shared<Interest>();
   interest->setNonce(m_rand->GetValue(0, std::numeric_limits<uint32_t>::max()));
 
   time::milliseconds interestLifeTime(m_interestLifeTime.GetMilliSeconds());
   interest->setInterestLifetime(interestLifeTime);
-  if(m_thunkEstablished){
-	  NS_LOG_DEBUG("Sending data request to " << m_thunk << " seq:" << seq);
-	  nameWithSequence = make_shared<Name>(m_thunk);
+  /*if(m_thunkEstablished){*/
+  if(m_interestName.equals(name)){
+	  NS_LOG_DEBUG("Sending thunk request for " << name << " seq:" << seq);
+	  //nameWithSequence = make_shared<Name>(m_thunk);
+	  //schedule a new packet only if it's not a retransmission
+	  if(m_names.find(seq) == m_names.end())
+		  ScheduleNextPacket();
   }else{
-	  NS_LOG_DEBUG("Sending thunk request for " << m_interestName << " seq:" << seq);
-	  nameWithSequence = make_shared<Name>(m_interestName);
+	  NS_LOG_DEBUG("Sending data request to " << name << " seq:" << seq);
+	  //nameWithSequence = make_shared<Name>(m_interestName);
   }
+  nameWithSequence = make_shared<Name>(name);
   nameWithSequence->appendSequenceNumber(seq);
   interest->setName(*nameWithSequence);
+  m_names.insert(std::pair<uint32_t,Name>(seq,name));
+
 
   //NS_LOG_INFO("> Interest for " << seq);
 
@@ -239,12 +247,15 @@ ConsumerThunks::OnData(shared_ptr<const Data> data)
   uint32_t seq = data->getName().at(-1).toSequenceNumber();
   NS_LOG_INFO("< DATA for " << seq);
 
+  m_names.erase(seq);
+
+
   int hopCount = 0;
   auto hopCountTag = data->getTag<lp::HopCountTag>();
   if (hopCountTag != nullptr) { // e.g., packet came from local node's cache
     hopCount = *hopCountTag;
   }
-  NS_LOG_DEBUG("Hop count: " << hopCount);
+  //NS_LOG_DEBUG("Hop count: " << hopCount);
 
   SeqTimeoutsContainer::iterator entry = m_seqLastDelay.find(seq);
   if (entry != m_seqLastDelay.end()) {
@@ -269,14 +280,14 @@ ConsumerThunks::OnData(shared_ptr<const Data> data)
   Name contentPrefix(content);
   if (addrPrefix.isPrefixOf(contentPrefix)) {
   	NS_LOG_DEBUG("Got a routable address: " << content << " seq:" << seq);
-  	m_thunk = contentPrefix;
-  	m_thunkEstablished = true;
-  	m_sendEvent = Simulator::Schedule(MilliSeconds(m_appDelay), &ConsumerThunks::SendPacket, this);
+  	/*m_thunk = contentPrefix;
+  	m_thunkEstablished = true;*/
+  	m_sendEvent = Simulator::Schedule(MilliSeconds(m_appDelay), &ConsumerThunks::SendPacket, this, contentPrefix, seq);
   }else{
 	  NS_LOG_DEBUG("Got a data chunk" << " seq:" << seq);
-	  m_thunk="";
-	  m_thunkEstablished = false;
-	  ScheduleNextPacket();
+	  /*m_thunk="";
+	  m_thunkEstablished = false;*/
+
   }
 }
 
@@ -301,8 +312,10 @@ ConsumerThunks::OnTimeout(uint32_t sequenceNumber)
   m_rtt->SentSeq(SequenceNumber32(sequenceNumber),
                  1); // make sure to disable RTT calculation for this sample
   m_retxSeqs.insert(sequenceNumber);
-  Simulator::Cancel(m_sendEvent);
-  SendPacket();
+  std::map<uint32_t,Name>::iterator it = m_names.find(sequenceNumber);
+  //Simulator::Cancel(m_sendEvent);
+  NS_ASSERT(it != m_names.end());
+  SendPacket(it->second, sequenceNumber);
 }
 
 void

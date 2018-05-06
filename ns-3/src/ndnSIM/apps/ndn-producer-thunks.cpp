@@ -99,14 +99,14 @@ void ProducerThunks::OnInterest(shared_ptr<const Interest> interest) {
 	App::OnInterest(interest); // tracing inside
 
 
-	NS_LOG_FUNCTION(this << *interest);
+	//NS_LOG_FUNCTION(this << *interest);
 
 	if (!m_active) {
 		NS_LOG_DEBUG("Producer is not active");
 		return;
 	}
 
-	NS_LOG_DEBUG("My address:" << m_address);
+	//NS_LOG_DEBUG("My address:" << m_address);
 
 	Name addrPrefix("/node/");
 	NS_LOG_DEBUG("Name in the interest: " << interest->getName());
@@ -120,6 +120,8 @@ void ProducerThunks::OnInterest(shared_ptr<const Interest> interest) {
 }
 
 void ProducerThunks::SendAddress(shared_ptr<const Interest> interest) {
+
+
 	Name dataName(interest->getName());
 	auto data = make_shared<Data>();
 	data->setName(dataName);
@@ -160,8 +162,8 @@ void ProducerThunks::SendAddress(shared_ptr<const Interest> interest) {
 
 	data->setRepeated(interest->getRepeated());
 
-	NS_LOG_INFO(
-			"node(" << GetNode()->GetId() << ") responding with Address: " << *data);
+	/*NS_LOG_INFO(
+			"node(" << GetNode()->GetId() << ") responding with Address: " << *data);*/
 
 	// to create real wire encoding
 	data->wireEncode();
@@ -188,15 +190,15 @@ void ProducerThunks::SendData(shared_ptr<const Interest> interest, long dontUse)
 
 	}*/
 
-	NS_LOG_DEBUG("Extracted sessionID: " << sessionID);
+	//NS_LOG_DEBUG("Extracted sessionID: " << sessionID);
 
 	if(m_sessions.isDataReady(sessionID)){
-		NS_LOG_DEBUG("Data ready for the session");
+		NS_LOG_DEBUG("Data ready for session " << sessionID);
 	}else{
-		NS_LOG_DEBUG("Data not ready");
+		NS_LOG_DEBUG("Data not ready for session " << sessionID);
 		long delay = m_sessions.getRemainingTime(sessionID);
 		if(delay == -1){
-			NS_LOG_DEBUG("Session does not exist");
+			NS_LOG_DEBUG("Session does not exist " << sessionID);
 			return;
 		}
 		if(delay < 1000){

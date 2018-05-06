@@ -175,7 +175,7 @@ void Data::wireDecode(const Block& wire) {
 	}
 
 	//Deadline
-	Block::element_const_iterator val = m_wire.find(tlv::Deadline);
+	val = m_wire.find(tlv::Deadline);
 	if (val != m_wire.elements_end()) {
 		m_deadline = readNonNegativeInteger(*val);
 	} else {

@@ -354,15 +354,6 @@ public:
 		return *this;
 	}
 
-	unsigned int getDeadline() const {
-		return m_deadline;
-	}
-
-	Interest&
-	setDeadline(unsigned int deadline) {
-		m_deadline = deadline;
-		return *this;
-	}
 
 	uint8_t getPath(int index) const {
 		return m_path[index];
@@ -434,7 +425,6 @@ private:
 	size_t m_selectedDelegationIndex;
 	mutable Block m_wire;
 
-	unsigned int m_deadline = 0;
 	uint8_t m_path[PATH_SIZE];
 	unsigned int m_repeated = 0;
 

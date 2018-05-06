@@ -249,6 +249,7 @@ ConsumerThunks::OnData(shared_ptr<const Data> data)
 
   m_names.erase(seq);
 
+
   int hopCount = 0;
   auto hopCountTag = data->getTag<lp::HopCountTag>();
   if (hopCountTag != nullptr) { // e.g., packet came from local node's cache

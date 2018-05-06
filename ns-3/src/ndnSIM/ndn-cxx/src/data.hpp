@@ -325,6 +325,16 @@ public:
 		return *this;
 	}
 
+	unsigned int getDeadline() const {
+		return m_deadline;
+	}
+
+	Interest&
+	setDeadline(unsigned int deadline) {
+		m_deadline = deadline;
+		return *this;
+	}
+
 	unsigned int isACK() const {
 		return m_isACK;
 	}
@@ -361,6 +371,8 @@ private:
 	uint8_t m_path[PATH_SIZE];
 	unsigned int m_repeated = 0;
 	unsigned int m_isACK = 0;
+	unsigned int m_deadline = 0;
+
 
 
 };

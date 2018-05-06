@@ -76,7 +76,11 @@ size_t Data::wireEncode(EncodingImpl<TAG>& encoder,
 	totalLength += prependNonNegativeIntegerBlock(encoder, tlv::Repeated,
 			getRepeated());
 
-	//Repeated
+	//Deadline
+	totalLength += prependNonNegativeIntegerBlock(encoder, tlv::Deadline,
+			getDeadline());
+
+	//isACK
 	totalLength += prependNonNegativeIntegerBlock(encoder, tlv::isACK,
 				isACK());
 
@@ -162,12 +166,20 @@ void Data::wireDecode(const Block& wire) {
 		memcpy(m_path, val->value(), PATH_SIZE);
 	}
 
-	//Repeated
+	//isACK
 	val = m_wire.find(tlv::isACK);
 		if (val != m_wire.elements_end()) {
 			m_repeated = readNonNegativeInteger(*val);
 		} else {
 			m_repeated = 0;
+	}
+
+	//Deadline
+	Block::element_const_iterator val = m_wire.find(tlv::Deadline);
+	if (val != m_wire.elements_end()) {
+		m_deadline = readNonNegativeInteger(*val);
+	} else {
+		m_deadline = 0;
 	}
 
 	//Repeated

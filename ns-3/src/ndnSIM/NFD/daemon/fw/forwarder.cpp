@@ -217,8 +217,8 @@ Forwarder::onContentStoreMiss(const Face& inFace, const shared_ptr<pit::Entry>& 
   pitEntry->insertOrUpdateInRecord(const_cast<Face&>(inFace), interest);
 
 
-  // set PIT unsatisfy timer
-  this->setUnsatisfyTimer(pitEntry, interest.getDeadline());
+  /*// set PIT unsatisfy timer
+  this->setUnsatisfyTimer(pitEntry, interest.getDeadline());*/
 
   // has NextHopFaceId?
   shared_ptr<lp::NextHopFaceIdTag> nextHopTag = interest.getTag<lp::NextHopFaceIdTag>();

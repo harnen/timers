@@ -20,6 +20,7 @@ namespace ndn {
         if (it != m_dataReady.end()){
           return true;
         }
+        NS_LOG_DEBUG("Cannot find session " << sessionID);
 		return false;
     }
 

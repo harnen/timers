@@ -131,25 +131,25 @@ void ProducerACKs::ProcessInterest(shared_ptr<const Interest> interest) {
       }else{
           NS_LOG_DEBUG("Data not ready");
           // Send ACK
-          SendACK(interest, m_sessions.getRemainingTime(sessionID));
+          SendACK(interest, m_sessions.getRemainingTime(sessionID), false);
       }
 
 	}else{
       // create new session + Send ACK
       m_sessions.startSession(m_appDelay, sessionID);
-      SendACK(interest, m_appDelay);
+      SendACK(interest, m_appDelay, true);
 	}
 }
 
-void ProducerACKs::SendACK(shared_ptr<const Interest> interest, long appDelay) {
+void ProducerACKs::SendACK(shared_ptr<const Interest> interest, long appDelay, bool isFirst) {
 	Name dataName(interest->getName());
 	auto data = make_shared<Data>();
 	data->setName(dataName);
 	data->setFreshnessPeriod(
 			::ndn::time::milliseconds(m_freshness.GetMilliSeconds()));
 
-	data->setContent(::ndn::encoding::makeStringBlock(::ndn::tlv::isACK,
-          "True"));
+    data->isACK(1);
+    data->setDeadline(appDelay);
 
 	Signature signature;
 	SignatureInfo signatureInfo(
@@ -176,6 +176,12 @@ void ProducerACKs::SendACK(shared_ptr<const Interest> interest, long appDelay) {
 
 	m_transmittedDatas(data, this, m_face);
 	m_appLink->onReceiveData(*data);
+    
+
+    // Send data after the delay
+    if (isFirst){
+      Simulator::Schedule(MilliSeconds(appDelay), &ProducerACKs::SendData, this, interest);
+    }
 }
 
 void ProducerACKs::SendData(shared_ptr<const Interest> interest) {

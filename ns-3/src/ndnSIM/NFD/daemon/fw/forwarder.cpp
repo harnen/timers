@@ -257,8 +257,10 @@ Forwarder::onContentStoreHit(const Face& inFace, const shared_ptr<pit::Entry>& p
   data.setTag(make_shared<lp::IncomingFaceIdTag>(face::FACEID_CONTENT_STORE));
   // XXX should we lookup PIT for other Interests that also match csMatch?
 
-  // set PIT straggler timer
-  this->setStragglerTimer(pitEntry, true, data.getFreshnessPeriod());
+  if (data.isACK() == 0) {
+    // set PIT straggler timer
+    this->setStragglerTimer(pitEntry, true, data.getFreshnessPeriod());
+  }
 
   // goto outgoing Data pipeline
   this->onOutgoingData(data, *const_pointer_cast<Face>(inFace.shared_from_this()));
@@ -401,7 +403,7 @@ Forwarder::onIncomingData(Face& inFace, const Data& data)
   data.setTag(make_shared<lp::IncomingFaceIdTag>(inFace.getId()));
 
   // Habak
-  if (data->isACK != 0) {
+  if (data.isACK() == 0) {
     ++m_counters.nInData;
   }
 
@@ -424,7 +426,7 @@ Forwarder::onIncomingData(Face& inFace, const Data& data)
   }
 
   // Habak
-  if (data->isACK != 0) {
+  if (data.isACK() == 0) {
     shared_ptr<Data> dataCopyWithoutTag = make_shared<Data>(data);
     dataCopyWithoutTag->removeTag<lp::HopCountTag>();
 
@@ -441,16 +443,24 @@ Forwarder::onIncomingData(Face& inFace, const Data& data)
   for (const shared_ptr<pit::Entry>& pitEntry : pitMatches) {
     NFD_LOG_DEBUG("onIncomingData matching=" << pitEntry->getName());
 
-    // HABAK .... FIX
+    if (data.isACK() == 0) {
+      // cancel unsatisfy & straggler timer
+      this->cancelUnsatisfyAndStragglerTimer(*pitEntry);
 
-    // cancel unsatisfy & straggler timer
-    this->cancelUnsatisfyAndStragglerTimer(*pitEntry);
-
-    // remember pending downstreams
-    for (const pit::InRecord& inRecord : pitEntry->getInRecords()) {
-      if (inRecord.getExpiry() > now) {
-        pendingDownstreams.insert(&inRecord.getFace());
+      // remember pending downstreams
+      for (const pit::InRecord& inRecord : pitEntry->getInRecords()) {
+        if (inRecord.getExpiry() > now) {
+          pendingDownstreams.insert(&inRecord.getFace());
+        }
       }
+    } else {
+      // remember pending downstreams
+      for (const pit::InRecord& inRecord : pitEntry->getInRecords()) {
+        if (inRecord.getExpiry() > now) {
+          pendingDownstreams.insert(&inRecord.getFace());
+        }
+      }
+      this->setUnsatisfyTimer(pitEntry, (int) data.getDeadline());
     }
 
     // invoke PIT satisfy callback
@@ -460,8 +470,9 @@ Forwarder::onIncomingData(Face& inFace, const Data& data)
 
     // Dead Nonce List insert if necessary (for out-record of inFace)
     this->insertDeadNonceList(*pitEntry, true, data.getFreshnessPeriod(), &inFace);
+    
     // Habak
-    if (data->isACK != 0) {
+    if (data.isACK() == 0) {
       // mark PIT satisfied
       pitEntry->clearInRecords();
       pitEntry->deleteOutRecord(inFace);
@@ -486,7 +497,7 @@ Forwarder::onIncomingData(Face& inFace, const Data& data)
 void
 Forwarder::onDataUnsolicited(Face& inFace, const Data& data)
 {
-  if (data->isACK != 0){
+  if (data.isACK() == 0){
     // accept to cache?
     fw::UnsolicitedDataDecision decision = m_unsolicitedDataPolicy->decide(inFace, data);
     if (decision == fw::UnsolicitedDataDecision::CACHE) {
@@ -530,7 +541,9 @@ Forwarder::onOutgoingData(const Data& data, Face& outFace)
 
   // send Data
   outFace.sendData(data);
-  ++m_counters.nOutData;
+  if (data.isACK() == 0){
+    ++m_counters.nOutData;
+  }
 }
 
 void

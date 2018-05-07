@@ -70,7 +70,7 @@ private:
   SendData(shared_ptr<const Interest> interest);
 
   void
-  SendACK(shared_ptr<const Interest> interest, long appDelay);
+  SendACK(shared_ptr<const Interest> interest, long appDelay, bool isFirst);
 
 private:
   Name m_prefix;

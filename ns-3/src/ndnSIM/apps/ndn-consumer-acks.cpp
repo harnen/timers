@@ -113,26 +113,6 @@ ConsumerACKs::GetRetxTimer() const
   return m_retxTimer;
 }
 
-
-void
-ConsumerACKs::extendRetxTimeout(uint32_t seqNo, Time extension)
-{
-  if (!m_seqTimeouts.empty()) {
-    SeqTimeoutsContainer::index<i_timestamp>::type::iterator entry =
-      m_seqTimeouts.get<i_timestamp>().begin();
-
-    while(entry != m_seqTimeouts.get<i_timestamp>().end()){
-      if (entry->seq == seqNo){
-        Time newTimeout = entry->time + extension;
-        entry->time = newTimeout;
-        break; // Only One packet will have this sequence number
-      } else {
-        std::advance(entry, 1);
-      }
-    }
-  }
-}
-
 // FIX HABAK
 void
 ConsumerACKs::CheckRetxTimeout()
@@ -245,9 +225,6 @@ ConsumerACKs::OnData(shared_ptr<const Data> data)
 
   App::OnData(data); // tracing inside
 
-  //NS_LOG_FUNCTION(this << *data);
-  //NS_LOG_FUNCTION("Content: " << data->getContent());
-  //Name address(data->getContent().value());
   std::string content = ::ndn::encoding::readString(data->getContent());
   NS_LOG_DEBUG("Received content: " << content);
 
@@ -280,20 +257,14 @@ ConsumerACKs::OnData(shared_ptr<const Data> data)
 
   m_rtt->AckSeq(SequenceNumber32(seq));
 
-
-
-  Name addrPrefix("/node/");
-  Name contentPrefix(content);
-  if (addrPrefix.isPrefixOf(contentPrefix)) {
-  	NS_LOG_DEBUG("Got a routable address: " << content << " seq:" << seq);
-  	//m_thunk = contentPrefix;
-  	//m_thunkEstablished = true;
-  	Simulator::Schedule(MilliSeconds(m_appDelay), &ConsumerACKs::SendPacket, this);
-  }else{
+  if (data->isACK() == 0 ){
 	  NS_LOG_DEBUG("Got a data chunk" << " seq:" << seq);
 	 // m_thunk="";
 	 // m_thunkEstablished = false;
 	  ScheduleNextPacket();
+  } else {
+  	NS_LOG_DEBUG("Got an ACK: " << " seq:" << seq);
+    // We need to inflate the timeout here and deal with the associated events
   }
 }
 

@@ -113,14 +113,6 @@ protected:
   virtual void
   ScheduleNextPacket() = 0;
 
- /**
-  * This function is used to extend the timeout when the ack is received
-  *
-  */
-
-  void
-  extendRetxTimeout(uint32_t seqNo, Time extension);
-
   /**
    * \brief Checks if the packet need to be retransmitted becuase of retransmission timer expiration
    */

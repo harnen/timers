@@ -110,7 +110,7 @@ void ProducerApp::OnInterest(shared_ptr<const Interest> interest) {
 	long sessionID = m_sessions.startSession(m_appDelay);
 	NS_LOG_DEBUG("sessionID " << sessionID << " seq: " << interest->getName().at(-1).toSequenceNumber());
 
-	NS_ASSERT(sessionID != ((long) interest->getName().at(-1).toSequenceNumber()));
+	NS_ASSERT(sessionID == ((long) interest->getName().at(-1).toSequenceNumber()));
 
 	NS_LOG_DEBUG("Sending back generated data");
 	SendData(interest, 0);

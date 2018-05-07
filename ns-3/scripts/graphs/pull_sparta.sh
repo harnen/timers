@@ -7,4 +7,4 @@ do
     gnuplot $file
 done
 
-cp *.pdf ~/work/ucl/nets-research/paper-source/thunks/img
+#cp *.pdf ~/work/ucl/nets-research/paper-source/thunks/img

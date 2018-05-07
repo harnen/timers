@@ -146,7 +146,7 @@ void ProducerApp::SendData(shared_ptr<const Interest> interest, long dontUse) {
 		}
 		NS_LOG_DEBUG("Data will be ready within 1s - " << delay);
 		/* Without "+1" the code enters an infinite loop */
-		Simulator::Schedule(MilliSeconds(delay-1), &ProducerApp::SendData, this, interest, 0);
+		Simulator::Schedule(MilliSeconds(delay+1), &ProducerApp::SendData, this, interest, 0);
 
 		return;
 	}

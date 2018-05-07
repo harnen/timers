@@ -106,74 +106,14 @@ void ProducerApp::OnInterest(shared_ptr<const Interest> interest) {
 		return;
 	}
 
-	//NS_LOG_DEBUG("My address:" << m_address);
-
-	Name addrPrefix("/node/");
-	NS_LOG_DEBUG("Name in the interest: " << interest->getName());
-	if (addrPrefix.isPrefixOf(interest->getName())) {
-		NS_LOG_DEBUG("Sending back generated data");
-		SendData(interest, 0);
-	} else {
-		NS_LOG_DEBUG("Sending back my address:" << m_address);
-		SendAddress(interest);
-	}
-}
-
-void ProducerApp::SendAddress(shared_ptr<const Interest> interest) {
-
-
-	Name dataName(interest->getName());
-	auto data = make_shared<Data>();
-	data->setName(dataName);
-	data->setFreshnessPeriod(
-			::ndn::time::milliseconds(m_freshness.GetMilliSeconds()));
-
 	//create a new "session" for each client with a different ID
 	long sessionID = m_sessions.startSession(m_appDelay);
-	std::string addr = m_address.toUri()+"/"+std::to_string(sessionID);
-	data->setContent(::ndn::encoding::makeStringBlock(::ndn::tlv::Content,
-	addr));
 
-	/*if(m_appDelay < 1000){
-		NS_LOG_DEBUG("Data will be ready within 1s - " << m_appDelay);
-		Simulator::Schedule(MilliSeconds(m_appDelay+1), &ProducerApp::SendData, this, interest, sessionID);
-	}*/
-
-
-	//data->setContent(m_address.wireEncode());
-
-
-	Signature signature;
-	SignatureInfo signatureInfo(
-			static_cast<::ndn::tlv::SignatureTypeValue>(255));
-
-	if (m_keyLocator.size() > 0) {
-		signatureInfo.setKeyLocator(m_keyLocator);
-	}
-
-	signature.setInfo(signatureInfo);
-	signature.setValue(
-			::ndn::makeNonNegativeIntegerBlock(::ndn::tlv::SignatureValue,
-					m_signature));
-
-	data->setSignature(signature);
-
-//	  data->setPath(interest->getPath());
-
-	data->setRepeated(interest->getRepeated());
-
-	/*NS_LOG_INFO(
-			"node(" << GetNode()->GetId() << ") responding with Address: " << *data);*/
-
-	// to create real wire encoding
-	data->wireEncode();
-
-	m_transmittedDatas(data, this, m_face);
-	m_appLink->onReceiveData(*data);
-
-
+	NS_LOG_DEBUG("Sending back generated data");
+	SendData(interest, 0);
 
 }
+
 
 void ProducerApp::SendData(shared_ptr<const Interest> interest, long dontUse) {
 	Name dataName(interest->getName());
@@ -181,7 +121,8 @@ void ProducerApp::SendData(shared_ptr<const Interest> interest, long dontUse) {
 	/*
 	 * Get the last component before the sequence number indicating the sessionID and cut the "/"
 	 */
-	std::string sessionIDs = interest->getName().getSubName(-2, 1).toUri().erase(0, 1);
+	uint32_t seq = interest->getName().at(-1).toSequenceNumber();
+	std::string sessionIDs = seq;
 	long sessionID = stol(sessionIDs);
 	/*long sessionID;
 	if(sessionID_ != 0){
@@ -201,13 +142,10 @@ void ProducerApp::SendData(shared_ptr<const Interest> interest, long dontUse) {
 			NS_LOG_DEBUG("Session does not exist " << sessionID);
 			return;
 		}
-		if(delay < 1000){
-			NS_LOG_DEBUG("Data will be ready within 1s - " << delay);
-			/* Without "+1" the code enters an infinite loop */
-			Simulator::Schedule(MilliSeconds(delay+1), &ProducerApp::SendData, this, interest, 0);
-		}else{
-			NS_LOG_DEBUG("Data will NOT be ready within 1s");
-		}
+		NS_LOG_DEBUG("Data will be ready within 1s - " << delay);
+		/* Without "+1" the code enters an infinite loop */
+		Simulator::Schedule(MilliSeconds(delay-1), &ProducerApp::SendData, this, interest, 0);
+
 		return;
 	}
 	auto data = make_shared<Data>();

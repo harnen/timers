@@ -37,12 +37,12 @@ do
     #net time
     cDelay=1000
     pDelay=5000
-    LD_LIBRARY_PATH=/usr/local/lib NS_LOG=ndn.ConsumerTimers:ndn.ProducerThunks:ndn.ConsumerThunks ./waf --run="thunks -retx=1000ms -cDataDelay=${cDelay} -pDataDelay=${pDelay} -time=${TIME}s -errRate=${ERR_RATE}" &> ./scripts/logs/net:${ERR_RATE}:${cDelay}:${pDelay}.log
+    LD_LIBRARY_PATH=/usr/local/lib NS_LOG=ndn.ProducerThunks:ndn.ConsumerThunks ./waf --run="thunks -retx=1000ms -cDataDelay=${cDelay} -pDataDelay=${pDelay} -time=${TIME}s -errRate=${ERR_RATE}" &> ./scripts/logs/net:${ERR_RATE}:${cDelay}:${pDelay}.log
     
     #app time
     cDelay=5000
     pDelay=5000
-    LD_LIBRARY_PATH=/usr/local/lib NS_LOG=ndn.ConsumerTimers:ndn.ProducerApp:ndn.ConsumerApp ./waf --run="appTime -retx=1000ms -cDataDelay=${cDelay} -pDataDelay=${pDelay} -time=${TIME}s -errRate=${ERR_RATE}" &> ./scripts/logs/app:${ERR_RATE}:${cDelay}:${pDelay}.log
+    LD_LIBRARY_PATH=/usr/local/lib NS_LOG=ndn.ProducerApp:ndn.ConsumerApp ./waf --run="appTime -retx=1000ms -cDataDelay=${cDelay} -pDataDelay=${pDelay} -time=${TIME}s -errRate=${ERR_RATE}" &> ./scripts/logs/app:${ERR_RATE}:${cDelay}:${pDelay}.log
 done
 
 ERR_RATE=0
@@ -65,7 +65,7 @@ do
     #app time
     cDelay=$delay
     pDelay=$delay
-    LD_LIBRARY_PATH=/usr/local/lib NS_LOG=ndn.ProducerApp:ndn.ConsumerApp ./waf --run="thunks -retx=1000ms -cDataDelay=${cDelay} -pDataDelay=${pDelay} -time=${TIME}s -errRate=${ERR_RATE}" &> ./scripts/logs/papp:${ERR_RATE}:${cDelay}:${pDelay}.log
+    LD_LIBRARY_PATH=/usr/local/lib NS_LOG=ndn.ProducerApp:ndn.ConsumerApp ./waf --run="appTime -retx=10ms -cDataDelay=${cDelay} -pDataDelay=${pDelay} -time=${TIME}s -errRate=${ERR_RATE}" &> ./scripts/logs/papp:${ERR_RATE}:${cDelay}:${pDelay}.log
 done
 
 cd scripts

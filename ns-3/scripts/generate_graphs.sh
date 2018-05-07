@@ -70,6 +70,35 @@ do
 done
 
 
+# STATE / EVOLUTION
+THUNK_FILE=./logs/state_generation_thunks:0:4960:5000.log
+IFS=$'\n'  TIMES=( $( grep "s 2 " $THUNK_FILE  | cut -d ' ' -f 1 | cut -d 's' -f 1 ) )
+IFS=$'\n'  VALS=( $( grep "s 2 " $THUNK_FILE  | cut -d ':' -f 4 ) )
+for i in `seq 0 "${#TIMES[@]}"`
+do
+        echo ${TIMES[$i]} ${VALS[$i]} >> ./graphs/state_evolution_thunks.dat
+done
+
+NET_FILE=./logs/state_generation_net:0:1000:5000.log
+IFS=$'\n'  TIMES=( $( grep "s 2 " $NET_FILE  | cut -d ' ' -f 1 | cut -d 's' -f 1 ) )
+echo Times $TIMES
+IFS=$'\n'  VALS=( $( grep "s 2 " $NET_FILE  | cut -d ':' -f 4 ) )
+echo Vals $VALS
+for i in `seq 0 "${#TIMES[@]}"`
+do
+        echo ${TIMES[$i]} ${VALS[$i]} >> ./graphs/state_evolution_net.dat
+done
+
+APP_FILE=./logs/state_generation_net:0:5000:5000.log
+IFS=$'\n'  TIMES=( $( grep "s 2 " $APP_FILE  | cut -d ' ' -f 1 | cut -d 's' -f 1 ) )
+echo Times $TIMES
+IFS=$'\n'  VALS=( $( grep "s 2 " $APP_FILE  | cut -d ':' -f 4 ) )
+echo Vals $VALS
+for i in `seq 0 "${#TIMES[@]}"`
+do
+        echo ${TIMES[$i]} ${VALS[$i]} >> ./graphs/state_evolution_app.dat
+done
+
 # STATE
 declare -A THUNKS_STATE
 for file in data/data_state_loss_thunks*
@@ -89,10 +118,19 @@ do
     NET_STATE[$ERR_RATE]=$STATE
 done
 
+declare -A APP_STATE
+for file in data/data_state_loss_app*
+do
+    ERR_RATE=$(basename -s ".log" $file | cut -d ':' -f 2 )
+    STATE=$(grep "Max state:" $file | cut -d ':' -f 2)
+    echo "$file -> $ERR_RATE -> $STATE"
+    APP_STATE[$ERR_RATE]=$STATE
+done
+
 IFS=$'\n' SORTED=( $( printf "%s\n" "${!THUNKS_STATE[@]}" | sort -n ) )
 
 echo -e > graphs/state_loss.dat
 for VAL in "${SORTED[@]}"
 do 
-    echo  $VAL ${THUNKS_STATE[$VAL]} ${NET_STATE[$VAL]} >> graphs/state_loss.dat
+    echo  $VAL ${THUNKS_STATE[$VAL]} ${NET_STATE[$VAL]} ${APP_STATE[$VAL]} >> graphs/state_loss.dat
 done

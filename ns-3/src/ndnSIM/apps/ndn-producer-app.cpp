@@ -108,6 +108,7 @@ void ProducerApp::OnInterest(shared_ptr<const Interest> interest) {
 
 	//create a new "session" for each client with a different ID
 	long sessionID = m_sessions.startSession(m_appDelay);
+	NS_ASSERT(sessionID != interest->getName().at(-1).toSequenceNumber());
 
 	NS_LOG_DEBUG("Sending back generated data");
 	SendData(interest, 0);
@@ -122,8 +123,7 @@ void ProducerApp::SendData(shared_ptr<const Interest> interest, long dontUse) {
 	 * Get the last component before the sequence number indicating the sessionID and cut the "/"
 	 */
 	uint32_t seq = interest->getName().at(-1).toSequenceNumber();
-	std::string sessionIDs = seq;
-	long sessionID = stol(sessionIDs);
+	long sessionID = seq;
 	/*long sessionID;
 	if(sessionID_ != 0){
 		sessionID =sessionID_;

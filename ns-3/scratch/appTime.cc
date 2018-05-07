@@ -94,7 +94,7 @@ int main(int argc, char* argv[]) {
 
 
 	//Consumer
-	ndn::AppHelper consumerHelper("ns3::ndn::ConsumerApp");
+	ndn::AppHelper consumerHelper("ns3::ndn::ConsumerTimersApp");
 	consumerHelper.SetPrefix(prefix);
 	consumerHelper.SetAttribute("Frequency", StringValue(frequency));
 	consumerHelper.SetAttribute("StartTime", StringValue("1s"));

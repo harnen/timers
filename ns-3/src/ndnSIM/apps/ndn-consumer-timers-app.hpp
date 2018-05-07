@@ -22,7 +22,7 @@
 
 #include "ns3/ndnSIM/model/ndn-common.hpp"
 
-#include "ndn-consumer-thunks.hpp"
+#include "ndn-consumer-app.hpp"
 
 namespace ns3 {
 namespace ndn {

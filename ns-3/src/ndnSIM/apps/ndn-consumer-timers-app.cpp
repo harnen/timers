@@ -84,7 +84,7 @@ ConsumerTimersApp::ScheduleNextPacket()
   m_seq++;
   if (m_firstTime) {
 	  NS_LOG_DEBUG("Scheduling next packet in 0 seconds seq:" << m_seq);
-    m_sendEvent = Simulator::Schedule(Seconds(0.0), &ConsumerThunks::SendPacket, this, m_interestName, m_seq);
+    m_sendEvent = Simulator::Schedule(Seconds(0.0), &ConsumerApp::SendPacket, this, m_interestName, m_seq);
     m_firstTime = false;
   }
   //we want to keep sending packet no matter what
@@ -92,7 +92,7 @@ ConsumerTimersApp::ScheduleNextPacket()
 	  NS_LOG_DEBUG("Scheduling next packet in " << (1.0 / m_frequency) << " seconds" << "seq: " << m_seq);
     m_sendEvent = Simulator::Schedule((m_random == 0) ? Seconds(1.0 / m_frequency)
                                                       : Seconds(m_random->GetValue()),
-                                      &ConsumerThunks::SendPacket, this, m_interestName, m_seq);
+                                      &ConsumerApp::SendPacket, this, m_interestName, m_seq);
   }
 }
 

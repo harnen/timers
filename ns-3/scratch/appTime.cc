@@ -103,7 +103,7 @@ int main(int argc, char* argv[]) {
 	consumerHelper.Install(nodes.Get(0));
 
 	// Producer
-	ndn::AppHelper producerHelper("ns3::ndn::ProducerApp");
+	ndn::AppHelper producerHelper("ns3::ndn::ProducerThunks");
 	// Producer will reply to all requests starting with /prefix
 	producerHelper.SetPrefix(prefix);
 	producerHelper.SetAttribute("Address", StringValue("/node/3"));

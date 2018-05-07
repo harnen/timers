@@ -106,11 +106,15 @@ void ProducerApp::OnInterest(shared_ptr<const Interest> interest) {
 		return;
 	}
 
-	//create a new "session" for each client with a different ID
-	long sessionID = m_sessions.startSession(m_appDelay);
-	NS_LOG_DEBUG("sessionID " << sessionID << " seq: " << interest->getName().at(-1).toSequenceNumber());
+	uint32_t seq = interest->getName().at(-1).toSequenceNumber();
 
-	NS_ASSERT(sessionID == ((long) interest->getName().at(-1).toSequenceNumber()));
+	//create a new "session" for each client with a different ID
+	if(!m_sessions.doesExist(seq)){
+		long sessionID = m_sessions.startSession(m_appDelay);
+		NS_LOG_DEBUG("sessionID " << sessionID << " seq: " << seq );
+
+		NS_ASSERT(sessionID == (long) seq);
+	}
 
 	NS_LOG_DEBUG("Sending back generated data");
 	SendData(interest, 0);

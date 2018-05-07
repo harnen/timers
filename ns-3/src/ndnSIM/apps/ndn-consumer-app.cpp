@@ -56,12 +56,12 @@ ConsumerApp::GetTypeId(void)
 
       .AddAttribute("Prefix", "Name of the Interest", StringValue("/"),
                     MakeNameAccessor(&ConsumerApp::m_interestName), MakeNameChecker())
-      .AddAttribute("LifeTime", "LifeTime for interest packet", StringValue("4s"),
-                    MakeTimeAccessor(&ConsumerApp::m_interestLifeTime), MakeTimeChecker())
+      /*.AddAttribute("LifeTime", "LifeTime for interest packet", StringValue("1s"),
+                    MakeTimeAccessor(&ConsumerApp::m_interestLifeTime), MakeTimeChecker())*/
 
       .AddAttribute("RetxTimer",
                     "Timeout defining how frequent retransmission timeouts should be checked",
-                    StringValue("1000ms"),
+                    StringValue("10ms"),
                     MakeTimeAccessor(&ConsumerApp::GetRetxTimer, &ConsumerApp::SetRetxTimer),
                     MakeTimeChecker())
 
@@ -184,7 +184,7 @@ ConsumerApp::SendPacket(Name name, uint32_t seq){
   shared_ptr<Interest> interest = make_shared<Interest>();
   interest->setNonce(m_rand->GetValue(0, std::numeric_limits<uint32_t>::max()));
 
-  time::milliseconds interestLifeTime(m_interestLifeTime.GetMilliSeconds());
+  time::milliseconds interestLifeTime(m_appDelay + 100);
   interest->setInterestLifetime(interestLifeTime);
 
 

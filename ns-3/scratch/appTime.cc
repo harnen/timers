@@ -98,7 +98,6 @@ int main(int argc, char* argv[]) {
 	consumerHelper.SetPrefix(prefix);
 	consumerHelper.SetAttribute("Frequency", StringValue(frequency));
 	consumerHelper.SetAttribute("StartTime", StringValue("1s"));
-	consumerHelper.SetAttribute("LifeTime", StringValue("10s"));
 	consumerHelper.SetAttribute("AppDelay", StringValue(cDataDelay));
 	consumerHelper.SetAttribute("RetxTimer", StringValue(retx));
 	consumerHelper.Install(nodes.Get(0));

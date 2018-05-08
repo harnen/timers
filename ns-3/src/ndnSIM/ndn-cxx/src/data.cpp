@@ -81,7 +81,7 @@ size_t Data::wireEncode(EncodingImpl<TAG>& encoder,
 			getDeadline());
 
 	//isACK
-	printf("Writing the ack field\n");
+	printf("Writing the ack field: %d\n", m_isACK);
 	totalLength += prependNonNegativeIntegerBlock(encoder, tlv::isACK,
 				m_isACK);
 

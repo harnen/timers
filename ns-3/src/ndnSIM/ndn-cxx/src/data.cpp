@@ -171,10 +171,10 @@ void Data::wireDecode(const Block& wire) {
 	val = m_wire.find(tlv::isACK);
 		if (val != m_wire.elements_end()) {
 			printf("Found an ACK\n");
-			m_repeated = readNonNegativeInteger(*val);
+			m_isACK = readNonNegativeInteger(*val);
 		} else {
 			printf("Didn't find an ACK\n");
-			m_repeated = 0;
+			m_isACK = 0;
 	}
 
 	//Deadline

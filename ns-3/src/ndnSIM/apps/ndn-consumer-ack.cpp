@@ -119,15 +119,22 @@ ConsumerACK::CheckRetxTimeout()
 {
   Time now = Simulator::Now();
 
-  Time rto = MilliSeconds(1000);//MilliSeconds(m_appDelay + 100);//m_rtt->RetransmitTimeout();
+  Time rto = MilliSeconds(1000);
   // NS_LOG_DEBUG ("Current RTO: " << rto.ToDouble (Time::S) << "s");
 
   while (!m_seqTimeouts.empty()) {
     SeqTimeoutsContainer::index<i_timestamp>::type::iterator entry =
       m_seqTimeouts.get<i_timestamp>().begin();
+    //if the packed was ACKed switch to App timescale
+    bool acked = false;
+      if(m_acked.find(entry->seq) != m_acked.end()){
+    	  rto = MilliSeconds(m_appDelay + 100);
+    	  acked = true;
+      }
     if (entry->time + rto <= now) // timeout expired?
     {
       uint32_t seqNo = entry->seq;
+      if(acked) m_acked.erase(seqNo);
       m_seqTimeouts.get<i_timestamp>().erase(entry);
       OnTimeout(seqNo);
     }
@@ -220,16 +227,18 @@ ConsumerACK::OnData(shared_ptr<const Data> data)
 
   App::OnData(data); // tracing inside
 
+  uint32_t seq = data->getName().at(-1).toSequenceNumber();
+
   NS_LOG_DEBUG("is ACK?" << data->isACK());
   if(data->isACK()){
-	  NS_LOG_DEBUG("Got an ACK");
+	  NS_LOG_DEBUG("Got an ACK seq:" << seq);
+	  m_acked.insert(seq);
 	  return;
   }
 
   std::string content = ::ndn::encoding::readString(data->getContent());
   NS_LOG_DEBUG("Received content: " << content);
 
-  uint32_t seq = data->getName().at(-1).toSequenceNumber();
   NS_LOG_INFO("< DATA for " << seq);
 
   m_names.erase(seq);

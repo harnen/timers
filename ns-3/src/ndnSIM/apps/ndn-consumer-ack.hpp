@@ -151,6 +151,7 @@ protected:
   long m_appDelay; 		   ///< \brief Data Generation Time
   std::map<uint32_t,Name> m_names;
   std::map<uint32_t,Time> m_times;
+  std::set<uint32_t> m_acked;
 
   /*bool m_thunkEstablished;
   Name m_thunk;*/

@@ -95,7 +95,7 @@ do
     #app time
     cDelay=$delay
     pDelay=$delay
-    LD_LIBRARY_PATH=/usr/local/lib NS_LOG=ndn.ProducerApp:ndn.ConsumerApp ./waf --run="thunks -retx=1000ms -cDataDelay=${cDelay} -pDataDelay=${pDelay} -time=${TIME}s -errRate=${ERR_RATE}" &> ./scripts/logs/papp:${ERR_RATE}:${cDelay}:${pDelay}.log
+    LD_LIBRARY_PATH=/usr/local/lib NS_LOG=ndn.ProducerApp:ndn.ConsumerApp ./waf --run="appTime -retx=1000ms -cDataDelay=${cDelay} -pDataDelay=${pDelay} -time=${TIME}s -errRate=${ERR_RATE}" &> ./scripts/logs/papp:${ERR_RATE}:${cDelay}:${pDelay}.log
 done
 
 cd scripts

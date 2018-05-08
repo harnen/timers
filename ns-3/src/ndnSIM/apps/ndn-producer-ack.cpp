@@ -151,6 +151,7 @@ void ProducerACK::SendACK(shared_ptr<const Interest> interest) {
 
 
 	NS_LOG_DEBUG("Sending back an ACK" << *data);
+	NS_LOG_DEBUG("is ACK()" << data->isACK());
 
 	// to create real wire encoding
 	data->wireEncode();

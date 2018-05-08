@@ -56,8 +56,8 @@ ConsumerThunks::GetTypeId(void)
 
       .AddAttribute("Prefix", "Name of the Interest", StringValue("/"),
                     MakeNameAccessor(&ConsumerThunks::m_interestName), MakeNameChecker())
-      .AddAttribute("LifeTime", "LifeTime for interest packet", StringValue("4s"),
-                    MakeTimeAccessor(&ConsumerThunks::m_interestLifeTime), MakeTimeChecker())
+      /*.AddAttribute("LifeTime", "LifeTime for interest packet", StringValue("1s"),
+                    MakeTimeAccessor(&ConsumerThunks::m_interestLifeTime), MakeTimeChecker())*/
 
       .AddAttribute("RetxTimer",
                     "Timeout defining how frequent retransmission timeouts should be checked",
@@ -119,7 +119,7 @@ ConsumerThunks::CheckRetxTimeout()
 {
   Time now = Simulator::Now();
 
-  Time rto = m_rtt->RetransmitTimeout();
+  Time rto = MilliSeconds(m_appDelay + 100);//m_rtt->RetransmitTimeout();
   // NS_LOG_DEBUG ("Current RTO: " << rto.ToDouble (Time::S) << "s");
 
   while (!m_seqTimeouts.empty()) {
@@ -195,7 +195,7 @@ ConsumerThunks::SendPacket(Name name, uint32_t seq){
   shared_ptr<Interest> interest = make_shared<Interest>();
   interest->setNonce(m_rand->GetValue(0, std::numeric_limits<uint32_t>::max()));
 
-  time::milliseconds interestLifeTime(m_interestLifeTime.GetMilliSeconds());
+  time::milliseconds interestLifeTime(m_appDelay + 100);
   interest->setInterestLifetime(interestLifeTime);
   /*if(m_thunkEstablished){*/
   if(m_interestName.equals(name)){

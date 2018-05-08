@@ -3,7 +3,7 @@
 for file in ./logs/*.log
 do
     name=`basename $file`
-    if  [[ $name == state_loss* ]] ;
+    if  [[ $name == state_* ]] ;
     then
         echo state $file
     	./generate_state_stats.sh $file > ./data/data_`basename ${file}`

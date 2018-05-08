@@ -9,7 +9,7 @@ then
     exit
 fi
 
-DEBUG=/dev/null
+DEBUG=/dev/stdout
 MAX_SEQ=`awk  -F':' 'BEGIN{a=0}  /seq:/ {if ($4>0+a) a=$4} END{print a}'  $1`
 echo MAX_SEQ: $MAX_SEQ
 

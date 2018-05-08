@@ -26,7 +26,7 @@ done
 
 declare -A APP_TIME
 declare -A APP_PACKETS
-for file in data/data_net*
+for file in data/data_app*
 do
     ERR_RATE=$(basename -s ".log" $file | sed -e 's/data_app//g' | cut -d ':' -f 2  )
     COM_TIME=$(grep "Average data waiting time:" $file | cut -d ':' -f 2)
@@ -75,7 +75,7 @@ declare -A PAPP_TIME
 declare -A PAPP_PACKETS
 for file in data/data_papp*
 do
-    APP_TIME=$(basename -s ".log" $file | sed -e 's/data_pnet//g' | cut -d ':' -f 4  )
+    APP_TIME=$(basename -s ".log" $file | sed -e 's/data_papp//g' | cut -d ':' -f 4  )
     COM_TIME=$(grep "Average data waiting time:" $file | cut -d ':' -f 2)
     PACKETS=$(grep "Average interests sent:" $file | cut -d ':' -f 2)
     echo "$file -> $APP_TIME -> $COM_TIME"
@@ -90,7 +90,7 @@ echo -e > graphs/packets_generation.dat
 for VAL in "${SORTED[@]}"
 do 
     echo  $VAL ${PTHUNKS_TIME[$VAL]} ${PNET_TIME[$VAL]} ${PAPP_TIME[$VAL]} >> graphs/satisfaction_generation.dat
-    echo  $VAL ${PTHUNKS_PACKETS[$VAL]} ${PNET_PACKETS[$VAL]} >> graphs/packets_generation.dat
+    echo  $VAL ${PTHUNKS_PACKETS[$VAL]} ${PNET_PACKETS[$VAL]} ${PAPP_PACKETS[$VAL]}  >> graphs/packets_generation.dat
 done
 
 
@@ -132,7 +132,7 @@ done
 
 
 # STATE / EVOLUTION
-THUNK_FILE=./logs/state_generation_thunks:0:4960:5000.log
+THUNK_FILE=./logs/state_generation_thunks:0.2:4960:5000.log
 IFS=$'\n'  TIMES=( $( grep "s 2 " $THUNK_FILE  | cut -d ' ' -f 1 | cut -d 's' -f 1 ) )
 IFS=$'\n'  VALS=( $( grep "s 2 " $THUNK_FILE  | cut -d ':' -f 4 ) )
 for i in `seq 0 "${#TIMES[@]}"`
@@ -140,7 +140,7 @@ do
 	echo ${TIMES[$i]} ${VALS[$i]} >> ./graphs/state_evolution_thunks.dat
 done
 
-NET_FILE=./logs/state_generation_net:0:1000:5000.log
+NET_FILE=./logs/state_generation_net:0.2:1000:5000.log
 IFS=$'\n'  TIMES=( $( grep "s 2 " $NET_FILE  | cut -d ' ' -f 1 | cut -d 's' -f 1 ) )
 echo Times $TIMES
 IFS=$'\n'  VALS=( $( grep "s 2 " $NET_FILE  | cut -d ':' -f 4 ) )
@@ -150,7 +150,7 @@ do
 	echo ${TIMES[$i]} ${VALS[$i]} >> ./graphs/state_evolution_net.dat
 done
 
-APP_FILE=./logs/state_generation_app:0:5000:5000.log
+APP_FILE=./logs/state_generation_app:0.2:5000:5000.log
 IFS=$'\n'  TIMES=( $( grep "s 2 " $APP_FILE  | cut -d ' ' -f 1 | cut -d 's' -f 1 ) )
 echo Times $TIMES
 IFS=$'\n'  VALS=( $( grep "s 2 " $APP_FILE  | cut -d ':' -f 4 ) )

@@ -34,7 +34,7 @@ done
 
 
 
-for ERR_RATE in `seq 0 0.05 0.5`
+for ERR_RATE in `seq 0 0.1 0.5`
 do
     echo "Running state measurements ERR_RATE=${ERR_RATE}"
     cDelay=4960

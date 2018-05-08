@@ -81,8 +81,9 @@ size_t Data::wireEncode(EncodingImpl<TAG>& encoder,
 			getDeadline());
 
 	//isACK
+	printf("Writing the ack field");
 	totalLength += prependNonNegativeIntegerBlock(encoder, tlv::isACK,
-				isACK());
+				m_isACK);
 
 	//Path
 	totalLength += encoder.prependByteArrayBlock(tlv::Path, m_path, PATH_SIZE);
@@ -169,8 +170,10 @@ void Data::wireDecode(const Block& wire) {
 	//isACK
 	val = m_wire.find(tlv::isACK);
 		if (val != m_wire.elements_end()) {
+			printf("Found an ACK");
 			m_repeated = readNonNegativeInteger(*val);
 		} else {
+			printf("Didn't find an ACK");
 			m_repeated = 0;
 	}
 

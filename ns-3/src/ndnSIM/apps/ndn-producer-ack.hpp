@@ -66,7 +66,7 @@ private:
   SendData(shared_ptr<const Interest> interest, long sessionID_);
 
   void
-  SendAddress(shared_ptr<const Interest> interest);
+  SendACK(shared_ptr<const Interest> interest);
 
 private:
   Name m_prefix;

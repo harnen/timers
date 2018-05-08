@@ -30,6 +30,11 @@ do
     cDelay=$delay
     pDelay=$delay
     LD_LIBRARY_PATH=/usr/local/lib NS_LOG=nfd.PIT ./waf --run="appTime -retx=10ms -cDataDelay=${cDelay} -pDataDelay=${pDelay} -time=${TIME}s -errRate=${ERR_RATE} -frequency=${frequency}" &> ./scripts/logs/state_generation_app:${ERR_RATE}:${cDelay}:${pDelay}.log
+    
+    #ACK
+    cDelay=$delay
+    pDelay=$delay
+    LD_LIBRARY_PATH=/usr/local/lib NS_LOG=nfd.PIT ./waf --run="ack -retx=10ms -cDataDelay=${cDelay} -pDataDelay=${pDelay} -time=${TIME}s -errRate=${ERR_RATE} -frequency=${frequency}" &> ./scripts/logs/state_generation_ack:${ERR_RATE}:${cDelay}:${pDelay}.log
 done
 
 
@@ -52,6 +57,12 @@ do
     pDelay=5000
     frequency=10	
     LD_LIBRARY_PATH=/usr/local/lib NS_LOG=nfd.PIT ./waf --run="appTime -retx=1000ms -cDataDelay=${cDelay} -pDataDelay=${pDelay} -time=${TIME}s -errRate=${ERR_RATE} -frequency=${frequency}" &> ./scripts/logs/state_loss_app:${ERR_RATE}:${cDelay}:${pDelay}.log
+
+    #ACK
+    cDelay=5000
+    pDelay=5000
+    frequency=10	
+    LD_LIBRARY_PATH=/usr/local/lib NS_LOG=nfd.PIT ./waf --run="ack -retx=1000ms -cDataDelay=${cDelay} -pDataDelay=${pDelay} -time=${TIME}s -errRate=${ERR_RATE} -frequency=${frequency}" &> ./scripts/logs/state_loss_ack:${ERR_RATE}:${cDelay}:${pDelay}.log
 done
 
 
@@ -73,6 +84,11 @@ do
     cDelay=5000
     pDelay=5000
     LD_LIBRARY_PATH=/usr/local/lib NS_LOG=ndn.ConsumerTimers:ndn.ProducerApp:ndn.ConsumerApp ./waf --run="appTime -retx=1000ms -cDataDelay=${cDelay} -pDataDelay=${pDelay} -time=${TIME}s -errRate=${ERR_RATE}" &> ./scripts/logs/app:${ERR_RATE}:${cDelay}:${pDelay}.log
+    
+    #ACK
+    cDelay=5000
+    pDelay=5000
+    LD_LIBRARY_PATH=/usr/local/lib NS_LOG=ndn.ConsumerTimers:ndn.ProducerACK:ndn.ConsumerACK ./waf --run="ack -retx=1000ms -cDataDelay=${cDelay} -pDataDelay=${pDelay} -time=${TIME}s -errRate=${ERR_RATE}" &> ./scripts/logs/ack:${ERR_RATE}:${cDelay}:${pDelay}.log
 done
 
 ERR_RATE=0
@@ -96,6 +112,11 @@ do
     cDelay=$delay
     pDelay=$delay
     LD_LIBRARY_PATH=/usr/local/lib NS_LOG=ndn.ProducerApp:ndn.ConsumerApp ./waf --run="appTime -retx=1000ms -cDataDelay=${cDelay} -pDataDelay=${pDelay} -time=${TIME}s -errRate=${ERR_RATE}" &> ./scripts/logs/papp:${ERR_RATE}:${cDelay}:${pDelay}.log
+    
+    #ACK
+    cDelay=$delay
+    pDelay=$delay
+    LD_LIBRARY_PATH=/usr/local/lib NS_LOG=ndn.ProducerApp:ndn.ConsumerApp ./waf --run="appTime -retx=1000ms -cDataDelay=${cDelay} -pDataDelay=${pDelay} -time=${TIME}s -errRate=${ERR_RATE}" &> ./scripts/logs/pack:${ERR_RATE}:${cDelay}:${pDelay}.log
 done
 
 cd scripts

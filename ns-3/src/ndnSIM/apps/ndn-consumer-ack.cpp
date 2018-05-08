@@ -220,6 +220,7 @@ ConsumerACK::OnData(shared_ptr<const Data> data)
 
   App::OnData(data); // tracing inside
 
+  NS_LOG_DEBUG("is ACK?" << data->isACK());
   if(data->isACK()){
 	  NS_LOG_DEBUG("Got an ACK");
 	  return;

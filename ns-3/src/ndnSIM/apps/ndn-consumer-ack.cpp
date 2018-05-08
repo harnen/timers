@@ -205,7 +205,6 @@ ConsumerACK::SendPacket(Name name, uint32_t seq){
 
   ScheduleNextPacket();
 
-
 }
 
 
@@ -220,6 +219,11 @@ ConsumerACK::OnData(shared_ptr<const Data> data)
     return;
 
   App::OnData(data); // tracing inside
+
+  if(data->isACK()){
+	  NS_LOG_DEBUG("Got an ACK");
+	  return;
+  }
 
   std::string content = ::ndn::encoding::readString(data->getContent());
   NS_LOG_DEBUG("Received content: " << content);

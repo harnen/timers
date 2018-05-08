@@ -400,6 +400,7 @@ Forwarder::onIncomingData(Face& inFace, const Data& data)
 {
   // receive Data
   NFD_LOG_DEBUG("onIncomingData face=" << inFace.getId() << " data=" << data.getName());
+  NFD_LOG_DEBUG("isACK? " << data.isACK());
   data.setTag(make_shared<lp::IncomingFaceIdTag>(inFace.getId()));
 
   // Habak

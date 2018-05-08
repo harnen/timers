@@ -121,6 +121,44 @@ void ProducerACK::OnInterest(shared_ptr<const Interest> interest) {
 
 }
 
+void ProducerACK::SendACK(shared_ptr<const Interest> interest) {
+
+
+	Name dataName(interest->getName());
+	auto data = make_shared<Data>();
+	data->setName(dataName);
+	data->setFreshnessPeriod(
+			::ndn::time::milliseconds(0));
+
+
+	Signature signature;
+	SignatureInfo signatureInfo(
+			static_cast<::ndn::tlv::SignatureTypeValue>(255));
+
+	if (m_keyLocator.size() > 0) {
+		signatureInfo.setKeyLocator(m_keyLocator);
+	}
+
+	signature.setInfo(signatureInfo);
+	signature.setValue(
+			::ndn::makeNonNegativeIntegerBlock(::ndn::tlv::SignatureValue,
+					m_signature));
+
+	data->setSignature(signature);
+	data->isACK(1);
+
+
+	NS_LOG_INFO(
+			"node(" << GetNode()->GetId() << ") responding with Data");
+
+	// to create real wire encoding
+	data->wireEncode();
+
+	m_transmittedDatas(data, this, m_face);
+	m_appLink->onReceiveData(*data);
+
+}
+
 
 void ProducerACK::SendData(shared_ptr<const Interest> interest, long dontUse) {
 	Name dataName(interest->getName());

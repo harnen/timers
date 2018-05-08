@@ -42,7 +42,7 @@ ConsumerTimersACK::GetTypeId(void)
   static TypeId tid =
     TypeId("ns3::ndn::ConsumerTimersACK")
       .SetGroupName("Ndn")
-      .SetParent<ConsumerApp>()
+      .SetParent<ConsumerACK>()
       .AddConstructor<ConsumerTimersACK>()
 
       .AddAttribute("Frequency", "Frequency of interest packets", StringValue("1.0"),

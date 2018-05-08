@@ -117,6 +117,7 @@ void ProducerACK::OnInterest(shared_ptr<const Interest> interest) {
 	}
 
 	NS_LOG_DEBUG("Sending back generated data");
+	SendACK(interest);
 	SendData(interest, 0);
 
 }
@@ -228,7 +229,6 @@ void ProducerACK::SendData(shared_ptr<const Interest> interest, long dontUse) {
 	m_transmittedDatas(data, this, m_face);
 	m_appLink->onReceiveData(*data);
 
-	m_sessions.stopSession(sessionID);
 }
 
 } // namespace ndn

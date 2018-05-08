@@ -125,7 +125,7 @@ void ProducerACK::OnInterest(shared_ptr<const Interest> interest) {
 void ProducerACK::SendACK(shared_ptr<const Interest> interest) {
 
 
-	NS_LOG_DEBUG("Sending back an ACK");
+
 	Name dataName(interest->getName());
 	auto data = make_shared<Data>();
 	data->setName(dataName);
@@ -150,8 +150,7 @@ void ProducerACK::SendACK(shared_ptr<const Interest> interest) {
 	data->isACK(1);
 
 
-	NS_LOG_INFO(
-			"node(" << GetNode()->GetId() << ") responding with Data");
+	NS_LOG_DEBUG("Sending back an ACK" << *data);
 
 	// to create real wire encoding
 	data->wireEncode();

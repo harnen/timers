@@ -84,9 +84,9 @@ TypeId ProducerACK::GetTypeId(void) {
 ProducerACK::ProducerACK()
 	{
 
-	m_lossRandom = CreateObject<UniformRandomVariable>();
+	/*m_lossRandom = CreateObject<UniformRandomVariable>();
 	m_lossRandom->SetAttribute("Min", DoubleValue(0.0));
-	m_lossRandom->SetAttribute("Max", DoubleValue(100));
+	m_lossRandom->SetAttribute("Max", DoubleValue(100));*/
 }
 
 // inherited from Application base class.

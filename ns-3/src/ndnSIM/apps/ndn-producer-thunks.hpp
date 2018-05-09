@@ -28,6 +28,9 @@
 #include "ns3/nstime.h"
 #include "ns3/ptr.h"
 
+#include "ns3/random-variable-stream.h"
+
+
 #include "sessions.hpp"
 
 namespace ns3 {
@@ -77,6 +80,8 @@ private:
   //delay before responding with data (ms)
   Sessions m_sessions;
   long m_appDelay; 		   ///< \brief Data Generation Time
+  int m_loss;
+  Ptr<RandomVariableStream> m_lossRandom;
 
   uint32_t m_signature;
   Name m_keyLocator;

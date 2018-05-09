@@ -84,9 +84,9 @@ TypeId ProducerACK::GetTypeId(void) {
 ProducerACK::ProducerACK()
 	{
 
-	/*m_lossRandom = CreateObject<UniformRandomVariable>();
+	m_lossRandom = CreateObject<UniformRandomVariable>();
 	m_lossRandom->SetAttribute("Min", DoubleValue(0.0));
-	m_lossRandom->SetAttribute("Max", DoubleValue(100));*/
+	m_lossRandom->SetAttribute("Max", DoubleValue(100));
 }
 
 // inherited from Application base class.
@@ -105,11 +105,14 @@ void ProducerACK::StopApplication() {
 }
 
 void ProducerACK::OnInterest(shared_ptr<const Interest> interest) {
-	App::OnInterest(interest); // tracing inside
 
 	if(m_lossRandom->GetInteger() < m_loss){
 		NS_LOG_DEBUG("Randomly dropping a packet");
+		return;
 	}
+
+	App::OnInterest(interest); // tracing inside
+
 
 
 	//NS_LOG_FUNCTION(this << *interest);

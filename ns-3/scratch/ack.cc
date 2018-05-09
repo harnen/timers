@@ -62,6 +62,11 @@ int main(int argc, char* argv[]) {
 
 	nodes.Create(4);
 
+	// Connecting nodes using two links
+	NetDeviceContainer d0d2 = p2p.Install(nodes.Get(0), nodes.Get(2));
+	NetDeviceContainer d1d2 = p2p.Install(nodes.Get(1), nodes.Get(2));
+	NetDeviceContainer d2d3 = p2p.Install(nodes.Get(2), nodes.Get(3));
+
 
 	// Install NDN stack on all nodes
 	ndn::StackHelper ndnHelper;

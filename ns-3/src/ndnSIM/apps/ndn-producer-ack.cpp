@@ -126,7 +126,7 @@ void ProducerACK::OnInterest(shared_ptr<const Interest> interest) {
 
 	//create a new "session" for each client with a different ID
 	if(!m_sessions.doesExist(seq)){
-		long sessionID = m_sessions.startSession(m_appDelay);
+		long sessionID = m_sessions.startSession(m_appDelay, seq);
 		NS_LOG_DEBUG("sessionID " << sessionID << " seq: " << seq );
 
 		NS_ASSERT(sessionID == (long) seq);

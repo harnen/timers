@@ -53,17 +53,19 @@ namespace ndn {
 	}
 
 
-	void Sessions::startSession(long generationTime, long sessionID){
+	long Sessions::startSession(long generationTime, long sessionID){
 		struct session newSession;
 		newSession.id = sessionID;
 		newSession.ready = false;
 		newSession.when = Simulator::Now() + MilliSeconds(generationTime);
+		if(doesExist(sessionID)) return -1;
 		m_dataReady.insert(newSession);
 		NS_LOG_DEBUG("Created session (ID:" << newSession.id << "). Data will be ready in " << generationTime << "ms.");
 
 		Simulator::Schedule(MilliSeconds(generationTime), &Sessions::dataReady, this, sessions);
 
 		sessions = std::max(sessions, sessionID + 1);
+		return(sessionID);
 	}
 
 	void Sessions::dataReady(long sessionID){

@@ -40,7 +40,7 @@ public:
     long getRemainingTime(long sessionID);
 
 	long startSession(long generationTime);
-	void startSession(long generationTime, long sessionID);
+	long startSession(long generationTime, long sessionID);
 	bool stopSession(long sessionID);
 
 

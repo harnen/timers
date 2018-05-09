@@ -212,8 +212,6 @@ ConsumerACK::SendPacket(Name name, uint32_t seq){
   m_transmittedInterests(interest, this, m_face);
   m_appLink->onReceiveInterest(*interest);
 
-  ScheduleNextPacket();
-
 }
 
 

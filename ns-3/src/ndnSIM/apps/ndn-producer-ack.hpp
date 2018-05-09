@@ -20,8 +20,6 @@
 #ifndef NDN_PRODUCER_TIMERS_H
 #define NDN_PRODUCER_TIMERS_H
 
-#include "ns3/ndnSIM/model/ndn-common.hpp"
-
 #include "ndn-app.hpp"
 #include "ns3/ndnSIM/model/ndn-common.hpp"
 
@@ -78,8 +76,7 @@ private:
   Sessions m_sessions;
   long m_appDelay; 		   ///< \brief Data Generation Time
   int m_loss;
-  Ptr<UniformRandomVariable> m_lossRandom;
-
+  Ptr<RandomVariableStream> m_lossRandom;
   uint32_t m_signature;
   Name m_keyLocator;
 };

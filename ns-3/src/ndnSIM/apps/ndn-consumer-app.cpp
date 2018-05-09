@@ -187,6 +187,9 @@ ConsumerApp::SendPacket(Name name, uint32_t seq){
   time::milliseconds interestLifeTime(m_appDelay + 100);
   interest->setInterestLifetime(interestLifeTime);
 
+  if(m_names.find(seq) == m_names.end())
+	  ScheduleNextPacket();
+
 
   NS_LOG_DEBUG("Sending data request to " << name << " seq:" << seq);
   nameWithSequence = make_shared<Name>(name);
@@ -203,7 +206,6 @@ ConsumerApp::SendPacket(Name name, uint32_t seq){
   m_transmittedInterests(interest, this, m_face);
   m_appLink->onReceiveInterest(*interest);
 
-  ScheduleNextPacket();
 
 
 }

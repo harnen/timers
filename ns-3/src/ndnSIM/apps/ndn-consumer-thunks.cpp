@@ -119,7 +119,7 @@ ConsumerThunks::CheckRetxTimeout()
 {
   Time now = Simulator::Now();
 
-  Time rto = MilliSeconds(m_appDelay + 100);//m_rtt->RetransmitTimeout();
+  Time rto = MilliSeconds(1000);//MilliSeconds(m_appDelay + 100);//m_rtt->RetransmitTimeout();
   // NS_LOG_DEBUG ("Current RTO: " << rto.ToDouble (Time::S) << "s");
 
   while (!m_seqTimeouts.empty()) {

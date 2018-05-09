@@ -77,7 +77,7 @@ int main(int argc, char* argv[]) {
 
 
 	//Consumer
-	ndn::AppHelper consumerHelper("ns3::ndn::ConsumerACKs");
+	ndn::AppHelper consumerHelper("ns3::ndn::ConsumerACK");
 	consumerHelper.SetPrefix(prefix);
 	consumerHelper.SetAttribute("Frequency", StringValue("0.1"));
 	consumerHelper.SetAttribute("StartTime", StringValue("1s"));
@@ -86,7 +86,7 @@ int main(int argc, char* argv[]) {
 	consumerHelper.Install(nodes.Get(0));
 
 	// Producer
-	ndn::AppHelper producerHelper("ns3::ndn::ProducerACKs");
+	ndn::AppHelper producerHelper("ns3::ndn::ProducerACK");
 	// Producer will reply to all requests starting with /prefix
 	producerHelper.SetPrefix(prefix);
 	producerHelper.SetAttribute("Address", StringValue("/node/3"));

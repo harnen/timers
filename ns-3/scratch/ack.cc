@@ -62,23 +62,6 @@ int main(int argc, char* argv[]) {
 
 	nodes.Create(4);
 
-	// Connecting nodes using two links
-	NetDeviceContainer d0d2 = p2p.Install(nodes.Get(0), nodes.Get(2));
-	NetDeviceContainer d1d2 = p2p.Install(nodes.Get(1), nodes.Get(2));
-	NetDeviceContainer d2d3 = p2p.Install(nodes.Get(2), nodes.Get(3));
-
-
-
-	// Set loss model
-	NS_LOG_DEBUG("Setting error rate to " << errRate);
-	Ptr<RateErrorModel> rem = CreateObject<RateErrorModel> ();
-	rem->SetAttribute("ErrorRate", StringValue(errRate));
-	rem->SetAttribute("ErrorUnit", StringValue ("ERROR_UNIT_PACKET"));
-
-	//p2p.SetDeviceAttribute("ReceiveErrorModel", PointerValue (rem));
-	//d2d3.Get(1)->SetAttribute ("ReceiveErrorModel", PointerValue (rem));
-	d2d3.Get(0)->SetAttribute ("ReceiveErrorModel", PointerValue (rem));
-
 
 	// Install NDN stack on all nodes
 	ndn::StackHelper ndnHelper;
@@ -109,6 +92,7 @@ int main(int argc, char* argv[]) {
 	producerHelper.SetAttribute("Address", StringValue("/node/3"));
 	producerHelper.SetAttribute("PayloadSize", StringValue("1024"));
 	producerHelper.SetAttribute("AppDelay", StringValue(pDataDelay));
+	producerHelper.SetAttribute("Loss", StringValue(errRate));
 	producerHelper.Install(nodes.Get(3)); // last node
 
 	// Add /prefix origins to ndn::GlobalRouter

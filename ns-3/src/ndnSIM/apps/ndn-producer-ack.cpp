@@ -68,6 +68,11 @@ TypeId ProducerACK::GetTypeId(void) {
 						UintegerValue(2000),
 						MakeUintegerAccessor(&ProducerACK::m_appDelay),
 						MakeUintegerChecker<uint32_t>())
+					.AddAttribute("Loss",
+						"Loss Rate",
+						UintegerValue(0),
+						MakeUintegerAccessor(&ProducerACK::m_loss),
+						MakeUintegerChecker<uint32_t>())
 					.AddAttribute("KeyLocator",
 						"Name to be used for key locator.  If root, then key locator is not used",
 						NameValue(),
@@ -78,6 +83,10 @@ TypeId ProducerACK::GetTypeId(void) {
 
 ProducerACK::ProducerACK()
 	{
+
+	m_lossRandom = CreateObject<UniformRandomVariable>();
+	m_lossRandom->SetAttribute("Min", DoubleValue(0.0));
+	m_lossRandom->SetAttribute("Max", DoubleValue(100));
 }
 
 // inherited from Application base class.
@@ -97,6 +106,10 @@ void ProducerACK::StopApplication() {
 
 void ProducerACK::OnInterest(shared_ptr<const Interest> interest) {
 	App::OnInterest(interest); // tracing inside
+
+	if(m_lossRandom->GetInteger() < m_loss){
+		NS_LOG_DEBUG("Randomly dropping a packet");
+	}
 
 
 	//NS_LOG_FUNCTION(this << *interest);

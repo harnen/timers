@@ -28,6 +28,8 @@ int main(int argc, char* argv[]) {
 	string retx = "1000ms";
 	string frequency = "0.1";
 	string format ("Inet");
+	string consumers = "1";
+	string producers = "1";
 	string input ("src/topology-read/examples/Inet_small_toposample.txt");
 
 	CommandLine cmd;
@@ -37,8 +39,10 @@ int main(int argc, char* argv[]) {
 	cmd.AddValue("retx", "Retransmission timer.", retx);
 	cmd.AddValue("errRate", "Error Rate.", errRate);
 	cmd.AddValue("frequency", "Frequency.", frequency);
-	cmd.AddValue ("format", "Format to use for data input [Orbis|Inet|Rocketfuel].", format);
-	cmd.AddValue ("input", "Name of the input file.", input);
+	cmd.AddValue("format", "Format to use for data input [Orbis|Inet|Rocketfuel].", format);
+	cmd.AddValue("input", "Name of the input file.", input);
+	cmd.AddValue("consumers", "Number of consumers.", consumers);
+	cmd.AddValue("producer", "Number of producers.", producers);
 	cmd.Parse(argc, argv);
 
 
@@ -102,34 +106,44 @@ int main(int argc, char* argv[]) {
 	std::string prefix = "/exec/";
 
 
+	ns3::Ptr<ns3::RandomVariableStream> m_random = ns3::CreateObject<ns3::UniformRandomVariable>();
+	m_random->SetAttribute("Min", ns3::DoubleValue(0.0));
 	//Consumer
-	ndn::AppHelper consumerHelper("ns3::ndn::ConsumerTimers");
-	consumerHelper.SetPrefix(prefix);
-	consumerHelper.SetAttribute("Frequency", StringValue(frequency));
-	consumerHelper.SetAttribute("StartTime", StringValue("1s"));
-	consumerHelper.SetAttribute("AppDelay", StringValue(cDataDelay));
-	consumerHelper.SetAttribute("RetxTimer", StringValue(retx));
-	consumerHelper.Install(nodes.Get(0));
-
-	// Producer
-	ndn::AppHelper producerHelper("ns3::ndn::ProducerThunks");
-	// Producer will reply to all requests starting with /prefix
-	producerHelper.SetPrefix(prefix);
-	producerHelper.SetAttribute("Address", StringValue("/node/3"));
-	producerHelper.SetAttribute("PayloadSize", StringValue("1024"));
-	producerHelper.SetAttribute("AppDelay", StringValue(pDataDelay));
-	producerHelper.SetAttribute("Loss", StringValue(errRate));
-	producerHelper.Install(nodes.Get(9)); // last node
-	producerHelper.Install(nodes.Get(7)); // last node
+	for(int i = 0; i < stoi(consumers); i++){
+        m_random->SetAttribute("Max", ns3::DoubleValue(nodes.size() - 1));
+		int chosen = m_random->GetInteger();
+		NFD_LOG_DEBUG("Choosing " << chosen << " as consumer");
+		ndn::AppHelper consumerHelper("ns3::ndn::ConsumerTimers");
+		consumerHelper.SetPrefix(prefix);
+		consumerHelper.SetAttribute("Frequency", StringValue(frequency));
+		consumerHelper.SetAttribute("StartTime", StringValue("1s"));
+		consumerHelper.SetAttribute("AppDelay", StringValue(cDataDelay));
+		consumerHelper.SetAttribute("RetxTimer", StringValue(retx));
+		consumerHelper.Install(nodes.Get(chosen));
+	}
 
 	// Add /prefix origins to ndn::GlobalRouter
 	ndn::GlobalRoutingHelper ndnGlobalRoutingHelper;
 	ndnGlobalRoutingHelper.InstallAll();
-	//for (ns3::Ptr<ns3::Node> node : nodes) {
-	ndnGlobalRoutingHelper.AddOrigins(prefix, nodes.Get(9));
-	ndnGlobalRoutingHelper.AddOrigins(prefix, nodes.Get(7));
-	ndnGlobalRoutingHelper.AddOrigins("/node/3", nodes.Get(9));
-	ndnGlobalRoutingHelper.AddOrigins("/node/3", nodes.Get(7));
+
+	for(int i = 0; i < stoi(producers); i++){
+		m_random->SetAttribute("Max", ns3::DoubleValue(nodes.size() - 1));
+		int chosen = m_random->GetInteger();
+		NFD_LOG_DEBUG("Choosing " << chosen << " as producer");
+		ndn::AppHelper producerHelper("ns3::ndn::ProducerThunks");
+	// Producer will reply to all requests starting with /prefix
+		producerHelper.SetPrefix(prefix);
+		std::stringstream ss;
+		ss << "/node/" << chosen;
+		producerHelper.SetAttribute("Address", StringValue(ss.str()));
+		producerHelper.SetAttribute("PayloadSize", StringValue("1024"));
+		producerHelper.SetAttribute("AppDelay", StringValue(pDataDelay));
+		producerHelper.SetAttribute("Loss", StringValue(errRate));
+		producerHelper.Install(nodes.Get(chosen)); // last node
+		ndnGlobalRoutingHelper.AddOrigins(prefix, nodes.Get(chosen));
+		ndnGlobalRoutingHelper.AddOrigins(ss.str(), nodes.Get(chosen));
+	}
+
 
 	//}
 

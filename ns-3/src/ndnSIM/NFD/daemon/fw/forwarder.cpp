@@ -240,6 +240,7 @@ Forwarder::onContentStoreMiss(const Face& inFace, const shared_ptr<pit::Entry>& 
   }
 
   // dispatch to strategy: after incoming Interest
+  NS_LOG_DEBUG("Dispatching to the forwarding strategy");
   this->dispatchToStrategy(*pitEntry,
     [&] (fw::Strategy& strategy) { strategy.afterReceiveInterest(inFace, interest, pitEntry); });
 }

@@ -8,7 +8,7 @@ set xlabel "Packet Loss Ratio"
 set ylabel "Average Interest Satisfaction Time[s]"
 
 #set yrange[0:]
-set key bottom left
+set key top left
 
 
 plot \

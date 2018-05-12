@@ -23,42 +23,38 @@
  * NFD, e.g., in COPYING.md file.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "multicast-strategy.hpp"
-#include "algorithm.hpp"
+#ifndef NFD_DAEMON_FW_LOAD_BALANCE_STRATEGY_HPP
+#define NFD_DAEMON_FW_LOAD_BALANCE_STRATEGY_HPP
+
+#include "strategy.hpp"
+#include "ns3/random-variable-stream.h"
+#include "ns3/ptr.h"
+
+
 
 namespace nfd {
 namespace fw {
 
-
-
-const Name MulticastStrategy::STRATEGY_NAME("ndn:/localhost/nfd/strategy/multicast/%FD%01");
-NFD_REGISTER_STRATEGY(MulticastStrategy);
-
-MulticastStrategy::MulticastStrategy(Forwarder& forwarder, const Name& name)
-  : Strategy(forwarder, name)
+/** \brief a forwarding strategy that forwards Interest to all FIB nexthops
+ */
+class LoadBalanceStrategy : public Strategy
 {
-}
+public:
+  LoadBalanceStrategy(Forwarder& forwarder, const Name& name = STRATEGY_NAME);
 
-void
-MulticastStrategy::afterReceiveInterest(const Face& inFace, const Interest& interest,
-                                        const shared_ptr<pit::Entry>& pitEntry)
-{
-  const fib::Entry& fibEntry = this->lookupFib(*pitEntry);
-  const fib::NextHopList& nexthops = fibEntry.getNextHops();
+  virtual void
+  afterReceiveInterest(const Face& inFace, const Interest& interest,
+                       const shared_ptr<pit::Entry>& pitEntry) override;
 
+public:
+  static const Name STRATEGY_NAME;
 
-  for (fib::NextHopList::const_iterator it = nexthops.begin(); it != nexthops.end(); ++it) {
-    Face& outFace = it->getFace();
-    if (!wouldViolateScope(inFace, interest, outFace) &&
-        canForwardToLegacy(*pitEntry, outFace)) {
-      this->sendInterest(pitEntry, outFace, interest);
-    }
-  }
+private:
+  ns3::Ptr<ns3::RandomVariableStream> m_random;
 
-  if (!hasPendingOutRecords(*pitEntry)) {
-    this->rejectPendingInterest(pitEntry);
-  }
-}
+};
 
 } // namespace fw
 } // namespace nfd
+
+#endif // NFD_DAEMON_FW_MULTICAST_STRATEGY_HPP

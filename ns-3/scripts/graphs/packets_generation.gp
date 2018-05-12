@@ -8,7 +8,7 @@ set xlabel "Data Generation Time[s]"
 set ylabel "Packets Sent"
 
 #set yrange[0:]
-set key bottom left
+set key top left
 
 
 plot \

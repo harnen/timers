@@ -8,7 +8,7 @@ set xlabel "Packet Loss Ratio"
 set ylabel "Packets Sent"
 
 #set yrange[0:]
-set key bottom left
+set key center left
 
 
 plot \

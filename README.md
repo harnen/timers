@@ -16,6 +16,12 @@ To run, execute:
 NS_LOG=ndn.Producer:ndn.Consumer ./waf --run=tasks
 ~~~~
 
+To recreate result from the RICE paper, run scripts located in `ns3/scripts/`:
+~~~~
+cd ns3/scripts
+./run_tests.sh
+~~~~
+
 # Stack Changes
 
 * `Deadline` and `Path` fields added in both Interest and Data packets

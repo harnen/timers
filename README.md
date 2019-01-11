@@ -1,6 +1,9 @@
-# Timers
+# RICE: Remote Method Invocation in ICN
+This is a repository containing an implementation of the RICE framework presented in this [paper](https://conferences.sigcomm.org/acm-icn/2018/proceedings/icn18-final9.pdf).
 
-# Install
+The repository contains implementations in ndnSim simulator and real-world implementation based on ndn-cxx.
+
+## ndnSim
  	
 ~~~~
 cd ns3
@@ -8,7 +11,7 @@ cd ns3
 ./waf
 ~~~~
 
-# Simulations
+### Simulations
 Simulation files are located in `scratch/` folder.
 To run, execute:
 
@@ -21,10 +24,4 @@ To recreate result from the RICE paper, run scripts located in `ns3/scripts/`:
 cd ns3/scripts
 ./run_tests.sh
 ~~~~
-
-# Stack Changes
-
-* `Deadline` and `Path` fields added in both Interest and Data packets
-* `Repeated` field added to the interest. It indicates if its the first packet (recording the path) or the second (using the recorder path for forwarding)
-* `forwarder` injects path to every without `repeated` flag set
-* For now only `BestRouteStrategy2` checks if `repeated` is set. If it's the case it uses the recorder path for forwarding. 
+## ndn-cxx

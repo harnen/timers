@@ -57,10 +57,22 @@ LoadBalanceStrategy::afterReceiveInterest(const Face& inFace, const Interest& in
   pointer[100041105050] = '4';*/
 
   NFD_LOG_DEBUG("Received an Interest, got " << nexthops.size() << " hops.");
+  bool hasGoodInt = false;
 
 
-  //for (fib::NextHopList::const_iterator it = nexthops.begin(); it != nexthops.end(); ++it) {
-  while(true){
+  //check if we have any interfaces not violating scope
+  for (fib::NextHopList::const_iterator it = nexthops.begin(); it != nexthops.end(); ++it) {
+    Face& outFace = it->getFace();
+    if (!wouldViolateScope(inFace, interest, outFace) &&
+        canForwardToLegacy(*pitEntry, outFace)) {
+    	hasGoodInt = true;
+    	break;
+      //this->sendInterest(pitEntry, outFace, interest);
+    }
+  }
+
+  //choose a random interface
+  while(hasGoodInt){
 	  m_random->SetAttribute("Max", ns3::DoubleValue(nexthops.size() - 1));
 	  int chosen = m_random->GetInteger();
 	  NS_LOG_DEBUG("Randomed: " << chosen);

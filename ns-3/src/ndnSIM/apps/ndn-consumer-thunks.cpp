@@ -195,7 +195,7 @@ ConsumerThunks::SendPacket(Name name, uint32_t seq){
   shared_ptr<Interest> interest = make_shared<Interest>();
   interest->setNonce(m_rand->GetValue(0, std::numeric_limits<uint32_t>::max()));
 
-  time::milliseconds interestLifeTime(m_appDelay + 100);
+  time::milliseconds interestLifeTime(1000);
   interest->setInterestLifetime(interestLifeTime);
   /*if(m_thunkEstablished){*/
   if(m_interestName.equals(name)){

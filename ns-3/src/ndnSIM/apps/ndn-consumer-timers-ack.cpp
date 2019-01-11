@@ -57,6 +57,9 @@ ConsumerTimersACK::GetTypeId(void)
       .AddAttribute("MaxSeq", "Maximum sequence number to request",
                     IntegerValue(std::numeric_limits<uint32_t>::max()),
                     MakeIntegerAccessor(&ConsumerTimersACK::m_seqMax), MakeIntegerChecker<uint32_t>())
+	  /*.AddAttribute("StartSeq", "Start sequence number to request",
+					                    IntegerValue(0),
+					                    MakeIntegerAccessor(&ConsumerTimersACK::m_seq), MakeIntegerChecker<uint32_t>())*/
 
     ;
 

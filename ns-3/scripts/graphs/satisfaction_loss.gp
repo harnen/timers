@@ -5,7 +5,7 @@ load 'style.gp'
 set output "satisfaction_loss.pdf"
 
 set xlabel "Packet Loss Ratio"
-set ylabel "Average Interest Satisfaction Time[s]"
+set ylabel "Interest Satisfaction Time[s]"
 
 #set yrange[0:]
 set key top left

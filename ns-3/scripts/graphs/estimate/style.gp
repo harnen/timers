@@ -1,6 +1,6 @@
-#set terminal pdfcairo font "Gill Sans,11" linewidth 4 rounded fontscale 1.0
+#set terminal pdfcairo font "Gill Sans,12" linewidth 4 rounded fontscale 1.0
 reset
-set terminal pdfcairo size 8,5 font "Gill Sans,11" linewidth 4 rounded fontscale 1.34
+set terminal pdfcairo size 8,5 font "Gill Sans,12" linewidth 4 rounded fontscale 1.34
 
 # Line style for axes
 set style line 80 lt rgb "#808080"

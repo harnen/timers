@@ -42,7 +42,7 @@ int main(int argc, char* argv[]) {
 	cmd.AddValue("format", "Format to use for data input [Orbis|Inet|Rocketfuel].", format);
 	cmd.AddValue("input", "Name of the input file.", input);
 	cmd.AddValue("consumers", "Number of consumers.", consumers);
-	cmd.AddValue("producer", "Number of producers.", producers);
+	cmd.AddValue("producers", "Number of producers.", producers);
 	cmd.Parse(argc, argv);
 
 
@@ -119,6 +119,7 @@ int main(int argc, char* argv[]) {
 		consumerHelper.SetAttribute("StartTime", StringValue("1s"));
 		consumerHelper.SetAttribute("AppDelay", StringValue(cDataDelay));
 		consumerHelper.SetAttribute("RetxTimer", StringValue(retx));
+		//consumerHelper.SetAttribute("StartSeq", StringValue(std::to_string(i*100)));
 		consumerHelper.Install(nodes.Get(chosen));
 	}
 

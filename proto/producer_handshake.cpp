@@ -28,8 +28,6 @@ private:
   onI1(const InterestFilter& filter, const Interest& i1){
     std::cout << "<< I1" << i1 << std::endl;
     sendI2();
-
-
   }
 
   void sendI2()
@@ -43,13 +41,13 @@ private:
                            bind(&Producer::onNack, this, _1, _2),
                            bind(&Producer::onTimeout, this, _1));
 
-    std::cout << ">> I2" << i2 << std::endl;
+    //std::cout << ">> I2" << i2 << std::endl;
   }
 
   void
   onD2(const Interest& i2, const Data& d2)
   {
-    std::cout << "<< D2: " << d2 << std::endl;
+    //std::cout << "<< D2: " << d2 << std::endl;
 
     //if there's more data, request
     if(!d2.getName().getSubName(-1, 1).isPrefixOf(Name("last"))){
@@ -72,7 +70,7 @@ private:
       m_keyChain.sign(*d1);
 
       // Return Data packet to the requester
-      std::cout << ">> D1: " << *d1 << std::endl;
+      //std::cout << ">> D1: " << *d1 << std::endl;
       m_face.put(*d1);
     }
   }

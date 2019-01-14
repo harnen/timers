@@ -2,10 +2,14 @@
 #include <iostream>
 #include <fstream>
 
+#define SEGMENT_SIZE 8500
+
 using namespace std;
 
 namespace ndn {
 namespace examples {
+
+
 
 class Consumer : noncopyable
 {
@@ -35,7 +39,7 @@ private:
 
   void
   onI2(const InterestFilter& filter, const Interest& i2){
-    std::cout << "<< I2" << i2 << std::endl;
+    //std::cout << "<< I2" << i2 << std::endl;
     //Submit data here
     Name dataName(i2.getName());
     dataName
@@ -45,8 +49,8 @@ private:
     static const std::string content = "DATA TO SUBMIT";
 
     m_size = fread(&m_buffer, 1, sizeof(m_buffer), m_file);
-    std::cout << "Buffer size " << sizeof(m_buffer) << std::endl;
-    std::cout << "Read " << m_size << " bytes of data from the file." << std::endl;
+    //std::cout << "Buffer size " << sizeof(m_buffer) << std::endl;
+    //std::cout << "Read " << m_size << " bytes of data from the file." << std::endl;
 
     if(m_size != sizeof(m_buffer)){
       dataName.append("last");
@@ -61,8 +65,14 @@ private:
     m_keyChain.sign(*data);
 
     // Return Data packet to the requester
-    std::cout << ">> D2: " << *data << std::endl;
+    //std::cout << ">> D2: " << *data << std::endl;
     m_face.put(*data);
+
+    if(m_size != sizeof(m_buffer)){
+      std::cout << "Read the whole file - exiting" << std::endl;
+      fclose(m_file);
+      m_face.unsetInterestFilter(m_prefixId);
+    }
   }
 
 
@@ -121,7 +131,7 @@ private:
   Face m_face;
   KeyChain m_keyChain;
   const RegisteredPrefixId* m_prefixId;
-  char m_buffer[1024];
+  char m_buffer[SEGMENT_SIZE];
   FILE *m_file;
   unsigned int m_size;
 };

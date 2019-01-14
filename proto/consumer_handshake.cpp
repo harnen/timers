@@ -2,7 +2,7 @@
 #include <iostream>
 #include <fstream>
 
-#define SEGMENT_SIZE 8500
+#define SEGMENT_SIZE 7000
 
 using namespace std;
 

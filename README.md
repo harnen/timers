@@ -25,9 +25,13 @@ cd ns3/scripts
 ./run_tests.sh
 ~~~~
 ## Prototype
-To run the prototype, NFD needs to be installed on hosting machines. 
+The prototype showcases both thunks and handshake message exchange. To run the prototype, NFD needs to be installed on hosting machines. The handshake example attempts to send file `test.bin` from to local consumer's directory to producer. The file must be generated before launching `./consumer_handshake`.
 
+To compile the project and generate a random file to send, run: 
 ~~~~
 cd proto
 make
+`dd if=/dev/random of=test.bin count=100000 bs=1024 iflag=fullblock`
 ~~~~
+
+Note that the handshake example will work only using one forwarder for both producer and consumer. Running it on different machines requires modifications in NFD. 
